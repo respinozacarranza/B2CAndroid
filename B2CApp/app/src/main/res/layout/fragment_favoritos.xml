@@ -5,7 +5,7 @@
     tools:context="com.moviles.b2c.fragments.FavoritosFragment"
     >
 
-    <ScrollView
+    <ListView
         android:scrollbars="vertical"
         android:id="@+id/mi_recycler_view"
         android:layout_width="match_parent"
