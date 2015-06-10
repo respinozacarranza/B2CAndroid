@@ -20,6 +20,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.adapters.FavoritosAdapter;
@@ -32,11 +33,7 @@ import pe.edu.upc.b2capp.models.Inmueble;
 public class FavoritosFragment extends Fragment{
 
     ArrayList<Favorito> dataset;
-
-    public FavoritosFragment(){
-
-    }
-
+    //FavoritosAdapter mFavoritosAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -62,7 +59,7 @@ public class FavoritosFragment extends Fragment{
                 Log.e("mirespuesta", response.toString());
                 dataset = new ArrayList<Favorito>();
 
-                dataset= parser(response);
+                dataset= (ArrayList<Favorito>) parser(response);
 
                 progressDialog.cancel();
             }
@@ -115,12 +112,34 @@ public class FavoritosFragment extends Fragment{
         inm4.setDistrito("Surco");
         inm4.setDireccion("Av primavera");
         inm4.setDescripcion("Departamento de 3 ambientes");
-        Favorito favorito = new Favorito();
-        favorito.setIdInmueble(inm4);
-        favoritosArray.add(favorito);
+        Favorito favorito4 = new Favorito();
+        favorito4.setIdInmueble(inm4);
+        favoritosArray.add(favorito4);
+
+        Inmueble inm5 = new Inmueble();
+        inm5.setIdInmueble(5);
+        inm5.setDistrito("Surco");
+        inm5.setDireccion("Av primavera");
+        inm5.setDescripcion("Departamento de 3 ambientes");
+        Favorito favorito5 = new Favorito();
+        favorito5.setIdInmueble(inm5);
+        favoritosArray.add(favorito5);
+
+        Inmueble inm6 = new Inmueble();
+        inm6.setIdInmueble(6);
+        inm6.setDistrito("Surco");
+        inm6.setDireccion("Av primavera");
+        inm6.setDescripcion("Departamento de 3 ambientes");
+        Favorito favorito6 = new Favorito();
+        favorito6.setIdInmueble(inm6);
+        favoritosArray.add(favorito6);
 
 
-        ListView listView = (ListView) getActivity().findViewById(R.id.mi_recycler_view);
+
+
+        //mFavoritosAdapter = new FavoritosAdapter(getActivity(),R.id.listView_favoritos,R.id.row_favoritos,favoritosArray);
+        ListView listView = (ListView) getActivity().findViewById(R.id.listView_favoritos);
+        listView.setAdapter(new FavoritosAdapter(favoritosArray,getActivity()));
        // listView.setAdapter((ListAdapter)new FavoritosAdapter(favoritosArray));
 
 
@@ -131,9 +150,9 @@ public class FavoritosFragment extends Fragment{
         recyclerView.setItemAnimator(new DefaultItemAnimator());*/
     }
 
-    public ArrayList<Favorito> parser (JSONArray response){
+    public List<Favorito> parser (JSONArray response){
 
-        ArrayList<Favorito> favoritoAux = new ArrayList<Favorito>();
+        List<Favorito> favoritoAux = new ArrayList<Favorito>();
 
         for(int i = 0; i<response.length(); i++){
 

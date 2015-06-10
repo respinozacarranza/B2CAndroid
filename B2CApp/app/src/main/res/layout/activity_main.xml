@@ -84,7 +84,8 @@
             android:layout_gravity="center_vertical"
             android:src="@drawable/but2"
             android:background="@drawable/ripple"
-            android:layout_marginLeft="60dp" />
+            android:layout_marginLeft="60dp"
+            android:onClick="favoritos" />
 
         <ImageButton
             android:layout_width="50dp"

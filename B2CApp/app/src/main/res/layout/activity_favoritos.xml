@@ -5,6 +5,7 @@
 
 
     <fragment
+        android:name="pe.edu.upc.b2capp.fragments.FavoritosFragment"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/frag_favoritos"

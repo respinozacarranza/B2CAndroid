@@ -20,7 +20,7 @@ public class FavoritosAdapter extends BaseAdapter{
     private List<Favorito> favoritos;
     private Context context;
 
-    public FavoritosAdapter(List<Favorito> libros, Context context){
+    public FavoritosAdapter(List<Favorito> favoritos, Context context){
         this.favoritos = favoritos;
         this.context = context;
     }
@@ -56,8 +56,8 @@ public class FavoritosAdapter extends BaseAdapter{
         Favorito favorito = favoritos.get(position);
 
         t1.setText(favorito.getIdInmueble().getDistrito());
-        t1.setText(favorito.getIdInmueble().getDescripcion());
-        t1.setText(favorito.getIdInmueble().getDireccion());
+        t2.setText(favorito.getIdInmueble().getDescripcion());
+        t3.setText(favorito.getIdInmueble().getDireccion());
 
         return convertView;
 

@@ -1,6 +1,5 @@
 package pe.edu.upc.b2capp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -41,7 +40,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void favoritos(View view){
-        Intent intent = new Intent(this, Favoritos.class);
+        Intent intent = new Intent(this, FavoritosActivity.class);
         startActivity(intent);
 
     }

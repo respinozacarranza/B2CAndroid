@@ -9,20 +9,20 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import pe.edu.upc.b2capp.adapters.FavoritosAdapter;
+import pe.edu.upc.b2capp.models.Favorito;
 
 /**
  * Created by Renato on 6/8/2015.
  */
-public class Favoritos extends Activity{
+public class FavoritosActivity extends ActionBarActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favoritos);
 
-        /*ActionBar actionBar = getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);*/
-
-        ListView listViewFavoritos = (ListView)findViewById(R.id.listViewFavoritos);
 
 
 
