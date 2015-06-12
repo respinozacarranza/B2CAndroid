@@ -1,5 +1,7 @@
 package pe.edu.upc.b2capp;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -7,13 +9,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import pe.edu.upc.b2capp.fragments.MainFragment;
+
 
 public class MainActivity extends ActionBarActivity {
 
+    private MainFragment mainFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (savedInstanceState == null) {
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            mainFragment = new MainFragment();
+            fragmentTransaction.add(R.id.content_fragment, mainFragment);
+            fragmentTransaction.commit();
+        }
     }
 
 
