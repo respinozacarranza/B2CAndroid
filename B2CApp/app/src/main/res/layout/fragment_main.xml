@@ -11,24 +11,16 @@
 
         <ImageView
             android:id="@+id/imview1"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:scaleType="centerCrop"
-            android:src="@drawable/houseicon"
+            android:src="@drawable/b2c_icon"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:contentDescription="@string/appNombre" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/appNombre"
-            android:textSize="40sp"
-            android:id="@+id/titulo"
-            android:layout_below="@+id/imview1"
-            android:layout_centerHorizontal="true">
-        </TextView>
+
 
         <LinearLayout
             android:id="@+id/row_access_buttons"
@@ -48,12 +40,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4">
                 <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
                     android:id="@+id/imageButton"
-                    android:src="@drawable/but2"
-                    android:background="@drawable/ripple"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/home_icon"
                     android:layout_centerHorizontal="true"/>
             </RelativeLayout>
 
@@ -67,12 +59,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4">
                 <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
                     android:id="@+id/imageButton2"
-                    android:src="@drawable/but2"
-                    android:background="@drawable/ripple"
+                    android:src="@drawable/fav_icon"
+                    android:background="@android:color/transparent"
                     android:layout_centerHorizontal="true"
                     android:onClick="favoritos"/>
             </RelativeLayout>
@@ -87,12 +79,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4">
                 <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
                     android:id="@+id/imageButton3"
-                    android:src="@drawable/but2"
-                    android:background="@drawable/ripple"
+                    android:src="@drawable/find_icon"
+                    android:background="@android:color/transparent"
                     android:layout_centerHorizontal="true"/>
             </RelativeLayout>
 
@@ -117,6 +109,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/access_button_text"
                 android:gravity="center"
                 android:layout_weight="4"
                 android:text="Inmuebles"/>
@@ -129,6 +122,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/access_button_text"
                 android:gravity="center"
                 android:layout_weight="4"
                 android:text="Favoritos"/>
@@ -141,6 +135,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/access_button_text"
                 android:gravity="center"
                 android:layout_weight="4"
                 android:text="Cerca de mí"/>
@@ -161,12 +156,14 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/access_button_text"
                 android:text="@string/opcion2"
                 android:id="@+id/conect"/>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/access_button_text"
                 android:text="@string/opcion1"
                 android:id="@+id/reg"/>
 
