@@ -1,6 +1,7 @@
 package pe.edu.upc.b2capp.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import pe.edu.upc.b2capp.LoginActivity;
 import pe.edu.upc.b2capp.R;
 
 /**
@@ -34,9 +36,19 @@ public class MainFragment extends Fragment  {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedBundlesState){
 
-        button_conectarse = (Button) view.findViewById(R.id.)
+        button_conectarse = (Button) view.findViewById(R.id.conect);
+
+        button_conectarse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
+
+
 
 
 
