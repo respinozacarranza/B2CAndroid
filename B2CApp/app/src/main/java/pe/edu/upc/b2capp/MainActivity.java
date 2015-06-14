@@ -29,4 +29,9 @@ public class MainActivity extends BaseActivity {
         Intent intent = new Intent(this, FavoritosActivity.class);
         startActivity(intent);
     }
+
+    public void prueba(View view){
+        Intent intent = new Intent(this, DetalleInmuebleActivity.class);
+        startActivity(intent);
+    }
 }

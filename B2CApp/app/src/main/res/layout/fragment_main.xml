@@ -87,7 +87,8 @@
                     android:id="@+id/imageButton3"
                     android:src="@drawable/ic_find_icon"
                     android:background="@android:color/transparent"
-                    android:layout_centerHorizontal="true"/>
+                    android:layout_centerHorizontal="true"
+                    android:onClick="prueba" />
             </RelativeLayout>
 
             <View
