@@ -19,7 +19,7 @@ import pe.edu.upc.b2capp.R;
 public class MainFragment extends Fragment  {
 
 
-    Button button_conectarse;
+    private Button mButtonConectarse;
 
     public MainFragment() {
         // Required empty public constructor
@@ -36,9 +36,9 @@ public class MainFragment extends Fragment  {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedBundlesState){
 
-        button_conectarse = (Button) view.findViewById(R.id.conect);
+        mButtonConectarse = (Button) view.findViewById(R.id.conect);
 
-        button_conectarse.setOnClickListener(new View.OnClickListener() {
+        mButtonConectarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), LoginActivity.class);

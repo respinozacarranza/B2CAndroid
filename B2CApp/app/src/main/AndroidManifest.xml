@@ -26,19 +26,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-        <activity android:name=".FavoritosActivity" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
-=======
         <activity
             android:name=".FavoritosActivity"
             android:label="@string/title_favoritos_activity"
             android:parentActivityName=".MainActivity" >
-
-            <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -47,8 +45,13 @@
             android:name=".BaseActivity"
             android:label="@string/title_activity_base" >
         </activity>
-        <activity android:name=".DetalleInmuebleActivity"></activity>
->>>>>>> 6ee71b63d8cf6e1a1e1a8d739c701e299642b741
+        <activity
+            android:name=".DetalleInmuebleActivity"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 
 </manifest>
