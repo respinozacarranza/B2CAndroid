@@ -28,4 +28,6 @@ public class DetalleInmuebleActivity extends BaseActivity {
 
     }
 
+
+
 }

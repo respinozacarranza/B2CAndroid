@@ -32,13 +32,13 @@
             android:paddingTop="30dp">
 
             <EditText
-                android:id="@+id/usuario"
+                android:id="@+id/login_et_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ingresar Usuario"/>
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/login_et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -56,19 +56,18 @@
             android:paddingTop="100dp">
 
             <Button
+                android:id="@+id/login_btn_connect"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Conectarse"/>
 
             <Button
+                android:id="@+id/login_btn_cancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Cancelar"/>
 
-
         </LinearLayout>
-
-
     </RelativeLayout>
 
 </FrameLayout>
