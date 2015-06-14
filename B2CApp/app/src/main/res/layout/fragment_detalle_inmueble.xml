@@ -95,7 +95,7 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
-                        android:id="@+id/txtArea"
+                        android:id="@+id/textViewArea"
                         android:text="Sup. Cubierta: 75 metros cuadrados"
                         android:textSize="20sp"
 
@@ -107,7 +107,7 @@
                         android:layout_gravity="left|top" />
 
                     <TextView
-                        android:id="@+id/txtAntiguedad"
+                        android:id="@+id/textViewAntiguedad"
                         android:text="Antiguedad: 2 años"
                         android:textSize="20sp"
                         android:layout_width="wrap_content"
@@ -155,7 +155,7 @@
                         android:layout_gravity="left|top" />
 
                     <TextView
-                        android:id="@+id/txtEstacionamientos"
+                        android:id="@+id/textViewEstacionamientos"
                         android:text="Estacionamientos: 1"
                         android:textSize="20sp"
                         android:layout_width="wrap_content"
@@ -182,13 +182,8 @@
                     >
 
                     <TextView
-                        android:id="@+id/txtDescripcion"
-                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a laoreet massa.
-                    Nulla lectus nisl, imperdiet sed accumsan gravida, congue vel magna. Aliquam erat volutpat.
-                    Phasellus faucibus euismod pellentesque. Quisque pellentesque est id dolor cursus condimentum.
-                    Morbi at finibus velit. Suspendisse finibus, risus vitae molestie convallis, mi odio varius sapien,
-                    et tempor nisi lorem quis nisl. Suspendisse porta ligula eget consequat porta. Donec mattis egestas
-                    sapien. Nam commodo commodo rutrum. Nullam id elit bibendum, dictum arcu sed, dapibus eros."
+                        android:id="@+id/textViewDescripcion"
+                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a laoreet massa. Nulla lectus nisl, imperdiet sed accumsan gravida, congue vel magna. Aliquam erat volutpat.Phasellus faucibus euismod pellentesque. Quisque pellentesque est id dolor cursus condimentum.Morbi at finibus velit. Suspendisse finibus, risus vitae molestie convallis, mi odio varius sapien,sapien. Nam commodo commodo rutrum. Nullam id elit bibendum, dictum arcu sed, dapibus eros."
                         android:textSize="20sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />

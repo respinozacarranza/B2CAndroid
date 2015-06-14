@@ -11,16 +11,23 @@ public class Inmueble {
     private  String titulo;
     private String direccion;
     private  String distrito;
+    private int area;
+    private int dormitorios;
+    private int banos;
+    private int estacionamientos;
+    private int antiguedad;
     private int latitud;
     private int longitud;
     private String descripcion;
-    private int precio;
+    private double precio;
     private int cantFavoritos;
     private Date fechaCreacion;
     private boolean eliminado;
     private Usuario idUsuario;
     private TipoTransaccion idtTipoTransaccion;
     private TipoInmueble idTipoInmueble;
+
+
 
     public int getIdInmueble() {
         return idInmueble;
@@ -78,11 +85,11 @@ public class Inmueble {
         this.descripcion = descripcion;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
@@ -132,5 +139,45 @@ public class Inmueble {
 
     public void setIdTipoInmueble(TipoInmueble idTipoInmueble) {
         this.idTipoInmueble = idTipoInmueble;
+    }
+
+    public int getArea() {
+        return area;
+    }
+
+    public void setArea(int area) {
+        this.area = area;
+    }
+
+    public int getDormitorios() {
+        return dormitorios;
+    }
+
+    public void setDormitorios(int dormitorios) {
+        this.dormitorios = dormitorios;
+    }
+
+    public int getBanos() {
+        return banos;
+    }
+
+    public void setBanos(int banos) {
+        this.banos = banos;
+    }
+
+    public int getEstacionamientos() {
+        return estacionamientos;
+    }
+
+    public void setEstacionamientos(int estacionamientos) {
+        this.estacionamientos = estacionamientos;
+    }
+
+    public int getAntiguedad() {
+        return antiguedad;
+    }
+
+    public void setAntiguedad(int antiguedad) {
+        this.antiguedad = antiguedad;
     }
 }

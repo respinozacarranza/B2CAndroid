@@ -22,6 +22,7 @@ import android.widget.ViewSwitcher;
 
 import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.adapters.TransformerAdapter;
+import pe.edu.upc.b2capp.models.Inmueble;
 
 /**
  * Created by Renato on 6/12/2015.
@@ -30,7 +31,7 @@ public class DetalleInmuebleFragment extends Fragment{
 
     // implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener
     private int[] imgInmueble = {R.drawable.det1, R.drawable.det2, R.drawable.det3};
-    private int mPosition = 1;
+    private int mPosition;
     private ImageSwitcher imageSwitcher;
     private Button bAtras;
     private Button bAdelante;
@@ -51,6 +52,7 @@ public class DetalleInmuebleFragment extends Fragment{
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mPosition = 1;
 
         bAtras = (Button)view.findViewById(R.id.btnAtras);
 
@@ -83,6 +85,47 @@ public class DetalleInmuebleFragment extends Fragment{
 
         imageSwitcher.setInAnimation(getActivity(), R.anim.abc_slide_in_top);
         imageSwitcher.setOutAnimation(getActivity(), R.anim.abc_slide_out_bottom);
+
+        Inmueble inm1 = new Inmueble();
+        inm1.setIdInmueble(1);
+        inm1.setTitulo("VENTA DE DEPARTAMENTO EXCLUSIVO");
+        inm1.setDistrito("Surco");
+        inm1.setDireccion("Av primavera");
+        inm1.setDescripcion("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a laoreet massa. Nulla lectus nisl, imperdiet sed accumsan gravida, congue vel magna. Aliquam erat volutpat.Phasellus faucibus euismod pellentesque. Quisque pellentesque est id dolor cursus condimentum.Morbi at finibus velit. Suspendisse finibus, risus vitae molestie convallis, mi odio varius sapien,sapien. Nam commodo commodo rutrum. Nullam id elit bibendum, dictum arcu sed, dapibus eros.");
+        inm1.setPrecio(294000);
+        inm1.setArea(135);
+        inm1.setAntiguedad(2);
+        inm1.setDormitorios(4);
+        inm1.setBanos(2);
+        inm1.setEstacionamientos(1);
+
+        TextView textView = (TextView)getActivity().findViewById(R.id.textViewTitulo);
+        TextView textView2 = (TextView)getActivity().findViewById(R.id.textViewPrecio);
+        TextView textView3 = (TextView)getActivity().findViewById(R.id.textViewArea);
+        TextView textView4 = (TextView)getActivity().findViewById(R.id.textViewAntiguedad);
+        TextView textView5 = (TextView)getActivity().findViewById(R.id.textViewDormitorios);
+        TextView textView6 = (TextView)getActivity().findViewById(R.id.textViewBanos);
+        TextView textView7 = (TextView)getActivity().findViewById(R.id.textViewEstacionamientos);
+        TextView textView8 = (TextView)getActivity().findViewById(R.id.textViewDescripcion);
+
+        textView.setText(inm1.getTitulo());
+        textView2.setText("Precio: " + String.valueOf(inm1.getPrecio()));
+        textView3.setText("Area: " + String.valueOf(inm1.getArea()));
+        textView4.setText("Antiguedad" + String.valueOf(inm1.getAntiguedad()));
+        textView5.setText("Dormitorios: " + String.valueOf(inm1.getDormitorios()));
+        textView6.setText("Baños: " + String.valueOf(inm1.getBanos()));
+        textView7.setText("Estacionamientos: " + String.valueOf(inm1.getEstacionamientos()));
+        textView8.setText("Descripcion: " + inm1.getDescripcion());
+
+
+
+
+
+
+
+
+
+
 
     }
 
