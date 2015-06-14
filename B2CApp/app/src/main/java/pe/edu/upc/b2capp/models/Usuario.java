@@ -15,7 +15,7 @@ public class Usuario {
     private String web;
     private String telefono;
     private boolean eliminado;
-    private TipoUsuario idTipoUsuario;
+    private TipoUsuario tipoUsuario;
 
     public int getIdUsuario() {
         return idUsuario;
@@ -97,11 +97,11 @@ public class Usuario {
         this.eliminado = eliminado;
     }
 
-    public TipoUsuario getIdTipoUsuario() {
-        return idTipoUsuario;
+    public TipoUsuario getTipoUsuario() {
+        return tipoUsuario;
     }
 
-    public void setIdTipoUsuario(TipoUsuario idTipoUsuario) {
-        this.idTipoUsuario = idTipoUsuario;
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
 }
