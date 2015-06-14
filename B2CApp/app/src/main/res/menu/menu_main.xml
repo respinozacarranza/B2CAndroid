@@ -27,6 +27,8 @@
                     android:title="@string/menu_perfil" />
                 <item android:id="@+id/menu_configuracion"
                     android:title="@string/menu_configuracion" />
+                <item android:id="@+id/menu_cerrar_sesion"
+                    android:title="@string/menu_cerrar_sesion" />
             </group>
         </menu>
     </item>

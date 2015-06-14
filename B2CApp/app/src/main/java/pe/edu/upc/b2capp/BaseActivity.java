@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import pe.edu.upc.b2capp.session.LocalSession;
 
 public class BaseActivity extends ActionBarActivity {
 
@@ -29,6 +30,11 @@ public class BaseActivity extends ActionBarActivity {
                 return true;
             case R.id.menu_configuracion:
                 //menu favoritos
+                return true;
+            case R.id.menu_cerrar_sesion:
+                LocalSession.getInstance(this).closeSession(this);
+                finish();
+                startActivity(getIntent());
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

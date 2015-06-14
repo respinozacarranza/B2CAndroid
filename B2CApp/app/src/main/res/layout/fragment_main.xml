@@ -20,7 +20,12 @@
             android:layout_centerHorizontal="true"
             android:contentDescription="@string/appNombre" />
 
-
+        <TextView
+            android:id="@+id/main_tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imview1"
+            android:layout_centerHorizontal="true"/>
 
         <LinearLayout
             android:id="@+id/row_access_buttons"

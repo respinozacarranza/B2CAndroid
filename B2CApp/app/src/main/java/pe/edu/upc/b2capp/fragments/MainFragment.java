@@ -1,18 +1,21 @@
 package pe.edu.upc.b2capp.fragments;
 
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import pe.edu.upc.b2capp.LoginActivity;
 import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.Registrate;
+import pe.edu.upc.b2capp.models.Usuario;
+import pe.edu.upc.b2capp.session.LocalSession;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +25,8 @@ public class MainFragment extends Fragment  {
 
     private Button mButtonConectarse;
     private Button mButtonRegistrate;
+    private TextView mTextViewUsername;
+    private LocalSession localSession;
 
     public MainFragment() {
         // Required empty public constructor
@@ -38,8 +43,10 @@ public class MainFragment extends Fragment  {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedBundlesState){
 
+        localSession = LocalSession.getInstance(getActivity());
         mButtonConectarse = (Button) view.findViewById(R.id.conect);
         mButtonRegistrate = (Button) view.findViewById(R.id.reg);
+        mTextViewUsername = (TextView) view.findViewById(R.id.main_tv_username);
 
         mButtonConectarse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,16 +63,23 @@ public class MainFragment extends Fragment  {
                 startActivity(intent);
             }
         });
-
-
-
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Usuario u = localSession.getLoggedUser();
 
+        if (u != null) {
+            mTextViewUsername.setText("Bienvenido, " + u.getNombre());
+            mButtonConectarse.setVisibility(View.GONE);
+            mButtonRegistrate.setVisibility(View.GONE);
+        }
+        else {
+            mTextViewUsername.setText("");
+            mButtonConectarse.setVisibility(View.VISIBLE);
+            mButtonRegistrate.setVisibility(View.VISIBLE);
 
-
-
-
-
-
+        }
+    }
 }
