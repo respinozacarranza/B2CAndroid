@@ -1,21 +1,11 @@
 package pe.edu.upc.b2capp;
 
-import android.app.Activity;
-import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-/**
- * Created by Renato on 6/8/2015.
- */
-public class Conectate extends Activity{
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_conectate);
-    }
+public class BaseActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -26,9 +16,7 @@ public class Conectate extends Activity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         int id = item.getItemId();
-
         switch (id) {
             case R.id.menu_creados:
                 //menu creados
