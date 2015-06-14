@@ -35,14 +35,14 @@
                 android:id="@+id/usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ingresar Usuario"/>
+                android:hint="Ingresar Usuario"/>
 
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:text="Ingresar Password"/>
+                android:hint="Ingresar Password"/>
 
         </LinearLayout>
 

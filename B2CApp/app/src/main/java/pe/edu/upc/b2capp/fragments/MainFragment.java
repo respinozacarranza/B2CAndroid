@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import pe.edu.upc.b2capp.LoginActivity;
 import pe.edu.upc.b2capp.R;
+import pe.edu.upc.b2capp.Registrate;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +21,7 @@ public class MainFragment extends Fragment  {
 
 
     private Button mButtonConectarse;
+    private Button mButtonRegistrate;
 
     public MainFragment() {
         // Required empty public constructor
@@ -37,6 +39,7 @@ public class MainFragment extends Fragment  {
     public void onViewCreated(View view, @Nullable Bundle savedBundlesState){
 
         mButtonConectarse = (Button) view.findViewById(R.id.conect);
+        mButtonRegistrate = (Button) view.findViewById(R.id.reg);
 
         mButtonConectarse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +48,16 @@ public class MainFragment extends Fragment  {
                 startActivity(intent);
             }
         });
+
+        mButtonRegistrate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Registrate.class);
+                startActivity(intent);
+            }
+        });
+
+
 
     }
 
