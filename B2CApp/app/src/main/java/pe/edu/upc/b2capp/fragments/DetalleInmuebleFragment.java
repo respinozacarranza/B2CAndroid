@@ -1,5 +1,6 @@
 package pe.edu.upc.b2capp.fragments;
 
+import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +10,8 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -27,8 +30,11 @@ public class DetalleInmuebleFragment extends Fragment{
 
     // implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener
     private int[] imgInmueble = {R.drawable.det1, R.drawable.det2, R.drawable.det3};
-    private int mPosition;
+    private int mPosition = 1;
     private ImageSwitcher imageSwitcher;
+    private Button bAtras;
+    private Button bAdelante;
+
 
     public DetalleInmuebleFragment() {
         // Required empty public constructor
@@ -43,8 +49,26 @@ public class DetalleInmuebleFragment extends Fragment{
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        bAtras = (Button)view.findViewById(R.id.btnAtras);
+
+        bAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onSwitch2(view);
+            }
+        });
+
+        bAdelante = (Button)view.findViewById(R.id.btnAdelante);
+
+        bAdelante.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onSwitch(view);
+            }
+        });
 
         mPosition = 0;
         imageSwitcher = (ImageSwitcher)getActivity().findViewById(R.id.galeriaInmueble);
@@ -52,6 +76,7 @@ public class DetalleInmuebleFragment extends Fragment{
             @Override
             public View makeView() {
                 ImageView imageView = new ImageView(getActivity());
+                imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
                 return imageView;
             }
         });
@@ -59,11 +84,11 @@ public class DetalleInmuebleFragment extends Fragment{
         imageSwitcher.setInAnimation(getActivity(), R.anim.abc_slide_in_top);
         imageSwitcher.setOutAnimation(getActivity(), R.anim.abc_slide_out_bottom);
 
-
     }
 
+
     public void onSwitch(View view){
-        if(mPosition<9) {
+        if(mPosition<2) {
             imageSwitcher.setBackgroundResource(imgInmueble[mPosition]);
             // mPosition++;
             mPosition = (mPosition + 1);
@@ -79,6 +104,8 @@ public class DetalleInmuebleFragment extends Fragment{
         }
 
     }
+
+
 
     /*@Override
     public void onActivityCreated(Bundle savedInstanceState) {

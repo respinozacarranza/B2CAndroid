@@ -3,178 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetalleInmuebleActivity$DetalleInmuebleFragment">
+    tools:context=".DetalleInmuebleActivity$DetalleInmuebleFragment"
+    android:background="@color/fondo"
+    >
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <ScrollView
-        android:id="@+id/scrollViewInmueble"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/scrollViewInmueble"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/textViewTitulo"
-                    android:text="VENTA DEPARTAMENTO EXCLUSIVO"
-                    android:textSize="20sp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_gravity="left|top" />
-
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageSwitcher
-                    android:layout_centerInParent="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/galeriaInmueble"
-
-                />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-
-
-
-
-                <TextView
-                    android:id="@+id/textViewPrecio"
-                    android:text="Precio: S/. 294,000 o US$ 94,000"
-                    android:textSize="20sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/txtArea"
-                    android:text="Sup. Cubierta: 75 metros cuadrados"
-                    android:textSize="20sp"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_gravity="left|top" />
-
-                <TextView
-                    android:id="@+id/txtAntiguedad"
-                    android:text="Antiguedad: 2 años"
-                    android:textSize="20sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_gravity="left|top" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp">
-
-                </LinearLayout>
-
-
-                <TextView
-                    android:id="@+id/textViewDormitorios"
-                    android:text="Dormitorios: 4"
-                    android:textSize="20sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/textViewBanos"
-                    android:text="Baños: 2"
-                    android:textSize="20sp"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_gravity="left|top" />
-
-                <TextView
-                    android:id="@+id/txtEstacionamientos"
-                    android:text="Estacionamientos: 1"
-                    android:textSize="20sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_gravity="left|top" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-
-                <TextView
-                    android:id="@+id/txtDescripcion"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a laoreet massa.
-                    Nulla lectus nisl, imperdiet sed accumsan gravida, congue vel magna. Aliquam erat volutpat.
-                    Phasellus faucibus euismod pellentesque. Quisque pellentesque est id dolor cursus condimentum.
-                    Morbi at finibus velit. Suspendisse finibus, risus vitae molestie convallis, mi odio varius sapien,
-                    et tempor nisi lorem quis nisl. Suspendisse porta ligula eget consequat porta. Donec mattis egestas
-                    sapien. Nam commodo commodo rutrum. Nullam id elit bibendum, dictum arcu sed, dapibus eros."
-                    android:textSize="20sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
+            android:layout_height="wrap_content">
 
 
             <LinearLayout
@@ -182,31 +22,211 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <Button
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="LLAMAR"
-                    />
+                    android:layout_height="wrap_content">
 
-                <Button
+                    <TextView
+                        android:id="@+id/textViewTitulo"
+                        android:text="VENTA DEPARTAMENTO EXCLUSIVO"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="left|top" />
+
+
+
+                </LinearLayout>
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="MENSAJE"
-                    />
+                    android:background="@color/layout"
+                    >
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="atras"
+                        android:id="@+id/btnAtras" />
+                    <ImageSwitcher
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/galeriaInmueble"
+
+                        />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="adelante"
+                        android:id="@+id/btnAdelante"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/layout"
+                    >
+
+                    <TextView
+                        android:id="@+id/textViewPrecio"
+                        android:text="Precio: S/. 294,000 o US$ 94,000"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/txtArea"
+                        android:text="Sup. Cubierta: 75 metros cuadrados"
+                        android:textSize="20sp"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="left|top" />
+
+                    <TextView
+                        android:id="@+id/txtAntiguedad"
+                        android:text="Antiguedad: 2 años"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="left|top" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/layout"
+                    >
+
+
+
+
+                    <TextView
+                        android:id="@+id/textViewDormitorios"
+                        android:text="Dormitorios: 4"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/textViewBanos"
+                        android:text="Baños: 2"
+                        android:textSize="20sp"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="left|top" />
+
+                    <TextView
+                        android:id="@+id/txtEstacionamientos"
+                        android:text="Estacionamientos: 1"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="left|top" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/layout"
+                    >
+
+                    <TextView
+                        android:id="@+id/txtDescripcion"
+                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a laoreet massa.
+                    Nulla lectus nisl, imperdiet sed accumsan gravida, congue vel magna. Aliquam erat volutpat.
+                    Phasellus faucibus euismod pellentesque. Quisque pellentesque est id dolor cursus condimentum.
+                    Morbi at finibus velit. Suspendisse finibus, risus vitae molestie convallis, mi odio varius sapien,
+                    et tempor nisi lorem quis nisl. Suspendisse porta ligula eget consequat porta. Donec mattis egestas
+                    sapien. Nam commodo commodo rutrum. Nullam id elit bibendum, dictum arcu sed, dapibus eros."
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="LLAMAR"
+                        />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="MENSAJE"
+                        />
+
+
+                </LinearLayout>
+
+
+
 
 
             </LinearLayout>
 
 
 
+        </ScrollView>
 
-
-         </LinearLayout>
-
-
-
-    </ScrollView>
-
-</RelativeLayout>
+    </RelativeLayout>
 
 </FrameLayout>
