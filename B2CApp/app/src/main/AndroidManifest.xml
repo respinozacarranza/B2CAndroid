@@ -3,6 +3,7 @@
     package="pe.edu.upc.b2capp" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <supports-screens
         android:anyDensity="true"
