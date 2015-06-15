@@ -1,13 +1,44 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context=".Registrate">
 
-    <FrameLayout
-        android:id="@+id/content_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="40dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:id="@+id/list_buttons">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/accent_material_dark"
+            android:id="@+id/btnPersona"
+            android:text="Persona"
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/accent_material_dark"
+            android:id="@+id/btnEmpresa"
+            android:text="Empresa"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/content_fragment_registrate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/list_buttons"/>
+
+
+</RelativeLayout>

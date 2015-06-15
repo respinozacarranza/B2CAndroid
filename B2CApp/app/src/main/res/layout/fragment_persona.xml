@@ -13,40 +13,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="40dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:id="@+id/list_buttons">
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/accent_material_dark"
-                android:text="Persona"
-                android:layout_weight="1"
-                android:layout_marginRight="10dp"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/accent_material_dark"
-                android:text="Empresa"
-                android:layout_weight="1"
-                android:layout_marginLeft="5dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_below="@+id/list_buttons">
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nombre"
                 android:hint="Nombre"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
@@ -55,7 +27,6 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Email"
                 android:hint="Email"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
@@ -64,7 +35,6 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Usuario"
                 android:hint="Usuario"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
@@ -73,7 +43,6 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Contrasena"
                 android:hint="Contrasena"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
