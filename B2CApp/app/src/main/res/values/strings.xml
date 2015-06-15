@@ -23,4 +23,28 @@
     <string name="title_activity_base">BaseActivity</string>
     <string name="menu_cerrar_sesion">Cerrar sesión</string>
 
+    <!-- REGISTRAR INMUEBLE -->
+    <string name="hint_Titulo">Ingrese el Título</string>
+    <string name="Precio">Precio: </string>
+    <string name="Area">Área: </string>
+    <string name="Dormitorios">Dormitorios: </string>
+    <string name="Banos">Baños: </string>
+    <string name="Estacionamientos">Estacionamientos: </string>
+    <string name="Antiguedad">Antigüedad: </string>
+    <string name="TipoTransaccion">Tipo de Transacción: </string>
+    <string name="hint_telefono">Teléfono </string>
+    <string name="hint_email">Email </string>
+    <string name="hint_direccion">Dirección </string>
+    <string name="hint_distrito">Distrito </string>
+    <string name="btnRegistrar">Registrar </string>
+    <string name="btnCancelar">Cancelar </string>
+
+
+    <!-- STRING PARA SPINNER -->
+    <string-array name="opcionesSpinner">
+        <item>Venta</item>
+        <item>Alquiler</item>
+    </string-array>
+
+
 </resources>
