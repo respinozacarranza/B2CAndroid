@@ -35,6 +35,13 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
+            android:name=".RegistrateActivity"
+            android:label="@string/title_activity_registrate" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
             android:name=".FavoritosActivity"
             android:label="@string/title_favoritos_activity"
             android:parentActivityName=".MainActivity" >

@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import pe.edu.upc.b2capp.LoginActivity;
 import pe.edu.upc.b2capp.R;
-import pe.edu.upc.b2capp.Registrate;
+import pe.edu.upc.b2capp.RegistrateActivity;
 import pe.edu.upc.b2capp.models.Usuario;
 import pe.edu.upc.b2capp.session.LocalSession;
 
@@ -59,7 +59,7 @@ public class MainFragment extends Fragment  {
         mButtonRegistrate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Registrate.class);
+                Intent intent = new Intent(getActivity(), RegistrateActivity.class);
                 startActivity(intent);
             }
         });

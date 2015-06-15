@@ -1,9 +1,9 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.moviles.b2c.fragments.PersonaFragment"
-    >
+    tools:context=".Registrate$PersonaFragment">
 
 
     <RelativeLayout
@@ -45,7 +45,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="70px"
+                android:layout_height="wrap_content"
                 android:text="Nombre"
                 android:hint="Nombre"
                 android:layout_marginLeft="30dp"
@@ -54,7 +54,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="70px"
+                android:layout_height="wrap_content"
                 android:text="Email"
                 android:hint="Email"
                 android:layout_marginLeft="30dp"
@@ -63,7 +63,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="70px"
+                android:layout_height="wrap_content"
                 android:text="Usuario"
                 android:hint="Usuario"
                 android:layout_marginLeft="30dp"
@@ -72,7 +72,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="70px"
+                android:layout_height="wrap_content"
                 android:text="Contrasena"
                 android:hint="Contrasena"
                 android:layout_marginLeft="30dp"
@@ -81,7 +81,7 @@
 
             <Button
                 android:layout_width="fill_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:text="Registrarse"
                 android:background="@color/accent_material_dark"
                 android:layout_marginTop="80dp"
