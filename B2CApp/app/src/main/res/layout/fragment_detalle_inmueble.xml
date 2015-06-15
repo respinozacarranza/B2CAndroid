@@ -198,12 +198,14 @@
                     android:orientation="vertical">
 
                     <Button
+                        android:id="@+id/btnLlamar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="LLAMAR"
                         />
 
                     <Button
+                        android:id="@+id/btnEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="MENSAJE"

@@ -2,6 +2,8 @@ package pe.edu.upc.b2capp.fragments;
 
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -23,6 +25,7 @@ import android.widget.ViewSwitcher;
 import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.adapters.TransformerAdapter;
 import pe.edu.upc.b2capp.models.Inmueble;
+import pe.edu.upc.b2capp.models.Usuario;
 
 /**
  * Created by Renato on 6/12/2015.
@@ -35,6 +38,8 @@ public class DetalleInmuebleFragment extends Fragment{
     private ImageSwitcher imageSwitcher;
     private Button bAtras;
     private Button bAdelante;
+    private Button btnMensaje;
+    private Button btnLlamada;
 
 
     public DetalleInmuebleFragment() {
@@ -89,7 +94,7 @@ public class DetalleInmuebleFragment extends Fragment{
             imageSwitcher.setInAnimation(getActivity(), R.anim.abc_slide_in_top);
             imageSwitcher.setOutAnimation(getActivity(), R.anim.abc_slide_out_bottom);
 
-            Inmueble inm1 = new Inmueble();
+            final Inmueble inm1 = new Inmueble();
             inm1.setIdInmueble(1);
             inm1.setTitulo("VENTA DE DEPARTAMENTO EXCLUSIVO");
             inm1.setDistrito("Surco");
@@ -101,6 +106,13 @@ public class DetalleInmuebleFragment extends Fragment{
             inm1.setDormitorios(4);
             inm1.setBanos(2);
             inm1.setEstacionamientos(1);
+
+            Usuario u = new Usuario();
+            u.setIdUsuario(1);
+            u.setTelefono("948314023");
+            u.setEmail("respinozacarranza@gmail.com");
+
+            inm1.setIdUsuario(u);
 
             TextView textView = (TextView)getActivity().findViewById(R.id.textViewTitulo);
             TextView textView2 = (TextView)getActivity().findViewById(R.id.textViewPrecio);
@@ -119,6 +131,38 @@ public class DetalleInmuebleFragment extends Fragment{
             textView6.setText("Baños: " + String.valueOf(inm1.getBanos()));
             textView7.setText("Estacionamientos: " + String.valueOf(inm1.getEstacionamientos()));
             textView8.setText("Descripcion: " + inm1.getDescripcion());
+
+            final String para = u.getEmail();
+            final String subject = inm1.getTitulo();
+            final String message = "B2C - MESSAGE";
+            final String llamada = u.getTelefono();
+
+            btnMensaje = (Button)view.findViewById(R.id.btnEmail);
+            btnMensaje.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent email = new Intent(Intent.ACTION_SEND);
+                    email.putExtra(Intent.EXTRA_EMAIL, new String[] { para });
+                    email.putExtra(Intent.EXTRA_SUBJECT, subject);
+                    email.putExtra(Intent.EXTRA_TEXT, message);
+
+                    email.setType("message/rfc822");
+
+                    startActivity(email);
+
+                }
+            });
+
+            btnLlamada = (Button)view.findViewById(R.id.btnLlamar);
+            btnLlamada.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String uri = "tel: " + llamada;
+                    Intent llamada = new Intent(Intent.ACTION_CALL);
+                    llamada.setData(Uri.parse(uri));
+                    startActivity(llamada);
+                }
+            });
         }
     }
 
