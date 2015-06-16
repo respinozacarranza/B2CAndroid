@@ -1,12 +1,13 @@
-package pe.edu.upc.b2capp;
+package pe.edu.upc.b2capp.activity;
 
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.session.LocalSession;
 
-public class BaseActivity extends ActionBarActivity {
+public class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

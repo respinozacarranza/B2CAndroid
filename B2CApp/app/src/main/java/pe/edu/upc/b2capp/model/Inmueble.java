@@ -1,4 +1,4 @@
-package pe.edu.upc.b2capp.models;
+package pe.edu.upc.b2capp.model;
 
 import java.util.Date;
 

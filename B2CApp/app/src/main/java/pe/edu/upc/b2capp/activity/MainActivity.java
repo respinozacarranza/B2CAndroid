@@ -1,4 +1,4 @@
-package pe.edu.upc.b2capp;
+package pe.edu.upc.b2capp.activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -6,7 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import pe.edu.upc.b2capp.fragments.MainFragment;
+import pe.edu.upc.b2capp.R;
+import pe.edu.upc.b2capp.fragment.MainFragment;
 
 
 public class MainActivity extends BaseActivity {

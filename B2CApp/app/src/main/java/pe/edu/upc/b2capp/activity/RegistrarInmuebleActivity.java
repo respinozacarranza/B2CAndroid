@@ -1,13 +1,12 @@
-package pe.edu.upc.b2capp;
+package pe.edu.upc.b2capp.activity;
 
-import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 
-import pe.edu.upc.b2capp.fragments.RegistrarInmuebleFragment;
+import pe.edu.upc.b2capp.R;
+import pe.edu.upc.b2capp.fragment.RegistrarInmuebleFragment;
 
 /**
  * Created by Renato on 6/15/2015.

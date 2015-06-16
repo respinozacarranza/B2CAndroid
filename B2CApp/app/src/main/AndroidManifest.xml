@@ -19,7 +19,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,41 +28,45 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activity.MainActivity" />
         </activity>
         <activity
-            android:name=".RegistrateActivity"
+            android:name=".activity.RegistrarUsuarioActivity"
             android:label="@string/title_activity_registrate" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activity.MainActivity" />
         </activity>
         <activity
-            android:name=".FavoritosActivity"
+            android:name=".activity.FavoritosActivity"
             android:label="@string/title_favoritos_activity"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".activity.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activity.MainActivity" />
         </activity>
         <activity
-            android:name=".BaseActivity"
+            android:name=".activity.BaseActivity"
             android:label="@string/title_activity_base" >
         </activity>
         <activity
-            android:name=".DetalleInmuebleActivity"
-            android:parentActivityName=".MainActivity" >
+            android:name=".activity.DetalleInmuebleActivity"
+            android:parentActivityName=".activity.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activity.MainActivity" />
         </activity>
 
         <activity
-            android:name=".RegistrarInmuebleActivity">
+            android:name=".activity.RegistrarInmuebleActivity"
+            android:parentActivityName=".activity.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
         </activity>
     </application>
 

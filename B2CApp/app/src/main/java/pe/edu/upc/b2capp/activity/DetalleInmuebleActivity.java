@@ -1,10 +1,11 @@
-package pe.edu.upc.b2capp;
+package pe.edu.upc.b2capp.activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 
-import pe.edu.upc.b2capp.fragments.DetalleInmuebleFragment;
+import pe.edu.upc.b2capp.R;
+import pe.edu.upc.b2capp.fragment.DetalleInmuebleFragment;
 
 /**
  * Created by Renato on 6/13/2015.

@@ -1,11 +1,12 @@
-package pe.edu.upc.b2capp;
+package pe.edu.upc.b2capp.activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
-import pe.edu.upc.b2capp.fragments.LoginFragment;
+import pe.edu.upc.b2capp.R;
+import pe.edu.upc.b2capp.fragment.LoginFragment;
 
 
 public class LoginActivity extends ActionBarActivity {

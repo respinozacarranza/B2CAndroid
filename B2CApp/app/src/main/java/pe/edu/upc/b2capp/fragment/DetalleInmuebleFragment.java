@@ -1,31 +1,22 @@
-package pe.edu.upc.b2capp.fragments;
+package pe.edu.upc.b2capp.fragment;
 
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 
 import pe.edu.upc.b2capp.R;
-import pe.edu.upc.b2capp.adapters.TransformerAdapter;
-import pe.edu.upc.b2capp.models.Inmueble;
-import pe.edu.upc.b2capp.models.Usuario;
+import pe.edu.upc.b2capp.model.Inmueble;
+import pe.edu.upc.b2capp.model.Usuario;
 
 /**
  * Created by Renato on 6/12/2015.

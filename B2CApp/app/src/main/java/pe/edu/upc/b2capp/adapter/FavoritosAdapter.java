@@ -1,4 +1,4 @@
-package pe.edu.upc.b2capp.adapters;
+package pe.edu.upc.b2capp.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,24 +10,26 @@ import android.widget.TextView;
 import java.util.List;
 
 import pe.edu.upc.b2capp.R;
-import pe.edu.upc.b2capp.models.Favorito;
+import pe.edu.upc.b2capp.model.InmuebleSimple;
 
 /**
  * Created by Renato on 6/8/2015.
  */
 public class FavoritosAdapter extends BaseAdapter{
 
-    private List<Favorito> favoritos;
+    private List<InmuebleSimple> favoritos;
     private Context context;
 
-    public FavoritosAdapter(List<Favorito> favoritos, Context context){
+    public FavoritosAdapter(List<InmuebleSimple> favoritos, Context context){
         this.favoritos = favoritos;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return favoritos.size();
+        if (favoritos != null)
+            return favoritos.size();
+        else return 0;
     }
 
     @Override
@@ -53,12 +55,14 @@ public class FavoritosAdapter extends BaseAdapter{
         TextView t2 = (TextView)convertView.findViewById(R.id.textViewS);
         TextView t3 = (TextView)convertView.findViewById(R.id.textViewM);
 
-        Favorito favorito = favoritos.get(position);
+        TextView t4 = (TextView)convertView.findViewById(R.id.textViewPrecio);
 
-        t1.setText(favorito.getIdInmueble().getDistrito());
-        t2.setText(favorito.getIdInmueble().getDescripcion());
-        t3.setText(favorito.getIdInmueble().getDireccion());
+        InmuebleSimple inmuebleSimple = favoritos.get(position);
 
+        t1.setText(inmuebleSimple.getTitulo());
+        t2.setText(inmuebleSimple.getDireccion());
+        t3.setText(inmuebleSimple.getTipoTransaccion());
+        t4.setText(inmuebleSimple.getPrecio().toString());
         return convertView;
 
 

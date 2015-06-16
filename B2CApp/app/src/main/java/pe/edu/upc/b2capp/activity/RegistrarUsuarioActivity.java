@@ -1,20 +1,20 @@
-package pe.edu.upc.b2capp;
+package pe.edu.upc.b2capp.activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 
-import pe.edu.upc.b2capp.fragments.EmpresaFragment;
-import pe.edu.upc.b2capp.fragments.PersonaFragment;
+import pe.edu.upc.b2capp.R;
+import pe.edu.upc.b2capp.fragment.EmpresaFragment;
+import pe.edu.upc.b2capp.fragment.PersonaFragment;
 
 /**
  * Created by Andres on 15/06/2015.
  */
-public class RegistrateActivity extends ActionBarActivity {
+public class RegistrarUsuarioActivity extends ActionBarActivity {
 
     private PersonaFragment personaFragment;
     private EmpresaFragment empresaFragment;

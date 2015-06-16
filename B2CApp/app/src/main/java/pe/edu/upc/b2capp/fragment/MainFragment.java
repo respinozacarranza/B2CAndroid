@@ -1,4 +1,4 @@
-package pe.edu.upc.b2capp.fragments;
+package pe.edu.upc.b2capp.fragment;
 
 
 import android.app.Fragment;
@@ -9,14 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
-import pe.edu.upc.b2capp.LoginActivity;
+import pe.edu.upc.b2capp.activity.LoginActivity;
 import pe.edu.upc.b2capp.R;
-import pe.edu.upc.b2capp.RegistrarInmuebleActivity;
-import pe.edu.upc.b2capp.RegistrateActivity;
-import pe.edu.upc.b2capp.models.Usuario;
+import pe.edu.upc.b2capp.activity.RegistrarUsuarioActivity;
+import pe.edu.upc.b2capp.model.Usuario;
 import pe.edu.upc.b2capp.session.LocalSession;
 
 /**
@@ -71,7 +69,7 @@ public class MainFragment extends Fragment  {
         mButtonRegistrate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), RegistrateActivity.class);
+                Intent intent = new Intent(getActivity(), RegistrarUsuarioActivity.class);
                 startActivity(intent);
             }
         });

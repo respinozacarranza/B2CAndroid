@@ -1,4 +1,4 @@
-package pe.edu.upc.b2capp.adapters;
+package pe.edu.upc.b2capp.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

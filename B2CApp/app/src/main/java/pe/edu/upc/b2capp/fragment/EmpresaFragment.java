@@ -1,4 +1,4 @@
-package pe.edu.upc.b2capp.fragments;
+package pe.edu.upc.b2capp.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;

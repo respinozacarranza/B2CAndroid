@@ -6,7 +6,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import pe.edu.upc.b2capp.models.Usuario;
+import pe.edu.upc.b2capp.model.Usuario;
 
 /**
  * Created by Jose on 14/06/2015.
