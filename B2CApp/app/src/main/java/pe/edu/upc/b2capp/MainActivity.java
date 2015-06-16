@@ -34,4 +34,9 @@ public class MainActivity extends BaseActivity {
         Intent intent = new Intent(this, DetalleInmuebleActivity.class);
         startActivity(intent);
     }
+
+    public void registro(View view){
+        Intent intent = new Intent(this, RegistrarInmuebleActivity.class);
+        startActivity(intent);
+    }
 }

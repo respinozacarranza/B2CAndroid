@@ -52,7 +52,8 @@
                     android:id="@+id/imageButton"
                     android:background="@android:color/transparent"
                     android:src="@drawable/ic_home_icon"
-                    android:layout_centerHorizontal="true"/>
+                    android:layout_centerHorizontal="true"
+                    android:onClick="registro" />
 
             </RelativeLayout>
 

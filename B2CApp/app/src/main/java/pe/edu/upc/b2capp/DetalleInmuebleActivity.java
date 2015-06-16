@@ -10,7 +10,6 @@ import pe.edu.upc.b2capp.fragments.DetalleInmuebleFragment;
  * Created by Renato on 6/13/2015.
  */
 public class DetalleInmuebleActivity extends BaseActivity {
-
     private DetalleInmuebleFragment fragmento;
 
     @Override

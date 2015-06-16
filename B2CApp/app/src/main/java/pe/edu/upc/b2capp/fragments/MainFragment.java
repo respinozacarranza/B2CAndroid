@@ -9,10 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import pe.edu.upc.b2capp.LoginActivity;
 import pe.edu.upc.b2capp.R;
+import pe.edu.upc.b2capp.RegistrarInmuebleActivity;
 import pe.edu.upc.b2capp.RegistrateActivity;
 import pe.edu.upc.b2capp.models.Usuario;
 import pe.edu.upc.b2capp.session.LocalSession;
@@ -25,6 +27,7 @@ public class MainFragment extends Fragment  {
 
     private Button mButtonConectarse;
     private Button mButtonRegistrate;
+    //private ImageButton mButtonRegistrarInmueble;
     private TextView mTextViewUsername;
     private LocalSession localSession;
 
@@ -47,6 +50,15 @@ public class MainFragment extends Fragment  {
         mButtonConectarse = (Button) view.findViewById(R.id.conect);
         mButtonRegistrate = (Button) view.findViewById(R.id.reg);
         mTextViewUsername = (TextView) view.findViewById(R.id.main_tv_username);
+        //mButtonRegistrarInmueble = (ImageButton)view.findViewById(R.id.imageButton);
+
+        /*mButtonRegistrarInmueble.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RegistrarInmuebleActivity.class);
+                startActivity(intent);
+            }
+        });*/
 
         mButtonConectarse.setOnClickListener(new View.OnClickListener() {
             @Override
