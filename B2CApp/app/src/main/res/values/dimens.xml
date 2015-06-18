@@ -3,11 +3,12 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-
-
     <dimen name="access_button_text">15sp</dimen>
 
-    <!-- Main access button size-->
+    <!-- Main access button size -->
     <dimen name="access_button_size">64dp</dimen>
+
+    <!-- Slider's image fixed height -->
+    <dimen name="slider_image_height">200dp</dimen>
 
 </resources>

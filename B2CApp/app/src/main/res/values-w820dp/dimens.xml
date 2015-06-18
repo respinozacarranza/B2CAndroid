@@ -9,4 +9,8 @@
 
     <!-- Main access button size-->
     <dimen name="access_button_size">96dp</dimen>
+
+    <!-- Slider's image fixed height -->
+    <dimen name="slider_image_height">280dp</dimen>
+
 </resources>

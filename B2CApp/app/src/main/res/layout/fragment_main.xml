@@ -95,6 +95,7 @@
                     android:layout_height="@dimen/access_button_size"
                     android:src="@drawable/ic_action_location_2"
                     android:layout_centerHorizontal="true"
+                    android:onClick="prueba"
                     app:cb_color="#009688"
                     app:cb_pressedRingWidth="8dip" />
 
