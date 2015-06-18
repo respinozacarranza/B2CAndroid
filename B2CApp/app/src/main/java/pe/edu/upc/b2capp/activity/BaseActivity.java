@@ -20,15 +20,6 @@ public class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.menu_creados:
-                //menu creados
-                return true;
-            case R.id.menu_favoritos:
-                //menu favoritos
-                return true;
-            case R.id.menu_perfil:
-                //menu favoritos
-                return true;
             case R.id.menu_configuracion:
                 //menu favoritos
                 return true;

@@ -3,6 +3,8 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Opciones</string>
+    <string name="drawer_open">Abrir</string>
+    <string name="drawer_close">Cerrar</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_conectate">Conectate</string>

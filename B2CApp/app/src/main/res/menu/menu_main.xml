@@ -3,28 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
-    <item android:id="@+id/menu_mis_inmuebles"
-        android:title="@string/menu_mis_inmuebles"
-        android:icon="@drawable/ic_action_home"
-        app:showAsAction="ifRoom">
-        <menu>
-            <group>
-                <item android:id="@+id/menu_creados"
-                    android:title="@string/menu_creados" />
-                <item android:id="@+id/menu_favoritos"
-                    android:title="@string/menu_favoritos" />
-            </group>
-        </menu>
-    </item>
-
     <item android:id="@+id/menu_ajustes"
         android:title="@string/menu_ajustes"
         android:icon="@drawable/ic_action_gear"
         app:showAsAction="ifRoom">
         <menu>
             <group android:menuCategory="container">
-                <item android:id="@+id/menu_perfil"
-                    android:title="@string/menu_perfil" />
                 <item android:id="@+id/menu_configuracion"
                     android:title="@string/menu_configuracion" />
                 <item android:id="@+id/menu_cerrar_sesion"

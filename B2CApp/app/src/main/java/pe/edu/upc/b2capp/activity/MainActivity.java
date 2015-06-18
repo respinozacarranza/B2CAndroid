@@ -10,13 +10,13 @@ import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.fragment.MainFragment;
 
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends NavDrawerActivity{
 
     private MainFragment mainFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        super.setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
