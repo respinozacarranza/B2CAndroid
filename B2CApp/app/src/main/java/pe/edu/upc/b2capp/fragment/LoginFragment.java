@@ -1,7 +1,6 @@
 package pe.edu.upc.b2capp.fragment;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -10,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import pe.edu.upc.b2capp.activity.MainActivity;
 import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.session.LocalSession;
 
@@ -46,12 +44,9 @@ public class LoginFragment extends Fragment
         mButtonConectarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (localSession.startSession(mEditTextUser.getText().toString(),
+                localSession.startSession(mEditTextUser.getText().toString(),
                         mEditTextPasword.getText().toString(),
-                        getActivity())) {
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent);
-                }
+                        getActivity());
             }
         });
 

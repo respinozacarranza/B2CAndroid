@@ -3,6 +3,7 @@ package pe.edu.upc.b2capp.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.session.LocalSession;
@@ -24,9 +25,14 @@ public class BaseActivity extends AppCompatActivity {
                 //menu favoritos
                 return true;
             case R.id.menu_cerrar_sesion:
-                LocalSession.getInstance(this).closeSession(this);
-                finish();
-                startActivity(getIntent());
+                LocalSession ls = LocalSession.getInstance(this);
+                if (ls.sessionStarted()) {
+                    LocalSession.getInstance(this).closeSession(this);
+                    finish();
+                    startActivity(getIntent());
+                } else {
+                    Toast.makeText(this, "Sesión no iniciada", Toast.LENGTH_SHORT).show();
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

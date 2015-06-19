@@ -1,11 +1,14 @@
 package pe.edu.upc.b2capp.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by vjrojasb on 5/17/15.
  */
 public class Usuario {
 
-    private int idUsuario;
+    private Integer idUsuario;
     private String usuario;
     private String password;
     private String nombre;
@@ -14,14 +17,21 @@ public class Usuario {
     private String direccion;
     private String web;
     private String telefono;
-    private boolean eliminado;
-    private TipoUsuario tipoUsuario;
+    private Integer idTipoUsuario;
 
-    public int getIdUsuario() {
+    public void setAttributesFromJson(JSONObject response) throws JSONException{
+        this.setIdUsuario(response.getInt("idUsuario"));
+        this.setNombre(response.getString("nombre"));
+        this.setEmail(response.getString("email"));
+        this.setRuc(response.getString("ruc"));
+        this.setDireccion(response.getString("web"));
+    }
+
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -89,19 +99,11 @@ public class Usuario {
         this.telefono = telefono;
     }
 
-    public boolean isEliminado() {
-        return eliminado;
+    public Integer getIdTipoUsuario() {
+        return idTipoUsuario;
     }
 
-    public void setEliminado(boolean eliminado) {
-        this.eliminado = eliminado;
-    }
-
-    public TipoUsuario getTipoUsuario() {
-        return tipoUsuario;
-    }
-
-    public void setTipoUsuario(TipoUsuario tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
+    public void setIdTipoUsuario(Integer idTipoUsuario) {
+        this.idTipoUsuario = idTipoUsuario;
     }
 }
