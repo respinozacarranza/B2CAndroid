@@ -93,6 +93,7 @@ public class LocalSession {
                             Toast.makeText(context, "Sesion iniciada", Toast.LENGTH_SHORT)
                                     .show();
                         } catch (Exception ex) {
+                            loggedUser = null;
                             progressDialog.cancel();
                             Toast.makeText(context,"Error: " + ex.getMessage(), Toast.LENGTH_LONG)
                                     .show();

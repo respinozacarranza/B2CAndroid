@@ -6,12 +6,12 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/avatar_casa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/avatar_inmueble"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:scaleType="centerCrop"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,8 +20,8 @@
         android:text="Large Text"
         android:id="@+id/textViewL"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/avatar_casa"
-        android:layout_toRightOf="@+id/avatar_casa" />
+        android:layout_toEndOf="@+id/avatar_inmueble"
+        android:layout_toRightOf="@+id/avatar_inmueble" />
 
     <TextView
         android:layout_width="match_parent"

@@ -1,20 +1,13 @@
 package pe.edu.upc.b2capp.fragment;
 
 import android.app.Fragment;
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
-
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pe.edu.upc.b2capp.R;
-import pe.edu.upc.b2capp.adapter.FavoritosAdapter;
+import pe.edu.upc.b2capp.adapter.InmuebleAdapter;
 import pe.edu.upc.b2capp.model.InmuebleSimple;
 
 /**
@@ -35,12 +28,14 @@ public class FavoritosFragment extends Fragment{
 
     ArrayList<InmuebleSimple> dataset;
     ListView listView;
+    BaseAdapter adapter;
     //FavoritosAdapter mFavoritosAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favoritos, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_favoritos, container, false);
+        return rootView;
     }
 
 
@@ -48,12 +43,18 @@ public class FavoritosFragment extends Fragment{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+
+        listView = (ListView)getActivity().findViewById(R.id.listView_favoritos);
+        adapter = new InmuebleAdapter(getActivity(), "http://192.168.1.41:8080/B2CWS/favoritos/1");
+        listView.setAdapter(adapter);
         //Un fragmento no tiene un contexto , como si lo tiene un Activity
+        /*
         String URL = "http://172.20.10.4:8080/B2CWS/favoritos/1";
         RequestQueue queue = Volley.newRequestQueue(getActivity());
         //Intefaz de la peticion, context+ getActivity() : todos los widget reciben un contexto
         final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "Espere ...", "Cargando datos...");
-
+        */
+        /*
         JsonArrayRequest req = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
 
             @Override
@@ -61,7 +62,7 @@ public class FavoritosFragment extends Fragment{
                 Log.i("mirespuesta", response.toString());
                 dataset = (ArrayList<InmuebleSimple>) parser(response);
                 ListView listView = (ListView) getActivity().findViewById(R.id.listView_favoritos);
-                listView.setAdapter(new FavoritosAdapter(dataset,getActivity()));
+                listView.setAdapter(new InmuebleAdapter(dataset,getActivity()));
                 progressDialog.cancel();
             }
         }, new Response.ErrorListener() {
@@ -74,6 +75,7 @@ public class FavoritosFragment extends Fragment{
         });
 
         queue.add(req);
+        */
 
     }
 
