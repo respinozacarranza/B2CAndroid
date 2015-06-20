@@ -42,6 +42,7 @@ public class PersonaFragment extends Fragment{
         mEditTextEmail = (EditText) view.findViewById(R.id.RegUser_et_email);
         mEditTextUsuario = (EditText) view.findViewById(R.id.RegUser_et_usuario);
         mEditTextContrasena = (EditText) view.findViewById(R.id.RegUser_et_contrasena);
+        mButtonRegistrar = (Button) view.findViewById(R.id.RegUser_btn_reg);
 
         mButtonRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
