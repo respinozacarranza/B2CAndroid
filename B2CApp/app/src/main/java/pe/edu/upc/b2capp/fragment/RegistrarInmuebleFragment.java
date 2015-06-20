@@ -14,6 +14,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pe.edu.upc.b2capp.R;
 
 /**
@@ -32,6 +35,8 @@ public class RegistrarInmuebleFragment extends Fragment{
     private ImageButton imageButton7;
     private String imagePath;
 
+    private List<Uri> listaUris;
+
     public RegistrarInmuebleFragment() {
         // Required empty public constructor
     }
@@ -46,7 +51,7 @@ public class RegistrarInmuebleFragment extends Fragment{
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
+        listaUris = new ArrayList<Uri>();
         imageButton2 = (ImageButton)getActivity().findViewById(R.id.imgButton2);
         imageButton = (ImageButton)getActivity().findViewById(R.id.imgButton);
         imageButton3 = (ImageButton)getActivity().findViewById(R.id.imgButton3);
@@ -131,6 +136,7 @@ public class RegistrarInmuebleFragment extends Fragment{
         if (requestCode == LOAD_IMAGE_RESULTS && resultCode == getActivity().RESULT_OK && data != null) {
             // Let's read picked image data - its URI
             Uri pickedImage = data.getData();
+            listaUris.add(pickedImage);
             String[] filePath = { MediaStore.Images.Media.DATA };
             Cursor cursor = getActivity().getContentResolver().query(pickedImage, filePath, null, null, null);
             cursor.moveToFirst();
