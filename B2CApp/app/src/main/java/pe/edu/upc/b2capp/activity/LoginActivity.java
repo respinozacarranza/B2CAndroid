@@ -4,12 +4,13 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.fragment.LoginFragment;
 
 
-public class LoginActivity extends ActionBarActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private LoginFragment loginFragment;
 
