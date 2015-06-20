@@ -7,4 +7,5 @@ public class UriConstant {
     public final static String URL = "http://192.168.1.41:8080/B2CWS";
     public final static String GET_FAVORITOS = "/favoritos/";
     public final static String LOGIN = "/user/login";
+    public static final String CREATE_USER = "/user/create";
 }
