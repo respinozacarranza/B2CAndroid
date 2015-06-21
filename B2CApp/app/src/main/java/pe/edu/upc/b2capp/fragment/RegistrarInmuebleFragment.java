@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pe.edu.upc.b2capp.R;
+import pe.edu.upc.b2capp.activity.MapaInmueblesActivity;
 
 /**
  * Created by Renato on 6/15/2015.
@@ -33,6 +34,7 @@ public class RegistrarInmuebleFragment extends Fragment{
     private ImageButton imageButton5;
     private ImageButton imageButton6;
     private ImageButton imageButton7;
+    private Button btnRegistrar;
     private String imagePath;
 
     private List<Uri> listaUris;
@@ -52,6 +54,7 @@ public class RegistrarInmuebleFragment extends Fragment{
         super.onViewCreated(view, savedInstanceState);
 
         listaUris = new ArrayList<Uri>();
+        btnRegistrar = (Button)getActivity().findViewById(R.id.btnRegistrar);
         imageButton2 = (ImageButton)getActivity().findViewById(R.id.imgButton2);
         imageButton = (ImageButton)getActivity().findViewById(R.id.imgButton);
         imageButton3 = (ImageButton)getActivity().findViewById(R.id.imgButton3);
@@ -61,6 +64,16 @@ public class RegistrarInmuebleFragment extends Fragment{
         imageButton7 = (ImageButton)getActivity().findViewById(R.id.imgButton7);
 
 
+
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), MapaInmueblesActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override

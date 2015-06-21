@@ -22,6 +22,7 @@ import pe.edu.upc.b2capp.model.Usuario;
 public class UserManager {
 
     private Usuario usuario_registrado;
+    private Usuario usuario_modificado;
     private static UserManager instance = null;
 
     public Usuario getUsuario_registrado() {
@@ -68,6 +69,42 @@ public class UserManager {
         RequestQueueManager
                 .getInstance(context)
                 .addToRequestQueue(jsonObjectRequest);
+    }
+
+    public void ModificarUsuario(Usuario usuario, final Context context){
+        final ProgressDialog progressDialog = ProgressDialog.show(context, "Espere...", "Modificando Usuario...");
+
+        final Gson gson = new Gson();
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.POST, UriConstant.URL + UriConstant.UPDATE_USER, gson.toJson(usuario),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        usuario_modificado = new Usuario();
+                        try {
+                            usuario_modificado = gson.fromJson(response.toString(), Usuario.class);
+                            progressDialog.cancel();
+                            Intent intent = new Intent(context, MainActivity.class);
+                            context.startActivity(intent);
+                            Toast.makeText(context, "Usuario Modificado", Toast.LENGTH_SHORT).show();
+                        } catch (Exception ex) {
+                            progressDialog.cancel();
+                            Toast.makeText(context, "Error: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.cancel();
+                Toast.makeText(context,"Error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        RequestQueueManager
+                .getInstance(context)
+                .addToRequestQueue(jsonObjectRequest);
+
     }
 
     public static UserManager getInstance(Context context){
