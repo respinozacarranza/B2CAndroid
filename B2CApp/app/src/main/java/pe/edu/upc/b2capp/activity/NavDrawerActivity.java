@@ -15,6 +15,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import pe.edu.upc.b2capp.R;
+import pe.edu.upc.b2capp.model.Usuario;
+import pe.edu.upc.b2capp.session.LocalSession;
 
 /**
  * Created by Jose on 17/06/2015.
@@ -71,25 +73,36 @@ public class NavDrawerActivity extends BaseActivity {
     protected void startActivityPos(int pos) {
         Intent intent;
         switch (pos) {
-            case 0:
+            case 0://Mis inmuebles
                 //TODO Implementar Mis inmuebles
                 Toast.makeText(NavDrawerActivity.this, "Falta implementar", Toast.LENGTH_SHORT).show();
                 break;
-            case 1:
+            case 1://Favoritos
                 intent = new Intent(this, FavoritosActivity.class);
                 startActivity(intent);
                 break;
-            case 2:
+            case 2://Crear Inmueble
                 intent = new Intent(this, RegistrarInmuebleActivity.class);
                 startActivity(intent);
                 break;
-            case 3:
+            case 3://Cerca de mi
                 //TODO Implementar Mis inmuebles
                 Toast.makeText(NavDrawerActivity.this, "Falta implementar", Toast.LENGTH_SHORT).show();
                 break;
-            case 4:
+            case 4://Perfil
                 //TODO Implementar Mis inmuebles
-                Toast.makeText(NavDrawerActivity.this, "Falta implementar", Toast.LENGTH_SHORT).show();
+                LocalSession localSession = LocalSession.getInstance(this);
+                Usuario nuevouser = localSession.getLoggedUser();
+
+                if(nuevouser == null)
+                {
+                    Toast.makeText(NavDrawerActivity.this, "Debe estar conectado", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    intent = new Intent(this, ModificarUsuarioActivity.class);
+                    startActivity(intent);
+                }
+                //Toast.makeText(NavDrawerActivity.this, "Falta implementar", Toast.LENGTH_SHORT).show();
                 break;
 
         }

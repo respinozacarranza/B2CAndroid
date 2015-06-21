@@ -15,6 +15,7 @@
     <string name="title_activity_favoritos">Favoritos</string>
     <string name="title_activity_login">Login</string>
     <string name="title_favoritos_activity">Favoritos</string>
+    <string name="title_modificar_usuario_activity">Modificar Usuario</string>
     <!-- Menus -->
     <string name="menu_mis_inmuebles">Mis Inmuebles</string>
     <string name="menu_creados">Creados</string>

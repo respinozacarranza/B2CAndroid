@@ -51,6 +51,14 @@
                 android:value=".activity.MainActivity" />
         </activity>
         <activity
+            android:name=".activity.ModificarUsuarioActivity"
+            android:label="@string/title_modificar_usuario_activity"
+            android:parentActivityName=".activity.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
+        <activity
             android:name=".activity.BaseActivity"
             android:label="@string/title_activity_base" >
         </activity>

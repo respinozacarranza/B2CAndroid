@@ -8,4 +8,5 @@ public class UriConstant {
     public final static String GET_FAVORITOS = "/favoritos/";
     public final static String LOGIN = "/user/login";
     public static final String CREATE_USER = "/user/create";
+    public static final String UPDATE_USER = "/user/update";
 }
