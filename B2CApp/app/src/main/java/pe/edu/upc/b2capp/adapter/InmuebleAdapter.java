@@ -2,6 +2,8 @@ package pe.edu.upc.b2capp.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +15,6 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonArrayRequest;
 
 import org.json.JSONArray;
@@ -108,35 +109,13 @@ public class InmuebleAdapter extends BaseAdapter{
         t3.setText(inmuebleSimple.getTipoTransaccion());
         t4.setText(inmuebleSimple.getPrecio().toString());
 
-        /*
         byte[] imageByteArray =  inmuebleSimple.getImagen();
 
-        BitmapFactory.Options options=new BitmapFactory.Options();// Create object of bitmapfactory's option method for further option use
-        options.inPurgeable = true; // inPurgeable is used to free up memory while required
 
-        Bitmap bitmap = BitmapFactory.
-                decodeByteArray(imageByteArray,0,imageByteArray.length, options);
-        img.setImageBitmap(bitmap);
-        */
-        // Petición para obtener la imagen
-        ImageRequest request = new ImageRequest(
-
-                "http://www.jpl.nasa.gov/spaceimages/images/mediumsize/PIA17011_ip.jpg",
-                new Response.Listener<Bitmap>() {
-                    @Override
-                    public void onResponse(Bitmap bitmap) {
-                        img.setImageBitmap(bitmap);
-
-                    }
-                }, 0, 0, null,null,
-                new Response.ErrorListener() {
-                    public void onErrorResponse(VolleyError error) {
-                        img.setImageResource(R.drawable.ic_action_gear);
-                        Log.d(TAG, "Error en respuesta Bitmap: "+ error.getMessage());
-                    }
-                });
-        RequestQueueManager.getInstance(context).addToRequestQueue(request);
-        return convertView;
+        byte[] decodedString = Base64.decode(imageByteArray, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        img.setImageBitmap(decodedByte);
+         return convertView;
     }
 
     public List<InmuebleSimple> parseJson (JSONArray response) {
@@ -160,6 +139,7 @@ public class InmuebleAdapter extends BaseAdapter{
                 Log.i("dato", inms.getTitulo());
 
             } catch (JSONException e) {
+
                 e.printStackTrace();
             }
 

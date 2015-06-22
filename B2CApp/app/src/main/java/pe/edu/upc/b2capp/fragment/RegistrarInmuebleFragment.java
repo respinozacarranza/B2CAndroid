@@ -7,12 +7,12 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +35,7 @@ public class RegistrarInmuebleFragment extends Fragment{
     private ImageButton imageButton6;
     private ImageButton imageButton7;
     private Button btnRegistrar;
+    private Button btnCancelar;
     private String imagePath;
 
     private List<Uri> listaUris;
@@ -55,6 +56,7 @@ public class RegistrarInmuebleFragment extends Fragment{
 
         listaUris = new ArrayList<Uri>();
         btnRegistrar = (Button)getActivity().findViewById(R.id.btnRegistrar);
+        btnCancelar = (Button)getActivity().findViewById(R.id.btnCancelar);
         imageButton2 = (ImageButton)getActivity().findViewById(R.id.imgButton2);
         imageButton = (ImageButton)getActivity().findViewById(R.id.imgButton);
         imageButton3 = (ImageButton)getActivity().findViewById(R.id.imgButton3);
@@ -71,6 +73,13 @@ public class RegistrarInmuebleFragment extends Fragment{
 
                 Intent intent = new Intent(getActivity(), MapaInmueblesActivity.class);
                 startActivity(intent);
+
+            }
+        });
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
             }
         });
@@ -155,8 +164,10 @@ public class RegistrarInmuebleFragment extends Fragment{
             cursor.moveToFirst();
             imagePath = cursor.getString(cursor.getColumnIndex(filePath[0]));
 
-            if(but==1)
+            if(but==1) {
                 imageButton.setImageBitmap(BitmapFactory.decodeFile(imagePath));
+                Log.i(getTag(), imagePath);
+            }
 
             if(but==2)
                 imageButton2.setImageBitmap(BitmapFactory.decodeFile(imagePath));
