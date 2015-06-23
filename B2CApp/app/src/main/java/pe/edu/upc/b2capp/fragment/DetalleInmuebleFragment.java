@@ -1,6 +1,8 @@
 package pe.edu.upc.b2capp.fragment;
 
+import android.app.Activity;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,18 +10,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageSwitcher;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 import pe.edu.upc.b2capp.R;
-import pe.edu.upc.b2capp.model.Inmueble;
+import pe.edu.upc.b2capp.connection.RequestQueueManager;
+import pe.edu.upc.b2capp.connection.UriConstant;
+import pe.edu.upc.b2capp.model.InmuebleIn;
+import pe.edu.upc.b2capp.model.InmuebleOut;
 import pe.edu.upc.b2capp.model.Usuario;
 
 /**
@@ -36,11 +48,10 @@ public class DetalleInmuebleFragment extends Fragment{
         inmueblesMap.put(R.drawable.det2, "Victor tela");
         inmueblesMap.put(R.drawable.det3, "Gesek tela");
     }
-    private int[] imgInmueble = {R.drawable.det1, R.drawable.det2, R.drawable.det3};
-    private int mPosition;
-    private ImageSwitcher imageSwitcher;
-    private Button bAtras;
-    private Button bAdelante;
+
+    private Integer idInmueble;
+    private InmuebleIn inmueble;
+
     private Button btnMensaje;
     private Button btnLlamada;
 
@@ -54,13 +65,55 @@ public class DetalleInmuebleFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detalle_inmueble, container, false);
+        final Activity activity = getActivity();
+        Intent intent = activity.getIntent();
+
+        View rootView = inflater.inflate(R.layout.fragment_detalle_inmueble, container, false);
+        if (intent != null && intent.hasExtra("idInmueble")) {
+            idInmueble = intent.getIntExtra("idInmueble", 0);
+            Toast.makeText(getActivity(), idInmueble.toString(), Toast.LENGTH_SHORT).show();
+            final ProgressDialog progressDialog =
+                    ProgressDialog.show(activity, "Espere...", "Obteniendo Inmueble...");
+            final Gson gson = new Gson();
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                    Request.Method.GET,
+                    UriConstant.URL + UriConstant.GET_INMUEBLE + idInmueble.toString(),
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            InmuebleIn respuesta = new InmuebleIn();
+                            try {
+                                respuesta = gson.fromJson(response.toString(), InmuebleIn.class);
+                                Toast.makeText(activity, "Exito", Toast.LENGTH_LONG).show();
+                                progressDialog.cancel();
+
+                            } catch (Exception ex) {
+                                progressDialog.cancel();
+                                Toast.makeText(activity, "Error: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    progressDialog.cancel();
+                    Toast.makeText(activity,"Error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+
+            RequestQueueManager
+                    .getInstance(activity)
+                    .addToRequestQueue(jsonObjectRequest);
+        }
+        return rootView;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
+
+
         sliderShow = (SliderLayout) getView().findViewById(R.id.slider);
         sliderShow.setPresetTransformer(SliderLayout.Transformer.ZoomOut);
         sliderShow.setDuration(6000);
@@ -76,13 +129,13 @@ public class DetalleInmuebleFragment extends Fragment{
         }
 
 
-        final Inmueble inm1 = new Inmueble();
+        final InmuebleOut inm1 = new InmuebleOut();
         inm1.setIdInmueble(1);
         inm1.setTitulo("VENTA DE DEPARTAMENTO EXCLUSIVO");
         inm1.setDistrito("Surco");
         inm1.setDireccion("Av primavera");
         inm1.setDescripcion("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a laoreet massa. Nulla lectus nisl, imperdiet sed accumsan gravida, congue vel magna. Aliquam erat volutpat.Phasellus faucibus euismod pellentesque. Quisque pellentesque est id dolor cursus condimentum.Morbi at finibus velit. Suspendisse finibus, risus vitae molestie convallis, mi odio varius sapien,sapien. Nam commodo commodo rutrum. Nullam id elit bibendum, dictum arcu sed, dapibus eros.");
-        inm1.setPrecio(294000);
+        inm1.setPrecio(294000.0);
         inm1.setArea(135);
         inm1.setAntiguedad(2);
         inm1.setDormitorios(4);
@@ -94,7 +147,7 @@ public class DetalleInmuebleFragment extends Fragment{
         u.setTelefono("948314023");
         u.setEmail("respinozacarranza@gmail.com");
 
-        inm1.setIdUsuario(u);
+        inm1.setIdUsuario(1);
 
         TextView textView = (TextView)getActivity().findViewById(R.id.textViewTitulo);
         TextView textView2 = (TextView)getActivity().findViewById(R.id.textViewPrecio);

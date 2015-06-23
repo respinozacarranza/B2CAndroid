@@ -1,23 +1,20 @@
 package pe.edu.upc.b2capp.fragment;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.List;
 
 import pe.edu.upc.b2capp.R;
+import pe.edu.upc.b2capp.activity.DetalleInmuebleActivity;
 import pe.edu.upc.b2capp.adapter.InmuebleAdapter;
 import pe.edu.upc.b2capp.model.InmuebleSimple;
 
@@ -42,68 +39,20 @@ public class FavoritosFragment extends Fragment{
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-
         listView = (ListView)getActivity().findViewById(R.id.listView_favoritos);
         adapter = new InmuebleAdapter(getActivity(), "http://192.168.1.41:8080/B2CWS/favoritos/1");
         listView.setAdapter(adapter);
-        //Un fragmento no tiene un contexto , como si lo tiene un Activity
-        /*
-        String URL = "http://172.20.10.4:8080/B2CWS/favoritos/1";
-        RequestQueue queue = Volley.newRequestQueue(getActivity());
-        //Intefaz de la peticion, context+ getActivity() : todos los widget reciben un contexto
-        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "Espere ...", "Cargando datos...");
-        */
-        /*
-        JsonArrayRequest req = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Context context = getActivity();
+                InmuebleSimple inmuebleSimple = (InmuebleSimple)adapter.getItem(position);
 
-            @Override
-            public void onResponse(JSONArray response) {
-                Log.i("mirespuesta", response.toString());
-                dataset = (ArrayList<InmuebleSimple>) parser(response);
-                ListView listView = (ListView) getActivity().findViewById(R.id.listView_favoritos);
-                listView.setAdapter(new InmuebleAdapter(dataset,getActivity()));
-                progressDialog.cancel();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.cancel();
-                Toast toast = Toast.makeText(getActivity(), "Error en la conexion", Toast.LENGTH_SHORT);
-                toast.show();
+                Intent intent = new Intent(context, DetalleInmuebleActivity.class)
+                        .putExtra("idInmueble", inmuebleSimple.getId());
+                startActivity(intent);
             }
         });
-
-        queue.add(req);
-        */
-
-    }
-
-    public List<InmuebleSimple> parser (JSONArray response){
-
-        List<InmuebleSimple> inmueblesAux = new ArrayList<InmuebleSimple>();
-
-        for(int i = 0; i<response.length(); i++){
-
-            InmuebleSimple inms = new InmuebleSimple();
-
-            try {
-
-                JSONObject jsonObject = (JSONObject) response.get(i);
-                inms.setId(jsonObject.getInt("id"));
-                inms.setTitulo(jsonObject.getString("titulo"));
-                inms.setDireccion(jsonObject.getString("direccion"));
-                inms.setPrecio(BigDecimal.valueOf(jsonObject.getDouble("precio")));
-                inms.setTipoTransaccion(jsonObject.getString("tipoTransaccion"));
-                inmueblesAux.add(inms);
-                Log.i("dato", inms.getTitulo());
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-        }
-        return inmueblesAux;
     }
 
 }

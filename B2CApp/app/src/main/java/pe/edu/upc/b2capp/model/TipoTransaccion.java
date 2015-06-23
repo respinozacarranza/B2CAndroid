@@ -8,6 +8,9 @@ public class TipoTransaccion {
     private  int idTipoTransaccion;
     private String descripcion;
 
+    public TipoTransaccion() {
+    }
+
     public int getIdTipoTransaccion() {
         return idTipoTransaccion;
     }

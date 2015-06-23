@@ -48,7 +48,7 @@ public class InmuebleAdapter extends BaseAdapter{
             @Override
             public void onResponse(JSONArray response) {
                 Log.i("mirespuesta", response.toString());
-                inmuebles = parseJson(response);
+                setInmuebles(parseJson(response));
                 notifyDataSetChanged();
             }
         }, new Response.ErrorListener() {
@@ -68,14 +68,14 @@ public class InmuebleAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        if (inmuebles != null)
-            return inmuebles.size();
+        if (getInmuebles() != null)
+            return getInmuebles().size();
         else return 0;
     }
 
     @Override
     public Object getItem(int position) {
-        return inmuebles.get(position);
+        return getInmuebles().get(position);
     }
 
     @Override
@@ -87,8 +87,6 @@ public class InmuebleAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent){
 
         LayoutInflater layoutInflater= LayoutInflater.from(parent.getContext());
-
-        //Salvando la referencia del View de la fila
         View listItemView = convertView;
 
         if(convertView == null){
@@ -102,20 +100,20 @@ public class InmuebleAdapter extends BaseAdapter{
 
         TextView t4 = (TextView)convertView.findViewById(R.id.textViewPrecio);
 
-        InmuebleSimple inmuebleSimple = inmuebles.get(position);
+        InmuebleSimple inmuebleSimple = getInmuebles().get(position);
 
         t1.setText(inmuebleSimple.getTitulo());
         t2.setText(inmuebleSimple.getDireccion());
         t3.setText(inmuebleSimple.getTipoTransaccion());
         t4.setText(inmuebleSimple.getPrecio().toString());
 
+        //Decodificar imagen
         byte[] imageByteArray =  inmuebleSimple.getImagen();
-
-
         byte[] decodedString = Base64.decode(imageByteArray, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        //Asignar imagen a ImageView
         img.setImageBitmap(decodedByte);
-         return convertView;
+        return convertView;
     }
 
     public List<InmuebleSimple> parseJson (JSONArray response) {
@@ -147,4 +145,11 @@ public class InmuebleAdapter extends BaseAdapter{
         return inmueblesAux;
     }
 
+    public List<InmuebleSimple> getInmuebles() {
+        return inmuebles;
+    }
+
+    public void setInmuebles(List<InmuebleSimple> inmuebles) {
+        this.inmuebles = inmuebles;
+    }
 }

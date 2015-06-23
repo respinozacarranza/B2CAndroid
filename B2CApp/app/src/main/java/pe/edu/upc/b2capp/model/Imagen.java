@@ -6,7 +6,7 @@ package pe.edu.upc.b2capp.model;
 public class Imagen {
 
     private int idImagen;
-    private String ruta;
+    private String imgBlob;
     private int idInmueble;
 
     public int getIdImagen() {
@@ -17,12 +17,12 @@ public class Imagen {
         this.idImagen = idImagen;
     }
 
-    public String getRuta() {
-        return ruta;
+    public String getImgBlob() {
+        return imgBlob;
     }
 
-    public void setRuta(String ruta) {
-        this.ruta = ruta;
+    public void setImgBlob(String imgBlob) {
+        this.imgBlob = imgBlob;
     }
 
     public int getIdInmueble() {

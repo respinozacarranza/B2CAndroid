@@ -8,6 +8,8 @@ public class TipoInmueble {
     private int idTipoInmueble;
     private String descripcion;
 
+    public TipoInmueble() {
+    }
 
     public int getIdTipoInmueble() {
         return idTipoInmueble;

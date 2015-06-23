@@ -1,5 +1,6 @@
 package pe.edu.upc.b2capp.fragment;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.database.Cursor;
@@ -19,6 +20,8 @@ import java.util.List;
 
 import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.activity.MapaInmueblesActivity;
+import pe.edu.upc.b2capp.connection.InmuebleManager;
+import pe.edu.upc.b2capp.model.InmuebleOut;
 
 /**
  * Created by Renato on 6/15/2015.
@@ -37,7 +40,7 @@ public class RegistrarInmuebleFragment extends Fragment{
     private Button btnRegistrar;
     private Button btnCancelar;
     private String imagePath;
-
+    private Activity activity;
     private List<Uri> listaUris;
 
     public RegistrarInmuebleFragment() {
@@ -54,6 +57,7 @@ public class RegistrarInmuebleFragment extends Fragment{
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        activity = getActivity();
         listaUris = new ArrayList<Uri>();
         btnRegistrar = (Button)getActivity().findViewById(R.id.btnRegistrar);
         btnCancelar = (Button)getActivity().findViewById(R.id.btnCancelar);
@@ -80,7 +84,10 @@ public class RegistrarInmuebleFragment extends Fragment{
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //For test only
+                InmuebleOut i = new InmuebleOut();
+                i.setTitulo("Hola");
+                InmuebleManager.getInstance(activity).insertarInmueble(i);
             }
         });
 

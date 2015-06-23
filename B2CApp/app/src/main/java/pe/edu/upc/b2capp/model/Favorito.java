@@ -9,7 +9,7 @@ public class Favorito {
 
     private  int idfavorito;
     private Date fechaCreacion;
-    private Inmueble idInmueble;
+    private InmuebleOut idInmueble;
     private Usuario idUsuario;
 
 
@@ -29,11 +29,11 @@ public class Favorito {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Inmueble getIdInmueble() {
+    public InmuebleOut getIdInmueble() {
         return idInmueble;
     }
 
-    public void setIdInmueble(Inmueble idInmueble) {
+    public void setIdInmueble(InmuebleOut idInmueble) {
         this.idInmueble = idInmueble;
     }
 
