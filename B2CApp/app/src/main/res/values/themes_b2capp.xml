@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="B2CApp" parent="@style/_B2CApp"/>
+
+  <style name="_B2CApp" parent="Theme.AppCompat.Light">
+
+    <item name="android:editTextStyle">@style/EditTextB2CApp</item>
+
+    <item name="android:textColorHighlight">#99009688</item>
+
+    <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewB2CApp</item>
+
+    <item name="android:checkboxStyle">@style/CheckBoxB2CApp</item>
+
+    <item name="android:radioButtonStyle">@style/RadioButtonB2CApp</item>
+
+    <item name="android:buttonStyle">@style/ButtonB2CApp</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonB2CApp</item>
+
+    <item name="android:spinnerStyle">@style/SpinnerB2CApp</item>
+
+    <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemB2CApp</item>
+
+    <item name="android:progressBarStyleHorizontal">@style/ProgressBarB2CApp</item>
+
+    <item name="android:seekBarStyle">@style/SeekBarB2CApp</item>
+
+    <item name="android:ratingBarStyle">@style/RatingBarB2CApp</item>
+
+    <item name="android:ratingBarStyleIndicator">@style/RatingBarBigB2CApp</item>
+
+    <item name="android:ratingBarStyleSmall">@style/RatingBarSmallB2CApp</item>
+
+    <item name="android:buttonStyleToggle">@style/ToggleB2CApp</item>
+
+    <item name="android:listViewStyle">@style/ListViewB2CApp</item>
+
+    <item name="android:listViewWhiteStyle">@style/ListViewB2CApp.White</item>
+
+    <item name="android:spinnerItemStyle">@style/SpinnerItemB2CApp</item>
+
+  </style>
+
+</resources>

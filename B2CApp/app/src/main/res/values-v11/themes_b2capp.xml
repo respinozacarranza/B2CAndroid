@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="B2CApp" parent="@style/_B2CApp"/>
+
+  <style name="_B2CApp" parent="Theme.B2cstyle">
+
+    <item name="android:editTextBackground">@drawable/b2capp_edit_text_holo_light</item>
+
+    <item name="android:textColorHighlight">#99009688</item>
+    <item name="android:textSelectHandleLeft">@drawable/b2capp_text_select_handle_left</item>
+    <item name="android:textSelectHandleRight">@drawable/b2capp_text_select_handle_right</item>
+    <item name="android:textSelectHandle">@drawable/b2capp_text_select_handle_middle</item>
+
+    <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewB2CApp</item>
+
+    <item name="android:listChoiceIndicatorMultiple">@drawable/b2capp_btn_check_holo_light</item>
+
+    <item name="android:listChoiceIndicatorSingle">@drawable/b2capp_btn_radio_holo_light</item>
+
+    <item name="android:buttonStyle">@style/ButtonB2CApp</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonB2CApp</item>
+
+    <item name="android:dropDownSpinnerStyle">@style/SpinnerB2CApp</item>
+
+    <item name="android:progressBarStyleHorizontal">@style/ProgressBarB2CApp</item>
+
+    <item name="android:seekBarStyle">@style/SeekBarB2CApp</item>
+
+    <item name="android:ratingBarStyle">@style/RatingBarB2CApp</item>
+
+    <item name="android:ratingBarStyleIndicator">@style/RatingBarBigB2CApp</item>
+
+    <item name="android:ratingBarStyleSmall">@style/RatingBarSmallB2CApp</item>
+
+    <item name="android:buttonStyleToggle">@style/ToggleB2CApp</item>
+
+    <item name="android:listChoiceBackgroundIndicator">@drawable/b2capp_list_selector_holo_light</item>
+
+    <item name="android:activatedBackgroundIndicator">@drawable/b2capp_activated_background_holo_light</item>
+
+    <item name="android:fastScrollThumbDrawable">@drawable/b2capp_fastscroll_thumb_holo</item>
+
+  </style>
+
+</resources>

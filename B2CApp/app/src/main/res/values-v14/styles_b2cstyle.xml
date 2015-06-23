@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- File created by the Android Action Bar Style Generator
+
+     Copyright (C) 2011 The Android Open Source Project
+     Copyright (C) 2012 readyState Software Ltd
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+
+    <style name="Theme.B2cstyle" parent="@style/Theme.AppCompat.Light">
+        <item name="actionBarItemBackground">@drawable/selectable_background_b2cstyle</item>
+        <item name="popupMenuStyle">@style/PopupMenu.B2cstyle</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.B2cstyle</item>
+        <item name="actionBarTabStyle">@style/ActionBarTabStyle.B2cstyle</item>
+        <item name="actionDropDownStyle">@style/DropDownNav.B2cstyle</item>
+        <item name="actionBarStyle">@style/ActionBar.Solid.B2cstyle</item>
+        <item name="actionModeBackground">@drawable/cab_background_top_b2cstyle</item>
+        <item name="actionModeSplitBackground">@drawable/cab_background_bottom_b2cstyle</item>
+        <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.B2cstyle</item>
+        
+        
+    </style>
+
+    <style name="ActionBar.Solid.B2cstyle" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="background">@drawable/ab_solid_b2cstyle</item>
+        <item name="backgroundStacked">@drawable/ab_stacked_solid_b2cstyle</item>
+        <item name="backgroundSplit">@drawable/ab_bottom_solid_b2cstyle</item>
+        <item name="progressBarStyle">@style/ProgressBar.B2cstyle</item>
+    </style>
+
+    <style name="ActionBar.Transparent.B2cstyle" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="background">@drawable/ab_transparent_b2cstyle</item>
+        <item name="progressBarStyle">@style/ProgressBar.B2cstyle</item>
+    </style>
+    
+    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
+    <style name="Theme.B2cstyle.Widget" parent="@style/Theme.AppCompat">
+        <item name="popupMenuStyle">@style/PopupMenu.B2cstyle</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.B2cstyle</item>
+    </style>
+
+</resources>
