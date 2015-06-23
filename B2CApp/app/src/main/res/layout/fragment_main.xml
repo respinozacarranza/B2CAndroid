@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_b2c_icon"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_margin="@dimen/activity_vertical_margin"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:contentDescription="@string/appNombre" />
@@ -26,15 +26,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imview1"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"/>
+
+        <RelativeLayout
+            android:id="@+id/search_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:layout_centerInParent="true">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:hint="Buscar..."
+                android:layout_centerInParent="true"
+                android:background="@drawable/edit_text_style"/>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/abc_ic_search_api_mtrl_alpha"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:clickable="true"
+                android:background="@null"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/row_access_buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_centerInParent="true"
-            android:paddingBottom="@dimen/abc_edit_text_inset_bottom_material">
+            android:layout_below="@id/search_layout"
+            android:layout_marginTop="@dimen/activity_vertical_margin">
 
             <View
                 android:layout_width="0dp"
@@ -125,7 +152,7 @@
                 android:textSize="@dimen/access_button_text"
                 android:gravity="center"
                 android:layout_weight="4"
-                android:text="Inmuebles"/>
+                android:text="Agregar Inmueble"/>
 
             <View
                 android:layout_width="0dp"

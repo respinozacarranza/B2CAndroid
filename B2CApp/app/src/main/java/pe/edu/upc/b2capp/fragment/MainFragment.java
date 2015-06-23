@@ -48,17 +48,7 @@ public class MainFragment extends Fragment  {
         mButtonConectarse = (Button) view.findViewById(R.id.conect);
         mButtonRegistrate = (Button) view.findViewById(R.id.reg);
         mTextViewUsername = (TextView) view.findViewById(R.id.main_tv_username);
-        //mButtonRegistrarInmueble = (ImageButton)view.findViewById(R.id.imageButton);
-
-        /*mButtonRegistrarInmueble.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RegistrarInmuebleActivity.class);
-                startActivity(intent);
-            }
-        });*/
-
-        mButtonConectarse.setOnClickListener(new View.OnClickListener() {
+         mButtonConectarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
