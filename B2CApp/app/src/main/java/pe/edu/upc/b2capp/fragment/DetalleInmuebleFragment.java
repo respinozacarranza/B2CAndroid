@@ -21,15 +21,22 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.connection.RequestQueueManager;
 import pe.edu.upc.b2capp.connection.UriConstant;
+import pe.edu.upc.b2capp.model.ImagenSimple;
 import pe.edu.upc.b2capp.model.InmuebleIn;
 import pe.edu.upc.b2capp.model.InmuebleOut;
 import pe.edu.upc.b2capp.model.Usuario;
@@ -83,7 +90,7 @@ public class DetalleInmuebleFragment extends Fragment{
                         public void onResponse(JSONObject response) {
                             InmuebleIn respuesta = new InmuebleIn();
                             try {
-                                respuesta = gson.fromJson(response.toString(), InmuebleIn.class);
+                                respuesta = parseJson(response);
                                 Toast.makeText(activity, "Exito", Toast.LENGTH_LONG).show();
                                 progressDialog.cancel();
 
@@ -204,5 +211,45 @@ public class DetalleInmuebleFragment extends Fragment{
     public void onStop() {
         sliderShow.stopAutoCycle();
         super.onStop();
+    }
+
+    public InmuebleIn parseJson(JSONObject jsonObject) {
+        InmuebleIn inmueble;
+        try {
+            inmueble = new InmuebleIn();
+            inmueble.setIdInmueble(jsonObject.getInt("idInmueble"));
+            inmueble.setAntiguedad(jsonObject.getInt("antiguedad"));
+            inmueble.setAreaConstruida(BigDecimal.valueOf(jsonObject.getDouble("areaConstruida")));
+            inmueble.setAreaTotal(BigDecimal.valueOf(jsonObject.getDouble("areaTotal")));
+            inmueble.setBanos(jsonObject.getInt("banos"));
+            inmueble.setCantidadFavoritos(BigInteger.valueOf(jsonObject.getLong("cantidadFavoritos")));
+            inmueble.setDescripcion(jsonObject.getString("descripcion"));
+            inmueble.setDireccion(jsonObject.getString("direccion"));
+            inmueble.setDistrito(jsonObject.getString("distrito"));
+            inmueble.setLatitud(BigDecimal.valueOf(jsonObject.getDouble("latitud")));
+            inmueble.setLongitud(BigDecimal.valueOf(jsonObject.getDouble("longitud")));
+            inmueble.setPrecio(BigDecimal.valueOf(jsonObject.getDouble("precio")));
+            inmueble.setPrecioDolares(BigDecimal.valueOf(jsonObject.getDouble("precioDolares")));
+            inmueble.setPrecioSoles(BigDecimal.valueOf(jsonObject.getDouble("precioSoles")));
+            inmueble.setTitulo(jsonObject.getString("titulo"));
+
+            //Inicio obtener imagenes
+            JSONArray imgArray = jsonObject.getJSONArray("imagenList");
+            List<ImagenSimple> lstImagen = new ArrayList<>();
+            for(int i=0; i < imgArray.length(); i++) {
+                ImagenSimple imgSimple = new ImagenSimple();
+                imgSimple.setImagenBlob(imgArray
+                        .getJSONObject(i)
+                        .getString("imagenBlob")
+                        .getBytes(Charset.forName("UTF-8")));
+                lstImagen.add(imgSimple);
+            }
+            inmueble.setImagenList(lstImagen);
+            //Fin obtener imagenes
+
+        } catch (Exception ex) {
+
+        }
+        return null;
     }
 }
