@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import pe.edu.upc.b2capp.activity.LoginActivity;
@@ -28,6 +29,7 @@ public class MainFragment extends Fragment  {
     //private ImageButton mButtonRegistrarInmueble;
     private TextView mTextViewUsername;
     private LocalSession localSession;
+
 
     public MainFragment() {
         // Required empty public constructor
