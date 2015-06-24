@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +45,21 @@ public class RegistrarInmuebleFragment extends Fragment{
     private Activity activity;
     private List<Uri> listaUris;
 
+    private SeekBar seekPrecio;
+    private SeekBar seekArea;
+    private SeekBar seekAntiguedad;
+    private SeekBar seekDormitorios;
+    private SeekBar seekBanos;
+    private SeekBar seekEstacionamientos;
+
+    private TextView valueArea;
+    private TextView valuePrecio;
+    private TextView valueAntiguedad;
+    private TextView valueDormitorios;
+    private TextView valueBanos;
+    private TextView valueEstacionamientos;
+
+
     public RegistrarInmuebleFragment() {
         // Required empty public constructor
     }
@@ -57,20 +74,180 @@ public class RegistrarInmuebleFragment extends Fragment{
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        activity = getActivity();
-        listaUris = new ArrayList<Uri>();
-        btnRegistrar = (Button)getActivity().findViewById(R.id.btnRegistrar);
-        btnCancelar = (Button)getActivity().findViewById(R.id.btnCancelar);
-        imageButton2 = (ImageButton)getActivity().findViewById(R.id.imgButton2);
-        imageButton = (ImageButton)getActivity().findViewById(R.id.imgButton);
-        imageButton3 = (ImageButton)getActivity().findViewById(R.id.imgButton3);
-        imageButton4 = (ImageButton)getActivity().findViewById(R.id.imgButton4);
-        imageButton5 = (ImageButton)getActivity().findViewById(R.id.imgButton5);
-        imageButton6 = (ImageButton)getActivity().findViewById(R.id.imgButton6);
-        imageButton7 = (ImageButton)getActivity().findViewById(R.id.imgButton7);
+        //Seteo de Controles
+        activity                = getActivity();
+        listaUris               = new ArrayList<Uri>();
+        btnRegistrar            = (Button)activity.findViewById(R.id.btnRegistrar);
+        btnCancelar             = (Button)activity.findViewById(R.id.btnCancelar);
+        imageButton2            = (ImageButton)activity.findViewById(R.id.imgButton2);
+        imageButton             = (ImageButton)activity.findViewById(R.id.imgButton);
+        imageButton3            = (ImageButton)activity.findViewById(R.id.imgButton3);
+        imageButton4            = (ImageButton)activity.findViewById(R.id.imgButton4);
+        imageButton5            = (ImageButton)activity.findViewById(R.id.imgButton5);
+        imageButton6            = (ImageButton)activity.findViewById(R.id.imgButton6);
+        imageButton7            = (ImageButton)activity.findViewById(R.id.imgButton7);
+        seekPrecio              = (SeekBar)activity.findViewById(R.id.seekPrecio);
+        seekArea                = (SeekBar)activity.findViewById(R.id.seekArea);
+        seekAntiguedad          = (SeekBar)activity.findViewById(R.id.seekAntiguedad);
+        seekDormitorios         = (SeekBar)activity.findViewById(R.id.seekDormitorios);
+        seekBanos               = (SeekBar)activity.findViewById(R.id.seekBanos);
+        seekEstacionamientos    = (SeekBar)activity.findViewById(R.id.seekEstacionamientos);
+        valuePrecio             = (TextView)activity.findViewById(R.id.valuePrecio);
+        valueArea               = (TextView)activity.findViewById(R.id.valueArea);
+        valueAntiguedad         = (TextView)activity.findViewById(R.id.valueAntiguedad);
+        valueDormitorios        = (TextView)activity.findViewById(R.id.valueDormitorios);
+        valueBanos              = (TextView)activity.findViewById(R.id.valueBanos);
+        valueEstacionamientos   = (TextView)activity.findViewById(R.id.valueEstacionamientos);
 
 
+        //Seteando progreso e incremento de los seekBars
+        seekPrecio.setProgress(0);
+        seekPrecio.incrementProgressBy(10000);
+        seekPrecio.setMax(2000000);
 
+        seekArea.setProgress(0);
+        seekArea.incrementProgressBy(10);
+        seekArea.setMax(1000);
+
+        seekAntiguedad.setProgress(0);
+        seekAntiguedad.incrementProgressBy(1);
+        seekAntiguedad.setMax(50);
+
+        seekDormitorios.setProgress(0);
+        seekDormitorios.incrementProgressBy(1);
+        seekDormitorios.setMax(20);
+
+        seekBanos.setProgress(0);
+        seekBanos.incrementProgressBy(1);
+        seekBanos.setMax(20);
+
+        seekEstacionamientos.setProgress(0);
+        seekEstacionamientos.incrementProgressBy(1);
+        seekEstacionamientos.setMax(10);
+
+        //Listeners de los seekBars
+        seekPrecio.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                i = i/10000;
+                i = i*10000;
+                valuePrecio.setText("S/. " + String.valueOf(i));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        seekArea.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                i = i/10;
+                i = i*10;
+                valueArea.setText(String.valueOf(i) + " m2");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        seekAntiguedad.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                i = i/1;
+                i = i*1;
+                valueAntiguedad.setText(String.valueOf(i) + " años");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        seekDormitorios.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                i = i/1;
+                i = i*1;
+                valueDormitorios.setText(String.valueOf(i));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        seekBanos.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                i = i/1;
+                i = i*1;
+                valueBanos.setText(String.valueOf(i));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        seekEstacionamientos.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                i = i/1;
+                i = i*1;
+                valueEstacionamientos.setText(String.valueOf(i));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+
+        //Listeners de los buttons
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

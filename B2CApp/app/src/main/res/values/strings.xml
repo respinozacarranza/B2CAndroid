@@ -49,5 +49,10 @@
         <item>Alquiler</item>
     </string-array>
 
+    <string name="precioInicial">S/. 0</string>
+    <string name="areaInicial">0 m2</string>
+    <string name="tiempoInicial">0 años</string>
+    <string name="cero">0</string>
+
 
 </resources>

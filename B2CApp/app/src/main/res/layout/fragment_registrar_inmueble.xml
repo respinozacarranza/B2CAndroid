@@ -88,7 +88,7 @@
                             />
 
 
-                        </LinearLayout>
+                    </LinearLayout>
 
 
                     <LinearLayout
@@ -104,7 +104,7 @@
                             android:layout_marginLeft="10dp"
                             />
 
-                        </LinearLayout>
+                    </LinearLayout>
 
 
                     <LinearLayout
@@ -122,7 +122,7 @@
                             android:layout_marginRight="10dp"
                             />
 
-                        </LinearLayout>
+                    </LinearLayout>
 
 
 
@@ -150,14 +150,26 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/Precio"
-                            android:textSize="20dp"
+                            android:textSize="20sp"
                             android:layout_gravity="center_vertical" />
 
                         <SeekBar
+                            android:id="@+id/seekPrecio"
                             android:layout_weight="1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical" />
+
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:textSize="20sp"
+                            android:id="@+id/valuePrecio"
+                            android:text="@string/precioInicial"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right" />
+
 
                     </LinearLayout>
 
@@ -178,11 +190,26 @@
                             android:textSize="20dp"
                             android:layout_gravity="center_vertical" />
 
+                        <!--<ProgressBar
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"/>-->
                         <SeekBar
+                            android:id="@+id/seekArea"
                             android:layout_weight="1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical" />
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:textSize="20sp"
+                            android:id="@+id/valueArea"
+                            android:text="@string/areaInicial"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right" />
 
                     </LinearLayout>
 
@@ -204,10 +231,20 @@
                             android:layout_gravity="center_vertical" />
 
                         <SeekBar
+                            android:id="@+id/seekAntiguedad"
                             android:layout_weight="1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical" />
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:textSize="20sp"
+                            android:id="@+id/valueAntiguedad"
+                            android:text="@string/tiempoInicial"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right" />
 
                     </LinearLayout>
 
@@ -229,10 +266,20 @@
                             android:layout_gravity="center_vertical" />
 
                         <SeekBar
+                            android:id="@+id/seekDormitorios"
                             android:layout_weight="1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical" />
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:textSize="20sp"
+                            android:id="@+id/valueDormitorios"
+                            android:text="@string/cero"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right" />
 
                     </LinearLayout>
 
@@ -254,10 +301,20 @@
                             android:layout_gravity="center_vertical" />
 
                         <SeekBar
+                            android:id="@+id/seekBanos"
                             android:layout_weight="1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical" />
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:textSize="20sp"
+                            android:id="@+id/valueBanos"
+                            android:text="@string/cero"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right" />
 
                     </LinearLayout>
 
@@ -280,10 +337,20 @@
                             android:layout_gravity="center_vertical" />
 
                         <SeekBar
+                            android:id="@+id/seekEstacionamientos"
                             android:layout_weight="1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical" />
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:textSize="20sp"
+                            android:id="@+id/valueEstacionamientos"
+                            android:text="@string/cero"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right" />
 
                     </LinearLayout>
 
@@ -391,17 +458,17 @@
                                 android:background="#80000000"
                                 android:layout_margin="10dp" />
 
-                            </LinearLayout>
+                        </LinearLayout>
 
 
 
 
-                        </HorizontalScrollView>
+                    </HorizontalScrollView>
 
 
 
 
-                    </LinearLayout>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"

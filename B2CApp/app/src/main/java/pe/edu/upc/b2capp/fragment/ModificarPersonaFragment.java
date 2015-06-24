@@ -65,7 +65,7 @@ public class ModificarPersonaFragment extends Fragment {
                 nuevo_user.setNombre(mEditTextNombre.getText().toString());
                 nuevo_user.setEmail(mEditTextEmail.getText().toString());
                 nuevo_user.setUsuario(mEditTextUsuario.getText().toString());
-                nuevo_user.setPassword(mEditTextContrasena.getText().toString());
+                //nuevo_user.setPassword(mEditTextContrasena.getText().toString());
                 nuevo_user.setIdTipoUsuario(1);
 
                 userManager.ModificarUsuario(nuevo_user,getActivity());
