@@ -4,7 +4,7 @@ package pe.edu.upc.b2capp.connection;
  * Created by Jose on 16/06/2015.
  */
 public class UriConstant {
-    public static final String URL = "http://192.168.29.59:8080/B2CWS";
+    public static final String URL = "http://192.168.34.22:8080/B2CWS";
 
     // Favoritos
     public static final String GET_FAVORITOS = "/favoritos/";

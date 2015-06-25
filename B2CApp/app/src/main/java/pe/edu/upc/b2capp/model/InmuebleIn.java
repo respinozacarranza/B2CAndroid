@@ -231,4 +231,5 @@ public class InmuebleIn {
     public void setImagenList(List<ImagenSimple> imagenList) {
         this.imagenList = imagenList;
     }
+
 }

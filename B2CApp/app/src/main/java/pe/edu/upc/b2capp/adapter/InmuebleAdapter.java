@@ -1,5 +1,6 @@
 package pe.edu.upc.b2capp.adapter;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -42,6 +43,8 @@ public class InmuebleAdapter extends BaseAdapter{
     public InmuebleAdapter(final Context context, String Uri){
 
         this.context = context;
+        final ProgressDialog progressDialog =
+                ProgressDialog.show(context, "Espere...", "Obteniendo Inmuebles...");
         // Nueva petición JSONArray
         JsonArrayRequest jsArrayRequest = new JsonArrayRequest(Uri, new Response.Listener<JSONArray>() {
 
@@ -50,16 +53,21 @@ public class InmuebleAdapter extends BaseAdapter{
                 Log.i("mirespuesta", response.toString());
                 setInmuebles(parseJson(response));
                 notifyDataSetChanged();
+                progressDialog.cancel();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Error: " + error.getMessage());
-                Toast toast = Toast.makeText(context, "Error: " + error.getMessage(), Toast.LENGTH_SHORT);
+                progressDialog.cancel();
+                Toast toast = Toast.makeText(context, "Error en la conexión ", Toast.LENGTH_SHORT);
                 toast.show();
             }
         });
 
+        /*jsArrayRequest.setRetryPolicy(new DefaultRetryPolicy( 1000000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));*/
         // Añadir petición a la cola
         RequestQueueManager
                 .getInstance(context)

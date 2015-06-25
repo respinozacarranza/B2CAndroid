@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -92,8 +93,8 @@ public class DetalleInmuebleFragment extends Fragment{
                             try {
                                 respuesta = parseJson(response);
                                 cargarInmueble(respuesta);
-                                Toast.makeText(activity, "Exito", Toast.LENGTH_LONG).show();
                                 progressDialog.cancel();
+                                Toast.makeText(activity, "Exito", Toast.LENGTH_LONG).show();
 
                             } catch (Exception ex) {
                                 progressDialog.cancel();
@@ -136,6 +137,24 @@ public class DetalleInmuebleFragment extends Fragment{
             //sliderShow.addSlider(sliderView);
             //ImageView img = (View)
         }
+        TextView textView = (TextView)getActivity().findViewById(R.id.textViewTitulo);
+        TextView textView2 = (TextView)getActivity().findViewById(R.id.textViewPrecio);
+        TextView textView3 = (TextView)getActivity().findViewById(R.id.textViewArea);
+        TextView textView4 = (TextView)getActivity().findViewById(R.id.textViewAntiguedad);
+        TextView textView5 = (TextView)getActivity().findViewById(R.id.textViewDormitorios);
+        TextView textView6 = (TextView)getActivity().findViewById(R.id.textViewBanos);
+        TextView textView7 = (TextView)getActivity().findViewById(R.id.textViewEstacionamientos);
+        TextView textView8 = (TextView)getActivity().findViewById(R.id.textViewDescripcion);
+
+        textView.setText(inmueblein.getTitulo());
+        textView2.setText("Precio: " + String.valueOf(inmueblein.getPrecio()));
+        textView3.setText("Area: " + String.valueOf(inmueblein.getAreaTotal()));
+        textView4.setText("Antiguedad: " + String.valueOf(inmueblein.getAntiguedad()));
+        textView5.setText("Direccion: " + String.valueOf(inmueblein.getDireccion()));
+        textView6.setText("Baños: " + String.valueOf(inmueblein.getBanos()));
+        textView7.setText("Distrito: " + String.valueOf(inmueblein.getDistrito()));
+        textView8.setText("Descripcion: " + inmueblein.getDescripcion());
+
     }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -231,7 +250,6 @@ public class DetalleInmuebleFragment extends Fragment{
 
     @Override
     public void onStop() {
-        sliderShow.stopAutoCycle();
         super.onStop();
     }
 
@@ -254,7 +272,7 @@ public class DetalleInmuebleFragment extends Fragment{
             inmueble.setPrecioDolares(BigDecimal.valueOf(jsonObject.getDouble("precioDolares")));
             inmueble.setPrecioSoles(BigDecimal.valueOf(jsonObject.getDouble("precioSoles")));
             inmueble.setTitulo(jsonObject.getString("titulo"));
-
+            inmueble.setDireccion(jsonObject.getString("direccion"));
             //Inicio obtener imagenes
             JSONArray imgArray = jsonObject.getJSONArray("imagenList");
             List<ImagenSimple> lstImagen = new ArrayList<>();

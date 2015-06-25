@@ -87,7 +87,8 @@ public class NavDrawerActivity extends BaseActivity {
                 break;
             case 3://Cerca de mi
                 //TODO Implementar Mis inmuebles
-                Toast.makeText(NavDrawerActivity.this, "Falta implementar", Toast.LENGTH_SHORT).show();
+                    intent = new Intent(this, MapaInmueblesActivity.class);
+                    startActivity(intent);
                 break;
             case 4://Perfil
                 //TODO Implementar Mis inmuebles

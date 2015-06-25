@@ -5,9 +5,11 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.fragment.MainFragment;
+import pe.edu.upc.b2capp.session.LocalSession;
 
 
 public class MainActivity extends NavDrawerActivity{
@@ -27,8 +29,13 @@ public class MainActivity extends NavDrawerActivity{
     }
 
     public void favoritos(View view){
-        Intent intent = new Intent(this, FavoritosActivity.class);
-        startActivity(intent);
+        if (LocalSession.getInstance(this).getLoggedUser() == null) {
+            Toast.makeText(this, "Sesión no iniciada", Toast.LENGTH_SHORT).show();
+        } else {
+
+            Intent intent = new Intent(this, FavoritosActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void prueba(View view){

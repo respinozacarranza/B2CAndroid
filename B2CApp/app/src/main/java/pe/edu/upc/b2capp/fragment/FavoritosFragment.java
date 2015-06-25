@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -20,6 +18,7 @@ import pe.edu.upc.b2capp.activity.DetalleInmuebleActivity;
 import pe.edu.upc.b2capp.adapter.InmuebleAdapter;
 import pe.edu.upc.b2capp.connection.UriConstant;
 import pe.edu.upc.b2capp.model.InmuebleSimple;
+import pe.edu.upc.b2capp.session.LocalSession;
 
 /**
  * Created by Renato on 6/8/2015.
@@ -44,7 +43,11 @@ public class FavoritosFragment extends Fragment{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         listView = (ListView)getActivity().findViewById(R.id.listView_favoritos);
-        adapter = new InmuebleAdapter(getActivity(), UriConstant.URL + "/favoritos/1");
+        adapter = new InmuebleAdapter(getActivity(), UriConstant.URL + "/favoritos/" +
+                LocalSession
+                        .getInstance(getActivity())
+                        .getLoggedUser()
+                        .getIdUsuario().toString());
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
