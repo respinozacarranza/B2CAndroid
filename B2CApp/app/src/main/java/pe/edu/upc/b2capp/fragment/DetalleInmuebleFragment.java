@@ -4,13 +4,17 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -18,7 +22,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -29,17 +32,13 @@ import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.connection.RequestQueueManager;
 import pe.edu.upc.b2capp.connection.UriConstant;
 import pe.edu.upc.b2capp.model.ImagenSimple;
 import pe.edu.upc.b2capp.model.InmuebleIn;
-import pe.edu.upc.b2capp.model.InmuebleOut;
-import pe.edu.upc.b2capp.model.Usuario;
 
 /**
  * Created by Renato on 6/12/2015.
@@ -82,15 +81,17 @@ public class DetalleInmuebleFragment extends Fragment{
             final ProgressDialog progressDialog =
                     ProgressDialog.show(activity, "Espere...", "Obteniendo Inmueble...");
             final Gson gson = new Gson();
+            String uri =
+                    UriConstant.URL + UriConstant.GET_INMUEBLE + idInmueble.toString();
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                    Request.Method.GET,
-                    UriConstant.URL + UriConstant.GET_INMUEBLE + idInmueble.toString(),
+                    Request.Method.GET, uri,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             InmuebleIn respuesta = new InmuebleIn();
                             try {
                                 respuesta = parseJson(response);
+                                cargarInmueble(respuesta);
                                 Toast.makeText(activity, "Exito", Toast.LENGTH_LONG).show();
                                 progressDialog.cancel();
 
@@ -115,12 +116,33 @@ public class DetalleInmuebleFragment extends Fragment{
         return rootView;
     }
 
+    public void cargarInmueble(InmuebleIn inmueblein) {
+
+        //sliderShow = (SliderLayout) getView().findViewById(R.id.slider);
+        //sliderShow.setPresetTransformer(SliderLayout.Transformer.ZoomOut);
+        //sliderShow.setDuration(6000);
+        for(ImagenSimple img: inmueblein.getImagenList()) {
+            byte[] imageByteArray = img.getImagenBlob();
+            byte[] decodedString = Base64.decode(imageByteArray, Base64.DEFAULT);
+            //String imagen = new String(imageByteArray, Charset.forName("UTF-8"));
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+
+            LinearLayout view = (LinearLayout) getActivity().findViewById(R.id.imagenesTelas);
+            ImageView imageView = new ImageView(getActivity());
+            imageView.setImageBitmap(decodedByte);
+            view.addView(imageView);
+            //DefaultSliderView sliderView = new DefaultSliderView(getActivity());
+            //sliderView.image("");
+            //sliderShow.addSlider(sliderView);
+            //ImageView img = (View)
+        }
+    }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
 
-
+/*
         sliderShow = (SliderLayout) getView().findViewById(R.id.slider);
         sliderShow.setPresetTransformer(SliderLayout.Transformer.ZoomOut);
         sliderShow.setDuration(6000);
@@ -173,11 +195,11 @@ public class DetalleInmuebleFragment extends Fragment{
         textView6.setText("Baños: " + String.valueOf(inm1.getBanos()));
         textView7.setText("Estacionamientos: " + String.valueOf(inm1.getEstacionamientos()));
         textView8.setText("Descripcion: " + inm1.getDescripcion());
-
-        final String para = u.getEmail();
-        final String subject = inm1.getTitulo();
+*/
+        final String para = "respinoza@gmail.com";
+        final String subject = "Deseo comunicarme";
         final String message = "B2C - MESSAGE";
-        final String llamada = u.getTelefono();
+        final String llamada = "948314023";
 
         btnMensaje = (Button)view.findViewById(R.id.btnEmail);
         btnMensaje.setOnClickListener(new View.OnClickListener() {
@@ -245,6 +267,7 @@ public class DetalleInmuebleFragment extends Fragment{
                 lstImagen.add(imgSimple);
             }
             inmueble.setImagenList(lstImagen);
+            return inmueble;
             //Fin obtener imagenes
 
         } catch (Exception ex) {

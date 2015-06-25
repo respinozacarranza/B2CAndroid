@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.activity.DetalleInmuebleActivity;
 import pe.edu.upc.b2capp.adapter.InmuebleAdapter;
+import pe.edu.upc.b2capp.connection.UriConstant;
 import pe.edu.upc.b2capp.model.InmuebleSimple;
 
 /**
@@ -40,7 +41,7 @@ public class FavoritosFragment extends Fragment{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         listView = (ListView)getActivity().findViewById(R.id.listView_favoritos);
-        adapter = new InmuebleAdapter(getActivity(), "http://192.168.1.41:8080/B2CWS/favoritos/1");
+        adapter = new InmuebleAdapter(getActivity(), UriConstant.URL + "/favoritos/1");
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
