@@ -252,8 +252,7 @@ public class RegistrarInmuebleFragment extends Fragment{
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getActivity(), MapaInmueblesActivity.class);
-                startActivity(intent);
+
 
             }
         });

@@ -32,8 +32,10 @@ public class MainActivity extends NavDrawerActivity{
     }
 
     public void prueba(View view){
-        Intent intent = new Intent(this, DetalleInmuebleActivity.class);
+        Intent intent = new Intent(this, MapaInmueblesActivity.class);
         startActivity(intent);
+        /*Intent intent = new Intent(this, DetalleInmuebleActivity.class);
+        startActivity(intent);*/
     }
 
     public void registro(View view){

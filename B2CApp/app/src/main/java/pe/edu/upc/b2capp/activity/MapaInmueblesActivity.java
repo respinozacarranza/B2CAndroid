@@ -5,6 +5,7 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -30,14 +31,19 @@ public class MapaInmueblesActivity extends BaseActivity{
 
     GoogleMap googleMap;
 
-    LocationManager locationManager;
+    //LocationManager locationManager;
 
+    Location location;
+
+    protected LocationManager locationManager;
 
     String bbb;
-    Location myLocation;
+    //Location myLocation;
     double lat;
     double lon;
     LatLng ll;
+
+
     MarkerOptions options;
     Marker marker;
 
@@ -46,15 +52,12 @@ public class MapaInmueblesActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa_inmuebles);
 
-
         locationManager = (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
         bbb = locationManager.GPS_PROVIDER;
-        myLocation = locationManager.getLastKnownLocation(bbb);
-        //myLocation = new Location(locationManager.getLastKnownLocation(bbb));
-        //myLocation = locationManager.getLastKnownLocation(bbb);
+        location = locationManager.getLastKnownLocation(bbb);
 
-        lat = myLocation.getLatitude();
-        lon = myLocation.getLongitude();
+        lat = location.getLatitude();
+        lon = location.getLongitude();
 
         ll = new LatLng(lat,lon);
 
@@ -67,6 +70,8 @@ public class MapaInmueblesActivity extends BaseActivity{
         marker.showInfoWindow();
 
         marker.setPosition(ll);
+
+
 
 
 
@@ -92,6 +97,10 @@ public class MapaInmueblesActivity extends BaseActivity{
             googleMap.addMarker(new MarkerOptions().position(new LatLng(0,0)).title("Marker").draggable(true));
         }
     }
+
+
+
+
 
 
 }

@@ -43,7 +43,7 @@ public class ModificarPersonaFragment extends Fragment {
         userManager = UserManager.getInstance(getActivity());
 
         LocalSession localSession = LocalSession.getInstance(getActivity());
-        Usuario currentuser = localSession.getLoggedUser();
+        final Usuario currentuser = localSession.getLoggedUser();
 
         mEditTextNombre = (EditText) view.findViewById(R.id.ModUser_et_nombre);
         mEditTextNombre.setText(currentuser.getNombre().toString());
@@ -54,14 +54,13 @@ public class ModificarPersonaFragment extends Fragment {
         mEditTextUsuario = (EditText) view.findViewById(R.id.ModUser_et_usuario);
         mEditTextUsuario.setText(currentuser.getUsuario().toString());
 
-
         mButtonRegistrar = (Button) view.findViewById(R.id.ModUser_btn_mod);
 
         mButtonRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 nuevo_user = new Usuario();
-                nuevo_user.setIdUsuario(null);
+                nuevo_user.setIdUsuario(currentuser.getIdUsuario());
                 nuevo_user.setNombre(mEditTextNombre.getText().toString());
                 nuevo_user.setEmail(mEditTextEmail.getText().toString());
                 nuevo_user.setUsuario(mEditTextUsuario.getText().toString());
