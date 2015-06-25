@@ -48,6 +48,8 @@ public class ModificarPersonaFragment extends Fragment {
         mEditTextNombre = (EditText) view.findViewById(R.id.ModUser_et_nombre);
         mEditTextNombre.setText(currentuser.getNombre().toString());
 
+        mEditTextContrasena = (EditText) view.findViewById(R.id.ModUser_et_contrasena);
+
         mEditTextEmail = (EditText) view.findViewById(R.id.ModUser_et_email);
         mEditTextEmail.setText(currentuser.getEmail().toString());
 
@@ -64,7 +66,7 @@ public class ModificarPersonaFragment extends Fragment {
                 nuevo_user.setNombre(mEditTextNombre.getText().toString());
                 nuevo_user.setEmail(mEditTextEmail.getText().toString());
                 nuevo_user.setUsuario(mEditTextUsuario.getText().toString());
-                //nuevo_user.setPassword(mEditTextContrasena.getText().toString());
+                nuevo_user.setPassword(mEditTextContrasena.getText().toString());
                 nuevo_user.setIdTipoUsuario(1);
 
                 userManager.ModificarUsuario(nuevo_user,getActivity());

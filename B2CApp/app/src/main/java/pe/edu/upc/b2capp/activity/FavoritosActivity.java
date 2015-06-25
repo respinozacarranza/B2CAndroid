@@ -8,7 +8,7 @@ import pe.edu.upc.b2capp.R;
 /**
  * Created by Renato on 6/8/2015.
  */
-public class FavoritosActivity extends BaseActivity{
+public class FavoritosActivity extends NavDrawerActivity{
 
 
     @Override

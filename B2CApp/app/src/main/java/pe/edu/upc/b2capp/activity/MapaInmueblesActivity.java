@@ -1,11 +1,7 @@
 package pe.edu.upc.b2capp.activity;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
-import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,12 +16,11 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import pe.edu.upc.b2capp.R;
-import pe.edu.upc.b2capp.fragment.MapaInmueblesFragment;
 
 /**
  * Created by Renato on 6/20/2015.
  */
-public class MapaInmueblesActivity extends BaseActivity{
+public class MapaInmueblesActivity extends NavDrawerActivity{
 
     //private MapaInmueblesFragment fragmentMapa;
 
