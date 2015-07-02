@@ -24,6 +24,8 @@ public class MapaInmueblesActivity extends NavDrawerActivity{
 
     //private MapaInmueblesFragment fragmentMapa;
 
+    Bundle bundle = getIntent().getParcelableExtra("bundle");
+    LatLng coordInmueble = bundle.getParcelable("coords");
     GoogleMap googleMap;
 
     //LocationManager locationManager;
@@ -55,7 +57,7 @@ public class MapaInmueblesActivity extends NavDrawerActivity{
         lon = location.getLongitude();
 
         ll = new LatLng(lat,lon);
-
+        ll = coordInmueble;
         createMapView();
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ll,20));
 
@@ -63,7 +65,6 @@ public class MapaInmueblesActivity extends NavDrawerActivity{
         options = new MarkerOptions().position(ll).draggable(true).title("Estas aqui!");
         marker = googleMap.addMarker(options);
         marker.showInfoWindow();
-
         marker.setPosition(ll);
 
 

@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.daimajia.slider.library.SliderLayout;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -61,6 +63,7 @@ public class DetalleInmuebleFragment extends Fragment{
 
     private Button btnMensaje;
     private Button btnLlamada;
+    private Button pruebaMandaCoord;
 
 
     public DetalleInmuebleFragment() {
@@ -215,7 +218,7 @@ public class DetalleInmuebleFragment extends Fragment{
         textView7.setText("Estacionamientos: " + String.valueOf(inm1.getEstacionamientos()));
         textView8.setText("Descripcion: " + inm1.getDescripcion());
 */
-        final String para = "respinoza@gmail.com";
+        final String para = "respinozacarranza@gmail.com";
         final String subject = "Deseo comunicarme";
         final String message = "B2C - MESSAGE";
         final String llamada = "948314023";
@@ -244,6 +247,21 @@ public class DetalleInmuebleFragment extends Fragment{
                 Intent llamada = new Intent(Intent.ACTION_CALL);
                 llamada.setData(Uri.parse(uri));
                 startActivity(llamada);
+            }
+        });
+
+        pruebaMandaCoord = (Button)view.findViewById(R.id.btnPrueba);
+        pruebaMandaCoord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                LatLng coordenadas = new LatLng(inmueble.getLatitud().doubleValue(),inmueble.getLongitud().doubleValue());
+                Bundle args = new Bundle();
+                args.putParcelable("coords",coordenadas);
+                Intent i = new Intent();
+                i.putExtra("bundle",args);
+                startActivity(i);
+
             }
         });
     }
