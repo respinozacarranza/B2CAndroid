@@ -42,8 +42,9 @@ public class InmuebleManager {
         final ProgressDialog progressDialog =
                 ProgressDialog.show(context, "Espere...", "Registrando Inmueble...");
         final Gson gson = new Gson();
+        String json = gson.toJson(inmueble);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.POST, UriConstant.URL + UriConstant.CREATE_INMUEBLE, gson.toJson(inmueble),
+                Request.Method.POST, UriConstant.URL + UriConstant.CREATE_INMUEBLE, json,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -51,7 +52,6 @@ public class InmuebleManager {
                         try {
                             respuesta = gson.fromJson(response.toString(), Respuesta.class);
                             progressDialog.cancel();
-
                             Intent intent = new Intent(context, MainActivity.class);
                             context.startActivity(intent);
                             Toast.makeText(context, "Usuario Registrado", Toast.LENGTH_SHORT).show();

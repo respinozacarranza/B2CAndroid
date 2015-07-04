@@ -14,7 +14,7 @@ import java.io.InputStream;
  */
 public class Base64Encoder {
 
-    public static String getEncodedImage(String path) {
+    public static byte[] getEncodedImage(String path) {
         byte[] bytes;
         try {
             InputStream inputStream = new FileInputStream(path);
@@ -30,7 +30,7 @@ public class Base64Encoder {
                 Log.e("Base64Encoder", e.getMessage());
             }
             bytes = output.toByteArray();
-            String temp = Base64.encodeToString(bytes, Base64.NO_WRAP | Base64.URL_SAFE);
+            byte[] temp = Base64.encode(bytes, Base64.NO_WRAP | Base64.URL_SAFE);
             return temp;
         } catch (FileNotFoundException e) {
             e.printStackTrace();

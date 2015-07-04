@@ -3,10 +3,10 @@ package pe.edu.upc.b2capp.model;
 /**
  * Created by vjrojasb on 5/17/15.
  */
-public class Imagen {
+public class ImagenOut {
 
     private int idImagen;
-    private String imgBlob;
+    private byte[] imgBlob;
     private int idInmueble;
 
     public int getIdImagen() {
@@ -17,11 +17,11 @@ public class Imagen {
         this.idImagen = idImagen;
     }
 
-    public String getImgBlob() {
+    public byte[] getImgBlob() {
         return imgBlob;
     }
 
-    public void setImgBlob(String imgBlob) {
+    public void setImgBlob(byte[] imgBlob) {
         this.imgBlob = imgBlob;
     }
 

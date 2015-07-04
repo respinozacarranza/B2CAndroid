@@ -8,22 +8,25 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import pe.edu.upc.b2capp.R;
-import pe.edu.upc.b2capp.activity.MapaInmueblesActivity;
 import pe.edu.upc.b2capp.connection.InmuebleManager;
+import pe.edu.upc.b2capp.model.ImagenOut;
 import pe.edu.upc.b2capp.model.InmuebleOut;
+import pe.edu.upc.b2capp.session.LocalSession;
+import pe.edu.upc.b2capp.util.Base64Encoder;
 
 /**
  * Created by Renato on 6/15/2015.
@@ -43,7 +46,7 @@ public class RegistrarInmuebleFragment extends Fragment{
     private Button btnCancelar;
     private String imagePath;
     private Activity activity;
-    private List<Uri> listaUris;
+    private List<String> listImagePath;
 
     private SeekBar seekPrecio;
     private SeekBar seekArea;
@@ -52,6 +55,12 @@ public class RegistrarInmuebleFragment extends Fragment{
     private SeekBar seekBanos;
     private SeekBar seekEstacionamientos;
 
+    private TextView textTitulo;
+    private TextView textTelefono;
+    private TextView textEmail;
+    private TextView textDireccion;
+    private TextView textDistrito;
+
     private TextView valueArea;
     private TextView valuePrecio;
     private TextView valueAntiguedad;
@@ -59,6 +68,7 @@ public class RegistrarInmuebleFragment extends Fragment{
     private TextView valueBanos;
     private TextView valueEstacionamientos;
 
+    private Spinner spinnerTipoTransaccion;
 
     public RegistrarInmuebleFragment() {
         // Required empty public constructor
@@ -74,9 +84,10 @@ public class RegistrarInmuebleFragment extends Fragment{
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //Seteo de Controles
         activity                = getActivity();
-        listaUris               = new ArrayList<Uri>();
+        listImagePath         = new ArrayList<String>();
+
+        //Seteo de Controles
         btnRegistrar            = (Button)activity.findViewById(R.id.btnRegistrar);
         btnCancelar             = (Button)activity.findViewById(R.id.btnCancelar);
         imageButton2            = (ImageButton)activity.findViewById(R.id.imgButton2);
@@ -92,6 +103,12 @@ public class RegistrarInmuebleFragment extends Fragment{
         seekDormitorios         = (SeekBar)activity.findViewById(R.id.seekDormitorios);
         seekBanos               = (SeekBar)activity.findViewById(R.id.seekBanos);
         seekEstacionamientos    = (SeekBar)activity.findViewById(R.id.seekEstacionamientos);
+        spinnerTipoTransaccion = (Spinner)activity.findViewById(R.id.spinnerTipoTransaccion);
+        textTitulo = (TextView)activity.findViewById(R.id.txtTitulo);
+        textTelefono = (TextView)activity.findViewById(R.id.txtTelefono);
+        textEmail = (TextView)activity.findViewById(R.id.txtEmail);
+        textDireccion = (TextView)activity.findViewById(R.id.txtDireccion);
+        textDistrito = (TextView)activity.findViewById(R.id.txtDistrito);
         valuePrecio             = (TextView)activity.findViewById(R.id.valuePrecio);
         valueArea               = (TextView)activity.findViewById(R.id.valueArea);
         valueAntiguedad         = (TextView)activity.findViewById(R.id.valueAntiguedad);
@@ -139,7 +156,6 @@ public class RegistrarInmuebleFragment extends Fragment{
 
             }
 
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
@@ -158,7 +174,6 @@ public class RegistrarInmuebleFragment extends Fragment{
             public void onStartTrackingTouch(SeekBar seekBar) {
 
             }
-
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
@@ -179,7 +194,6 @@ public class RegistrarInmuebleFragment extends Fragment{
 
             }
 
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
@@ -198,7 +212,6 @@ public class RegistrarInmuebleFragment extends Fragment{
             public void onStartTrackingTouch(SeekBar seekBar) {
 
             }
-
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
@@ -219,7 +232,6 @@ public class RegistrarInmuebleFragment extends Fragment{
 
             }
 
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
@@ -239,21 +251,16 @@ public class RegistrarInmuebleFragment extends Fragment{
 
             }
 
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
         });
 
-
         //Listeners de los buttons
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
             }
         });
 
@@ -262,7 +269,29 @@ public class RegistrarInmuebleFragment extends Fragment{
             public void onClick(View v) {
                 //For test only
                 InmuebleOut i = new InmuebleOut();
-                i.setTitulo("Hola");
+                i.setAntiguedad(seekAntiguedad.getProgress());
+                i.setArea(seekArea.getProgress());
+                i.setBanos(seekBanos.getProgress());
+                i.setCantFavoritos(0);
+                i.setDescripcion("Descripcion de prueba");
+                i.setDireccion(textDireccion.getText().toString());
+                i.setDormitorios(seekDormitorios.getProgress());
+                i.setEstacionamientos(seekEstacionamientos.getProgress());
+                i.setIdTipoInmueble(1);
+                Integer idTipoTransaccion = spinnerTipoTransaccion.getSelectedItemPosition() + 1;
+                i.setIdtTipoTransaccion(idTipoTransaccion);
+                i.setIdUsuario(LocalSession.getInstance(activity).getLoggedUser().getIdUsuario());
+                i.setLatitud(BigDecimal.valueOf(12.020393));
+                i.setLongitud(BigDecimal.valueOf(-8.339993));
+                i.setPrecio(Double.valueOf(seekPrecio.getProgress()));
+                i.setImagenList(new ArrayList<ImagenOut>());
+                for(String imagePath: listImagePath) {
+                    byte[] encodedImage = Base64Encoder.getEncodedImage(imagePath);
+                    ImagenOut img = new ImagenOut();
+                    img.setImgBlob(encodedImage);
+                    i.getImagenList().add(img);
+                }
+
                 InmuebleManager.getInstance(activity).insertarInmueble(i);
             }
         });
@@ -341,15 +370,14 @@ public class RegistrarInmuebleFragment extends Fragment{
         if (requestCode == LOAD_IMAGE_RESULTS && resultCode == getActivity().RESULT_OK && data != null) {
             // Let's read picked image data - its URI
             Uri pickedImage = data.getData();
-            listaUris.add(pickedImage);
             String[] filePath = { MediaStore.Images.Media.DATA };
             Cursor cursor = getActivity().getContentResolver().query(pickedImage, filePath, null, null, null);
             cursor.moveToFirst();
             imagePath = cursor.getString(cursor.getColumnIndex(filePath[0]));
+            listImagePath.add(imagePath);
 
-            if(but==1) {
+            if (but == 1) {
                 imageButton.setImageBitmap(BitmapFactory.decodeFile(imagePath));
-                Log.i(getTag(), imagePath);
             }
 
             if(but==2)
@@ -370,9 +398,7 @@ public class RegistrarInmuebleFragment extends Fragment{
             if(but==7)
                 imageButton7.setImageBitmap(BitmapFactory.decodeFile(imagePath));
 
-
             cursor.close();
-
 
         }
     }

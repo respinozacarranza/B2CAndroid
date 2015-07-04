@@ -1,5 +1,8 @@
 package pe.edu.upc.b2capp.model;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 /**
  * Created by vjrojasb on 5/17/15.
  */
@@ -14,14 +17,15 @@ public class InmuebleOut {
     private Integer banos;
     private Integer estacionamientos;
     private Integer antiguedad;
-    private Double latitud;
-    private Integer longitud;
+    private BigDecimal latitud;
+    private BigDecimal longitud;
     private String descripcion;
     private Double precio;
     private Integer cantFavoritos;
     private Integer idUsuario;
     private Integer idtTipoTransaccion;
     private Integer idTipoInmueble;
+    private List<ImagenOut> imagenList;
 
     public Integer getIdInmueble() {
         return idInmueble;
@@ -95,19 +99,19 @@ public class InmuebleOut {
         this.antiguedad = antiguedad;
     }
 
-    public Double getLatitud() {
+    public BigDecimal getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(Double latitud) {
+    public void setLatitud(BigDecimal latitud) {
         this.latitud = latitud;
     }
 
-    public Integer getLongitud() {
+    public BigDecimal getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(Integer longitud) {
+    public void setLongitud(BigDecimal longitud) {
         this.longitud = longitud;
     }
 
@@ -157,5 +161,13 @@ public class InmuebleOut {
 
     public void setIdTipoInmueble(Integer idTipoInmueble) {
         this.idTipoInmueble = idTipoInmueble;
+    }
+
+    public List<ImagenOut> getImagenList() {
+        return imagenList;
+    }
+
+    public void setImagenList(List<ImagenOut> imagenList) {
+        this.imagenList = imagenList;
     }
 }
