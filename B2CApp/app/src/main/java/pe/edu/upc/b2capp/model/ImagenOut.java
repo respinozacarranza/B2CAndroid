@@ -6,7 +6,7 @@ package pe.edu.upc.b2capp.model;
 public class ImagenOut {
 
     private int idImagen;
-    private byte[] imgBlob;
+    private String imgBlob;
     private int idInmueble;
 
     public int getIdImagen() {
@@ -17,11 +17,11 @@ public class ImagenOut {
         this.idImagen = idImagen;
     }
 
-    public byte[] getImgBlob() {
+    public String getImgBlob() {
         return imgBlob;
     }
 
-    public void setImgBlob(byte[] imgBlob) {
+    public void setImgBlob(String imgBlob) {
         this.imgBlob = imgBlob;
     }
 

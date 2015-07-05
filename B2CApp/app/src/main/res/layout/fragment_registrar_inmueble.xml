@@ -40,6 +40,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/layout">
+
                         <EditText
                             android:id="@+id/txtTitulo"
                             android:layout_width="match_parent"
@@ -47,42 +48,6 @@
                             android:hint="@string/hint_Titulo"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp" />
-
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/layout">
-
-                        <EditText
-                            android:id="@+id/txtTelefono"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/hint_telefono"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            />
-                    </LinearLayout>
-
-
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/layout">
-
-                        <EditText
-                            android:id="@+id/txtEmail"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/hint_email"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginLeft="10dp"
-                            />
 
                     </LinearLayout>
 
@@ -306,7 +271,6 @@
 
                     </LinearLayout>
 
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="22dp"></LinearLayout>
@@ -342,9 +306,6 @@
 
                     </LinearLayout>
 
-
-
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -366,11 +327,36 @@
                             android:paddingRight="@dimen/activity_horizontal_margin"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:entries="@array/opcionesSpinner"
+                            android:entries="@array/opcionesSpinnerTipoTransaccion"
                             ></Spinner>
 
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TipoInmueble"
+                            android:textSize="20dp"
+                            android:layout_gravity="center_vertical" />
+
+
+                        <Spinner
+                            android:id="@+id/spinnerTipoInmueble"
+                            android:layout_weight="1"
+                            android:paddingLeft="@dimen/activity_horizontal_margin"
+                            android:paddingRight="@dimen/activity_horizontal_margin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/opcionesSpinnerTipoInmueble"
+                            ></Spinner>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

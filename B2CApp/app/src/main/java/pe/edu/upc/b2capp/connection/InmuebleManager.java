@@ -3,6 +3,7 @@ package pe.edu.upc.b2capp.connection;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -25,6 +26,7 @@ public class InmuebleManager {
     //Inicio singleton
     private static InmuebleManager singleton;
     private static Context context;
+    private final String TAG = this.getClass().getSimpleName();
 
     private InmuebleManager(Context context) {
         InmuebleManager.context = context;
@@ -43,6 +45,7 @@ public class InmuebleManager {
                 ProgressDialog.show(context, "Espere...", "Registrando Inmueble...");
         final Gson gson = new Gson();
         String json = gson.toJson(inmueble);
+        Log.i(TAG, json);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST, UriConstant.URL + UriConstant.CREATE_INMUEBLE, json,
                 new Response.Listener<JSONObject>() {
@@ -54,7 +57,7 @@ public class InmuebleManager {
                             progressDialog.cancel();
                             Intent intent = new Intent(context, MainActivity.class);
                             context.startActivity(intent);
-                            Toast.makeText(context, "Usuario Registrado", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Inmueble Registrado", Toast.LENGTH_SHORT).show();
                         } catch (Exception ex) {
                             progressDialog.cancel();
                             Toast.makeText(context, "Error: " + ex.getMessage(), Toast.LENGTH_LONG).show();

@@ -43,16 +43,24 @@
     <string name="btnCancelar">Cancelar </string>
 
 
-    <!-- STRING PARA SPINNER -->
-    <string-array name="opcionesSpinner">
+    <!-- STRING ARRAY PARA SPINNER TIPO DE TRANSACCION -->
+    <string-array name="opcionesSpinnerTipoTransaccion">
         <item>Venta</item>
         <item>Alquiler</item>
+    </string-array>
+
+    <!-- STRING ARRAY PARA SPINNER TIPO DE INMUEBLE -->
+    <string-array name="opcionesSpinnerTipoInmueble">
+        <item>Casa</item>
+        <item>Departamento</item>
+        <item>Oficina</item>
     </string-array>
 
     <string name="precioInicial">S/. 0</string>
     <string name="areaInicial">0 m2</string>
     <string name="tiempoInicial">0 años</string>
     <string name="cero">0</string>
+    <string name="TipoInmueble">Tipo de inmueble</string>
 
 
 </resources>

@@ -30,7 +30,32 @@ public class Base64Encoder {
                 Log.e("Base64Encoder", e.getMessage());
             }
             bytes = output.toByteArray();
-            byte[] temp = Base64.encode(bytes, Base64.NO_WRAP | Base64.URL_SAFE);
+            byte[] temp = Base64.encode(bytes, Base64.DEFAULT);
+            return temp;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            Log.e("Base64Encoder", e.getMessage());
+        }
+        return null;
+    }
+
+    public static String getStringEncodedImage(String path) {
+        byte[] bytes;
+        try {
+            InputStream inputStream = new FileInputStream(path);
+            byte[] buffer = new byte[8192];
+            int bytesRead;
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            try {
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    output.write(buffer, 0, bytesRead);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.e("Base64Encoder", e.getMessage());
+            }
+            bytes = output.toByteArray();
+            String temp = Base64.encodeToString(bytes, Base64.DEFAULT);
             return temp;
         } catch (FileNotFoundException e) {
             e.printStackTrace();

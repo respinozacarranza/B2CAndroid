@@ -23,7 +23,7 @@ public class InmuebleOut {
     private Double precio;
     private Integer cantFavoritos;
     private Integer idUsuario;
-    private Integer idtTipoTransaccion;
+    private Integer idTipoTransaccion;
     private Integer idTipoInmueble;
     private List<ImagenOut> imagenList;
 
@@ -148,11 +148,11 @@ public class InmuebleOut {
     }
 
     public Integer getIdtTipoTransaccion() {
-        return idtTipoTransaccion;
+        return idTipoTransaccion;
     }
 
-    public void setIdtTipoTransaccion(Integer idtTipoTransaccion) {
-        this.idtTipoTransaccion = idtTipoTransaccion;
+    public void setIdtTipoTransaccion(Integer idTipoTransaccion) {
+        this.idTipoTransaccion = idTipoTransaccion;
     }
 
     public Integer getIdTipoInmueble() {
