@@ -49,7 +49,6 @@ public class DetalleInmuebleFragment extends Fragment{
 
     private Button btnMensaje;
     private Button btnLlamada;
-    private Button pruebaMandaCoord;
 
 
     public DetalleInmuebleFragment() {
@@ -180,20 +179,7 @@ public class DetalleInmuebleFragment extends Fragment{
             }
         });
 
-        pruebaMandaCoord = (Button)view.findViewById(R.id.btnPrueba);
-        pruebaMandaCoord.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                LatLng coordenadas = new LatLng(inmueble.getLatitud().doubleValue(),inmueble.getLongitud().doubleValue());
-                Bundle args = new Bundle();
-                args.putParcelable("coords",coordenadas);
-                Intent i = new Intent();
-                i.putExtra("bundle",args);
-                startActivity(i);
-
-            }
-        });
     }
 
     @Override

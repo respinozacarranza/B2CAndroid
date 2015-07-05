@@ -16,10 +16,13 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.connection.InmuebleManager;
@@ -68,6 +71,9 @@ public class RegistrarInmuebleFragment extends Fragment{
 
     private Spinner spinnerTipoTransaccion;
     private Spinner spinnerTipoInmueble;
+
+    Pattern pattern;
+    Matcher matcher;
 
     public RegistrarInmuebleFragment() {
         // Required empty public constructor
@@ -259,6 +265,26 @@ public class RegistrarInmuebleFragment extends Fragment{
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final String titulo = textTitulo.getText().toString();
+                final String direccion = textDireccion.getText().toString();
+                final String distrito = textDistrito.getText().toString();
+
+                if (titulo.length() == 0) {
+                    textTitulo.requestFocus();
+                    textTitulo.setError("EL CAMPO NO PUEDE ESTAR VACIO");
+
+                }
+
+                if (direccion.length() == 0) {
+                    textDireccion.requestFocus();
+                    textDireccion.setError("EL CAMPO NO PUEDE ESTAR VACIO");
+
+                }
+                if (distrito.length() == 0) {
+                    textDistrito.requestFocus();
+                    textDistrito.setError("EL CAMPO NO PUEDE ESTAR VACIO");
+                }
+
             }
         });
 
@@ -402,6 +428,27 @@ public class RegistrarInmuebleFragment extends Fragment{
             cursor.close();
 
         }
+    }
+
+    public boolean esEmailValido(String email)
+    {
+        String regExpn =
+                "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+                        +"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                        +"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+                        +"([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$";
+
+        CharSequence inputStr = email;
+
+        pattern = Pattern.compile(regExpn, Pattern.CASE_INSENSITIVE);
+        matcher = pattern.matcher(inputStr);
+
+        if(matcher.matches())
+            return true;
+        else
+            return false;
     }
 
 
