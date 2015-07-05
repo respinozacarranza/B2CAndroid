@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.connection.UserManager;
 import pe.edu.upc.b2capp.model.Usuario;
@@ -25,11 +28,33 @@ public class PersonaFragment extends Fragment{
     EditText mEditTextUsuario;
     EditText mEditTextContrasena;
     Button mButtonRegistrar;
+    Pattern pattern;
+    Matcher matcher;
 
     public PersonaFragment(){
 
     }
 
+    public boolean esEmailValido(String email)
+    {
+        String regExpn =
+                "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+                        +"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                        +"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+                        +"([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$";
+
+        CharSequence inputStr = email;
+
+        pattern = Pattern.compile(regExpn,Pattern.CASE_INSENSITIVE);
+        matcher = pattern.matcher(inputStr);
+
+        if(matcher.matches())
+            return true;
+        else
+            return false;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         return inflater.inflate(R.layout.fragment_persona, container, false);
@@ -47,17 +72,54 @@ public class PersonaFragment extends Fragment{
         mButtonRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nuevo_user = new Usuario();
-                nuevo_user.setIdUsuario(null);
-                nuevo_user.setNombre(mEditTextNombre.getText().toString());
-                nuevo_user.setEmail(mEditTextEmail.getText().toString());
-                nuevo_user.setUsuario(mEditTextUsuario.getText().toString());
-                nuevo_user.setPassword(mEditTextContrasena.getText().toString());
-                nuevo_user.setIdTipoUsuario(1);
 
-                userManager.RegistrarUsuario(nuevo_user,getActivity());
+                final String nombre = mEditTextNombre.getText().toString();
+                final String email = mEditTextEmail.getText().toString();
+                final String usuario = mEditTextUsuario.getText().toString();
+                final String password = mEditTextContrasena.getText().toString();
+                if(nombre.length() ==0){
+
+                    mEditTextNombre.requestFocus();
+                    mEditTextNombre.setError("EL CAMPO NO PUEDE ESTAR VACIO");
+
+                }
+                if(usuario.length() ==0){
+
+                    mEditTextUsuario.requestFocus();
+                    mEditTextUsuario.setError("EL CAMPO NO PUEDE ESTAR VACIO");
+
+                }
+                if(password.length() ==0){
+
+                    mEditTextContrasena.requestFocus();
+                    mEditTextContrasena.setError("EL CAMPO NO PUEDE ESTAR VACIO");
+
+                }
+                if(!esEmailValido(email)){
+                    mEditTextEmail.requestFocus();
+                    mEditTextEmail.setError("NO ES UN EMAIL VALIDO");
+
+                }
+                else{
+                    nuevo_user = new Usuario();
+                    nuevo_user.setIdUsuario(null);
+                    nuevo_user.setNombre(mEditTextNombre.getText().toString());
+                    nuevo_user.setEmail(mEditTextEmail.getText().toString());
+                    nuevo_user.setUsuario(mEditTextUsuario.getText().toString());
+                    nuevo_user.setPassword(mEditTextContrasena.getText().toString());
+                    nuevo_user.setIdTipoUsuario(1);
+
+                    userManager.RegistrarUsuario(nuevo_user,getActivity());
+                }
+
+
+
+
+
             }
         });
+
+
     }
 
 }
