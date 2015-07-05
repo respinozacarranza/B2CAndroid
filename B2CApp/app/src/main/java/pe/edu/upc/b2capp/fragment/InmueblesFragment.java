@@ -23,18 +23,23 @@ import pe.edu.upc.b2capp.session.LocalSession;
 /**
  * Created by Renato on 6/8/2015.
  */
-public class FavoritosFragment extends Fragment{
+public class InmueblesFragment extends Fragment{
 
-    ArrayList<InmuebleSimple> dataset;
-    ListView listView;
-    BaseAdapter adapter;
+    private ArrayList<InmuebleSimple> dataset;
+    private ListView listView;
+    private BaseAdapter adapter;
+    private String URL_INMUEBLES;
     //FavoritosAdapter mFavoritosAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_favoritos, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_inmuebles, container, false);
+        Intent intent = getActivity().getIntent();
+        if (intent != null && intent.hasExtra("URL")) {
+            URL_INMUEBLES = intent.getStringExtra("URL");
+        }
         return rootView;
     }
 
@@ -42,13 +47,11 @@ public class FavoritosFragment extends Fragment{
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        listView = (ListView)getActivity().findViewById(R.id.listView_favoritos);
-        adapter = new InmuebleAdapter(getActivity(), UriConstant.URL + "/favoritos/" +
-                LocalSession
-                        .getInstance(getActivity())
-                        .getLoggedUser()
-                        .getIdUsuario().toString());
+
+        listView = (ListView)getActivity().findViewById(R.id.listView_inmuebles);
+        adapter = new InmuebleAdapter(getActivity(), URL_INMUEBLES);
         listView.setAdapter(adapter);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

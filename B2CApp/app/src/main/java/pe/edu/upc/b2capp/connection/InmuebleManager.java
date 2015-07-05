@@ -47,7 +47,7 @@ public class InmuebleManager {
         String json = gson.toJson(inmueble);
         Log.i(TAG, json);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.POST, UriConstant.URL + UriConstant.CREATE_INMUEBLE, json,
+                Request.Method.POST, UriConstant.URL_BASE + UriConstant.CREATE_INMUEBLE, json,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

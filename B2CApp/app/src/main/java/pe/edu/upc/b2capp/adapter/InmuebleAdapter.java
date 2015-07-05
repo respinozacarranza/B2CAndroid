@@ -38,11 +38,9 @@ public class InmuebleAdapter extends BaseAdapter{
 
     private List<InmuebleSimple> inmuebles;
     private String TAG = getClass().getSimpleName();
-    private Context context;
 
     public InmuebleAdapter(final Context context, String Uri){
 
-        this.context = context;
         final ProgressDialog progressDialog =
                 ProgressDialog.show(context, "Espere...", "Obteniendo Inmuebles...");
         // Nueva petición JSONArray
@@ -50,7 +48,6 @@ public class InmuebleAdapter extends BaseAdapter{
 
             @Override
             public void onResponse(JSONArray response) {
-                Log.i("mirespuesta", response.toString());
                 setInmuebles(parseJson(response));
                 notifyDataSetChanged();
                 progressDialog.cancel();
@@ -95,7 +92,6 @@ public class InmuebleAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent){
 
         LayoutInflater layoutInflater= LayoutInflater.from(parent.getContext());
-        View listItemView = convertView;
 
         if(convertView == null){
             convertView = layoutInflater.inflate(R.layout.item_inmueble,parent , false);

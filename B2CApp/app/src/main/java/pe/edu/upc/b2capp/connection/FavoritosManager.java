@@ -8,15 +8,11 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.android.gms.drive.internal.n;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
-import java.util.List;
-
 import pe.edu.upc.b2capp.model.AddFavorito;
-import pe.edu.upc.b2capp.model.Favorito;
 
 /**
  * Created by Andres on 24/06/2015.
@@ -35,7 +31,7 @@ public class FavoritosManager {
 
         final Gson gson = new Gson();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.POST, UriConstant.URL + UriConstant.ADD_FAVORITO, gson.toJson(addFavorito),
+                Request.Method.POST, UriConstant.URL_BASE + UriConstant.ADD_FAVORITO, gson.toJson(addFavorito),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -68,7 +64,7 @@ public class FavoritosManager {
 
         final Gson gson = new Gson();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.POST, UriConstant.URL + UriConstant.DELETE_FAVORITO, gson.toJson(addFavorito),
+                Request.Method.POST, UriConstant.URL_BASE + UriConstant.DELETE_FAVORITO, gson.toJson(addFavorito),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

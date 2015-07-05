@@ -52,8 +52,8 @@
                 android:value=".activity.MainActivity" />
         </activity>
         <activity
-            android:name=".activity.FavoritosActivity"
-            android:label="@string/title_favoritos_activity"
+            android:name=".activity.InmuebleActivity"
+            android:label="@string/title_activity_inmuebles"
             android:parentActivityName=".activity.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -72,11 +72,7 @@
             android:label="@string/title_activity_base" >
         </activity>
         <activity
-            android:name=".activity.DetalleInmuebleActivity"
-            android:parentActivityName=".activity.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.MainActivity" />
+            android:name=".activity.DetalleInmuebleActivity">
         </activity>
 
         <activity

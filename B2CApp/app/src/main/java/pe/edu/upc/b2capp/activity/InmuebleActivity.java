@@ -8,7 +8,7 @@ import pe.edu.upc.b2capp.R;
 /**
  * Created by Renato on 6/8/2015.
  */
-public class FavoritosActivity extends NavDrawerActivity{
+public class InmuebleActivity extends NavDrawerActivity{
 
 
     @Override
@@ -20,6 +20,6 @@ public class FavoritosActivity extends NavDrawerActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favoritos);
+        setContentView(R.layout.activity_inmuebles);
     }
 }

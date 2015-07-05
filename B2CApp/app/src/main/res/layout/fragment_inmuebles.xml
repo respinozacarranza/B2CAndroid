@@ -2,11 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.moviles.b2c.fragments.FavoritosFragment">
+    tools:context="pe.edu.upc.b2capp.fragment.InmueblesFragment">
 
     <ListView
         android:scrollbars="vertical"
-        android:id="@+id/listView_favoritos"
+        android:id="@+id/listView_inmuebles"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

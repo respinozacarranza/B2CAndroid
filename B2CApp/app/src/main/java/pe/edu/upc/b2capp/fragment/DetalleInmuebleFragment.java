@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,9 +22,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.daimajia.slider.library.SliderLayout;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -34,7 +31,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import pe.edu.upc.b2capp.R;
@@ -47,16 +43,6 @@ import pe.edu.upc.b2capp.model.InmuebleIn;
  * Created by Renato on 6/12/2015.
  */
 public class DetalleInmuebleFragment extends Fragment{
-
-    // implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener
-    protected SliderLayout sliderShow;
-    private static final HashMap<Integer, String> inmueblesMap;
-    static {
-        inmueblesMap = new HashMap<Integer, String>();
-        inmueblesMap.put(R.drawable.det1, "Renato tela");
-        inmueblesMap.put(R.drawable.det2, "Victor tela");
-        inmueblesMap.put(R.drawable.det3, "Gesek tela");
-    }
 
     private Integer idInmueble;
     private InmuebleIn inmueble;
@@ -81,27 +67,24 @@ public class DetalleInmuebleFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_detalle_inmueble, container, false);
         if (intent != null && intent.hasExtra("idInmueble")) {
             idInmueble = intent.getIntExtra("idInmueble", 0);
-            Toast.makeText(getActivity(), idInmueble.toString(), Toast.LENGTH_SHORT).show();
             final ProgressDialog progressDialog =
                     ProgressDialog.show(activity, "Espere...", "Obteniendo Inmueble...");
-            final Gson gson = new Gson();
             String uri =
-                    UriConstant.URL + UriConstant.GET_INMUEBLE + idInmueble.toString();
+                    UriConstant.URL_BASE + UriConstant.GET_INMUEBLE + idInmueble.toString();
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.GET, uri,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            InmuebleIn respuesta = new InmuebleIn();
                             try {
-                                respuesta = parseJson(response);
-                                cargarInmueble(respuesta);
+                                inmueble = parseJson(response);
+                                cargarInmueble(inmueble);
                                 progressDialog.cancel();
                                 Toast.makeText(activity, "Exito", Toast.LENGTH_LONG).show();
 
                             } catch (Exception ex) {
                                 progressDialog.cancel();
-                                Toast.makeText(activity, "Error: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(activity, "Error en el parseo", Toast.LENGTH_SHORT).show();
                             }
 
                         }
@@ -109,7 +92,7 @@ public class DetalleInmuebleFragment extends Fragment{
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     progressDialog.cancel();
-                    Toast.makeText(activity,"Error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity,"Error en la conexion. Vuelva a intentarlo", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -128,12 +111,13 @@ public class DetalleInmuebleFragment extends Fragment{
         for(ImagenSimple img: inmueblein.getImagenList()) {
             byte[] imageByteArray = img.getImagenBlob();
             byte[] decodedString = Base64.decode(imageByteArray, Base64.DEFAULT);
-            //String imagen = new String(imageByteArray, Charset.forName("UTF-8"));
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
             LinearLayout view = (LinearLayout) getActivity().findViewById(R.id.imagenesTelas);
             ImageView imageView = new ImageView(getActivity());
             imageView.setImageBitmap(decodedByte);
+            imageView.setAdjustViewBounds(true);
+            imageView.setMaxHeight(400);
             view.addView(imageView);
             //DefaultSliderView sliderView = new DefaultSliderView(getActivity());
             //sliderView.image("");
@@ -164,60 +148,6 @@ public class DetalleInmuebleFragment extends Fragment{
 
         super.onViewCreated(view, savedInstanceState);
 
-/*
-        sliderShow = (SliderLayout) getView().findViewById(R.id.slider);
-        sliderShow.setPresetTransformer(SliderLayout.Transformer.ZoomOut);
-        sliderShow.setDuration(6000);
-
-        Iterator it = inmueblesMap.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            TextSliderView textSliderView = new TextSliderView(getActivity());
-            textSliderView
-                    .description((String) pair.getValue())
-                    .image((Integer) pair.getKey());
-            sliderShow.addSlider(textSliderView);
-        }
-
-
-        final InmuebleOut inm1 = new InmuebleOut();
-        inm1.setIdInmueble(1);
-        inm1.setTitulo("VENTA DE DEPARTAMENTO EXCLUSIVO");
-        inm1.setDistrito("Surco");
-        inm1.setDireccion("Av primavera");
-        inm1.setDescripcion("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a laoreet massa. Nulla lectus nisl, imperdiet sed accumsan gravida, congue vel magna. Aliquam erat volutpat.Phasellus faucibus euismod pellentesque. Quisque pellentesque est id dolor cursus condimentum.Morbi at finibus velit. Suspendisse finibus, risus vitae molestie convallis, mi odio varius sapien,sapien. Nam commodo commodo rutrum. Nullam id elit bibendum, dictum arcu sed, dapibus eros.");
-        inm1.setPrecio(294000.0);
-        inm1.setArea(135);
-        inm1.setAntiguedad(2);
-        inm1.setDormitorios(4);
-        inm1.setBanos(2);
-        inm1.setEstacionamientos(1);
-
-        Usuario u = new Usuario();
-        u.setIdUsuario(1);
-        u.setTelefono("948314023");
-        u.setEmail("respinozacarranza@gmail.com");
-
-        inm1.setIdUsuario(1);
-
-        TextView textView = (TextView)getActivity().findViewById(R.id.textViewTitulo);
-        TextView textView2 = (TextView)getActivity().findViewById(R.id.textViewPrecio);
-        TextView textView3 = (TextView)getActivity().findViewById(R.id.textViewArea);
-        TextView textView4 = (TextView)getActivity().findViewById(R.id.textViewAntiguedad);
-        TextView textView5 = (TextView)getActivity().findViewById(R.id.textViewDormitorios);
-        TextView textView6 = (TextView)getActivity().findViewById(R.id.textViewBanos);
-        TextView textView7 = (TextView)getActivity().findViewById(R.id.textViewEstacionamientos);
-        TextView textView8 = (TextView)getActivity().findViewById(R.id.textViewDescripcion);
-
-        textView.setText(inm1.getTitulo());
-        textView2.setText("Precio: " + String.valueOf(inm1.getPrecio()));
-        textView3.setText("Area: " + String.valueOf(inm1.getArea()));
-        textView4.setText("Antiguedad: " + String.valueOf(inm1.getAntiguedad()));
-        textView5.setText("Dormitorios: " + String.valueOf(inm1.getDormitorios()));
-        textView6.setText("Baños: " + String.valueOf(inm1.getBanos()));
-        textView7.setText("Estacionamientos: " + String.valueOf(inm1.getEstacionamientos()));
-        textView8.setText("Descripcion: " + inm1.getDescripcion());
-*/
         final String para = "respinozacarranza@gmail.com";
         final String subject = "Deseo comunicarme";
         final String message = "B2C - MESSAGE";

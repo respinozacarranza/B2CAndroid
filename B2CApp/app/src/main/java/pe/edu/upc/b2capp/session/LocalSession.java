@@ -72,7 +72,7 @@ public class LocalSession {
         final Gson gson = new Gson();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,
-                UriConstant.URL + UriConstant.LOGIN,
+                UriConstant.URL_BASE + UriConstant.LOGIN,
                 gson.toJson(login),
                 new Response.Listener<JSONObject>() {
                     @Override

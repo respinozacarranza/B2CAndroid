@@ -40,7 +40,7 @@ public class UserManager {
 
         final Gson gson = new Gson();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.POST, UriConstant.URL + UriConstant.CREATE_USER, gson.toJson(usuario),
+                Request.Method.POST, UriConstant.URL_BASE + UriConstant.CREATE_USER, gson.toJson(usuario),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -77,7 +77,7 @@ public class UserManager {
         final Gson gson = new Gson();
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.POST, UriConstant.URL + UriConstant.UPDATE_USER, gson.toJson(usuario),
+                Request.Method.POST, UriConstant.URL_BASE + UriConstant.UPDATE_USER, gson.toJson(usuario),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

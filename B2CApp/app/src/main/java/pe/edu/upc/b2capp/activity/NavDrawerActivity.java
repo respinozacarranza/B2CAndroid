@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import pe.edu.upc.b2capp.R;
+import pe.edu.upc.b2capp.connection.UriConstant;
 import pe.edu.upc.b2capp.model.Usuario;
 import pe.edu.upc.b2capp.session.LocalSession;
 
@@ -58,13 +59,14 @@ public class NavDrawerActivity extends BaseActivity {
     }
 
     private void addDrawerItems() {
-        String[] osArray = { "Mis inmuebles", "Favoritos", "Crear inmueble", "Cerca de mí", "Perfil"};
+        String[] osArray = { "Inicio", "Mis inmuebles", "Favoritos", "Crear inmueble", "Cerca de mí", "Perfil"};
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
         mDrawerList.setAdapter(mAdapter);
 
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mDrawerLayout.closeDrawers();
                 startActivityPos(position);
             }
         });
@@ -72,26 +74,43 @@ public class NavDrawerActivity extends BaseActivity {
 
     protected void startActivityPos(int pos) {
         Intent intent;
+        Usuario usuario = LocalSession.getInstance(this).getLoggedUser();
         switch (pos) {
             case 0://Mis inmuebles
-                //TODO Implementar Mis inmuebles
-                Toast.makeText(NavDrawerActivity.this, "Falta implementar", Toast.LENGTH_SHORT).show();
-                break;
-            case 1://Favoritos
-                intent = new Intent(this, FavoritosActivity.class);
+                intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 break;
-            case 2://Crear Inmueble
+            case 1://Mis inmuebles
+                if (usuario == null) {
+                    Toast.makeText(this, "Sesión no iniciada", Toast.LENGTH_SHORT).show();
+                } else {
+                    intent = new Intent(this, InmuebleActivity.class)
+                            .putExtra("URL", UriConstant.URL_BASE +
+                                    UriConstant.INMUEBLES_PROPIOS +
+                                    usuario.getIdUsuario().toString());
+                    startActivity(intent);
+                }
+                break;
+            case 2://Favoritos
+                if (usuario == null) {
+                    Toast.makeText(this, "Sesión no iniciada", Toast.LENGTH_SHORT).show();
+                } else {
+                    intent = new Intent(this, InmuebleActivity.class)
+                            .putExtra("URL", UriConstant.URL_BASE +
+                                    UriConstant.GET_FAVORITOS +
+                                    usuario.getIdUsuario().toString());
+                    startActivity(intent);
+                }
+                break;
+            case 3://Crear Inmueble
                 intent = new Intent(this, RegistrarInmuebleActivity.class);
                 startActivity(intent);
                 break;
-            case 3://Cerca de mi
-                //TODO Implementar Mis inmuebles
-                    intent = new Intent(this, MapaInmueblesActivity.class);
-                    startActivity(intent);
+            case 4://Cerca de mi
+                intent = new Intent(this, MapaInmueblesActivity.class);
+                startActivity(intent);
                 break;
-            case 4://Perfil
-                //TODO Implementar Mis inmuebles
+            case 5://Perfil
                 LocalSession localSession = LocalSession.getInstance(this);
                 Usuario nuevouser = localSession.getLoggedUser();
 
@@ -105,7 +124,6 @@ public class NavDrawerActivity extends BaseActivity {
                 }
                 //Toast.makeText(NavDrawerActivity.this, "Falta implementar", Toast.LENGTH_SHORT).show();
                 break;
-
         }
     }
 

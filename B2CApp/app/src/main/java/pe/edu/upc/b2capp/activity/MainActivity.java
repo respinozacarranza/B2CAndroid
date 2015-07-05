@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import pe.edu.upc.b2capp.R;
+import pe.edu.upc.b2capp.connection.UriConstant;
 import pe.edu.upc.b2capp.fragment.MainFragment;
+import pe.edu.upc.b2capp.model.Usuario;
 import pe.edu.upc.b2capp.session.LocalSession;
 
 
@@ -29,11 +31,15 @@ public class MainActivity extends NavDrawerActivity{
     }
 
     public void favoritos(View view){
-        if (LocalSession.getInstance(this).getLoggedUser() == null) {
+        Usuario usuario = LocalSession.getInstance(this).getLoggedUser();
+        if (usuario == null) {
             Toast.makeText(this, "Sesión no iniciada", Toast.LENGTH_SHORT).show();
         } else {
 
-            Intent intent = new Intent(this, FavoritosActivity.class);
+            Intent intent = new Intent(this, InmuebleActivity.class)
+                    .putExtra("URL", UriConstant.URL_BASE +
+                                    UriConstant.GET_FAVORITOS +
+                                    usuario.getIdUsuario().toString());
             startActivity(intent);
         }
     }
