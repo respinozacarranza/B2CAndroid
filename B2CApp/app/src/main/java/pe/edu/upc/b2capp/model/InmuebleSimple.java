@@ -16,6 +16,8 @@ public class InmuebleSimple {
     private String tipoTransaccion;
     private Date fecha;
     private BigInteger favoritos;
+    private BigDecimal latitud;
+    private BigDecimal longitud;
 
     public Integer getId() {
         return id;
@@ -79,5 +81,21 @@ public class InmuebleSimple {
 
     public void setFavoritos(BigInteger favoritos) {
         this.favoritos = favoritos;
+    }
+
+    public BigDecimal getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(BigDecimal latitud) {
+        this.latitud = latitud;
+    }
+
+    public BigDecimal getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(BigDecimal longitud) {
+        this.longitud = longitud;
     }
 }
