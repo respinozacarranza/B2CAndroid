@@ -286,6 +286,8 @@ public class RegistrarInmuebleFragment extends Fragment{
                     textDistrito.requestFocus();
                     textDistrito.setError("EL CAMPO NO PUEDE ESTAR VACIO");
                 }
+
+                else
                 InmuebleManager.getInstance(activity).insertarInmueble(getInmuebleOut());
             }
         });

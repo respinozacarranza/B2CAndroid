@@ -1,6 +1,7 @@
 package pe.edu.upc.b2capp.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -22,11 +23,14 @@ import pe.edu.upc.b2capp.R;
  */
 public class MapaInmueblesActivity extends NavDrawerActivity{
 
-    //private MapaInmueblesFragment fragmentMapa;
 
-/*    Bundle bundle = getIntent().getParcelableExtra("bundle");
-    LatLng coordInmueble = bundle.getParcelable("coords");*/
     GoogleMap googleMap;
+
+    /*Intent i = this.getIntent();
+    Bundle b = i.getExtras();*/
+   double latObtenida = 0;
+   double lonObtenida = 0;
+
 
 
 
@@ -40,8 +44,6 @@ public class MapaInmueblesActivity extends NavDrawerActivity{
     double lat;
     double lon;
     LatLng ll;
-
-
     MarkerOptions options;
     Marker marker;
 
@@ -50,18 +52,36 @@ public class MapaInmueblesActivity extends NavDrawerActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa_inmuebles);
 
+
+       /* Intent i = this.getIntent();
+        if(i!=null) {
+            Bundle b = i.getExtras();
+            latObtenida = b.getDouble("lat");
+            lonObtenida = b.getDouble("lon");
+        }*/
+
+
         locationManager = (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
         bbb = locationManager.GPS_PROVIDER;
         location = locationManager.getLastKnownLocation(bbb);
 
-        lat = location.getLatitude();
-        lon = location.getLongitude();
 
-        ll = new LatLng(lat,lon);
+        if(latObtenida != 0 && lonObtenida !=0){
+            lat = latObtenida;
+            lon = lonObtenida;
+        }
+        else{
+            lat = -12.1040537;
+            lon = -76.9630775;
+        }
+        //lat = location.getLatitude();//latObtenida;
+        //lon = location.getLongitude();//lonObtenida;
+
+        ll = new LatLng(lat,lon);//coordInmueble;
         createMapView();
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ll,17));
 
-        addMarker();
+        /*addMarker();*/
         options = new MarkerOptions().position(ll).draggable(true).title("Estas aqui!");
         marker = googleMap.addMarker(options);
         marker.showInfoWindow();

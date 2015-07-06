@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -35,6 +37,7 @@ import java.util.List;
 
 import at.markushi.ui.CircleButton;
 import pe.edu.upc.b2capp.R;
+import pe.edu.upc.b2capp.activity.MapaInmueblesActivity;
 import pe.edu.upc.b2capp.connection.RequestQueueManager;
 import pe.edu.upc.b2capp.connection.UriConstant;
 import pe.edu.upc.b2capp.model.Favorito;
@@ -57,6 +60,7 @@ public class DetalleInmuebleFragment extends Fragment{
     private Button btnMensaje;
     private Button btnLlamada;
     private Usuario loggedUser;
+    private ImageButton pruebaMandaCoord;
 
 
     public DetalleInmuebleFragment() {
@@ -351,6 +355,23 @@ public class DetalleInmuebleFragment extends Fragment{
                 Intent llamada = new Intent(Intent.ACTION_CALL);
                 llamada.setData(Uri.parse(uri));
                 startActivity(llamada);
+            }
+        });
+
+        pruebaMandaCoord = (ImageButton)view.findViewById(R.id.btnMandarCoords);
+        pruebaMandaCoord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(view.getContext(),MapaInmueblesActivity.class);
+                Bundle b = new Bundle();
+                b.putDouble("lat",inmueble.getLatitud().doubleValue());
+                b.putDouble("lon",inmueble.getLatitud().doubleValue());
+                i.putExtras(b);
+                /*i.putExtra("lat",inmueble.getLatitud());*/
+               // i.putExtra("lon",inmueble.getLongitud());
+
+                startActivity(i);
             }
         });
 
