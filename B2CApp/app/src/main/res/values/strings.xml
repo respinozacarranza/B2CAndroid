@@ -66,11 +66,11 @@
     <string name="cero">0</string>
 
     <!-- CONFIGURACION -->
-    <string name="titulo">titulo</string>
     <string name="radioBusqueda"> Radio de Búsqueda </string>
-    <string name="valorRadio">50 Km</string>
-    <string name="y">titulo</string>
+    <string name="valorRadio">30</string>
     <string name="pref_titulo">Configuraciones B2C</string>
-    <string name="pref_summary">pref_summary</string>
+    <string name="dominioServidor">Dominio del Servidor</string>
+    <string name="valorDominio">http://b2c-cloud.whelastic.net/B2CWS</string>
+
 
 </resources>
