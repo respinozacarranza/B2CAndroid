@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import at.markushi.ui.CircleButton;
 import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.connection.InmuebleManager;
 import pe.edu.upc.b2capp.model.ImagenOut;

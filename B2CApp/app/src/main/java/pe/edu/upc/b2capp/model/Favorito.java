@@ -7,41 +7,22 @@ import java.util.Date;
  */
 public class Favorito {
 
-    private  int idfavorito;
-    private Date fechaCreacion;
-    private InmuebleOut idInmueble;
-    private Usuario idUsuario;
+    private Integer idInmueble;
+    private Integer idUsuario;
 
-
-    public int getIdfavoritos() {
-        return idfavorito;
-    }
-
-    public void setIdfavoritos(int idfavoritos) {
-        this.idfavorito = idfavoritos;
-    }
-
-    public Date getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
-    public InmuebleOut getIdInmueble() {
+    public Integer getIdInmueble() {
         return idInmueble;
     }
 
-    public void setIdInmueble(InmuebleOut idInmueble) {
+    public void setIdInmueble(Integer idInmueble) {
         this.idInmueble = idInmueble;
     }
 
-    public Usuario getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Usuario idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 }

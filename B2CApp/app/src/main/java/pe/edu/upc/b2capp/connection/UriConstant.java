@@ -11,6 +11,7 @@ public class UriConstant {
     public static final String GET_FAVORITOS = "/favoritos/";
     public static final String DELETE_FAVORITO = "/favoritos/delete";
     public static final String ADD_FAVORITO = "/favoritos/add";
+    public static final String ES_FAVORITO = "/favoritos/esfavorito";
 
     //Inmueble
     public static final String CREATE_INMUEBLE = "/inmueble/create";

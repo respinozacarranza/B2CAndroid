@@ -59,7 +59,7 @@ public class MapaInmueblesActivity extends NavDrawerActivity{
 
         ll = new LatLng(lat,lon);
         createMapView();
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ll,20));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ll,17));
 
         addMarker();
         options = new MarkerOptions().position(ll).draggable(true).title("Estas aqui!");
