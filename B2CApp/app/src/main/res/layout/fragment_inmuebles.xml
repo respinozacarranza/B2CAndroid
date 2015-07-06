@@ -3,7 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="pe.edu.upc.b2capp.fragment.InmueblesFragment">
-
+    <TextView
+        android:id="@+id/textInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/activity_vertical_margin"/>
     <ListView
         android:scrollbars="vertical"
         android:id="@+id/listView_inmuebles"

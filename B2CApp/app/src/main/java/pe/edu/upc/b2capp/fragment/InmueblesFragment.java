@@ -10,22 +10,18 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
-
-import java.util.ArrayList;
+import android.widget.TextView;
 
 import pe.edu.upc.b2capp.R;
 import pe.edu.upc.b2capp.activity.DetalleInmuebleActivity;
 import pe.edu.upc.b2capp.adapter.InmuebleAdapter;
-import pe.edu.upc.b2capp.connection.UriConstant;
 import pe.edu.upc.b2capp.model.InmuebleSimple;
-import pe.edu.upc.b2capp.session.LocalSession;
 
 /**
  * Created by Renato on 6/8/2015.
  */
 public class InmueblesFragment extends Fragment{
 
-    private ArrayList<InmuebleSimple> dataset;
     private ListView listView;
     private BaseAdapter adapter;
     private String URL_INMUEBLES;
@@ -49,14 +45,13 @@ public class InmueblesFragment extends Fragment{
         super.onActivityCreated(savedInstanceState);
 
         listView = (ListView)getActivity().findViewById(R.id.listView_inmuebles);
-        adapter = new InmuebleAdapter(getActivity(), URL_INMUEBLES);
-        listView.setAdapter(adapter);
-
+        setAdapter(new InmuebleAdapter(getActivity(), URL_INMUEBLES));
+        listView.setAdapter(getAdapter());
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Context context = getActivity();
-                InmuebleSimple inmuebleSimple = (InmuebleSimple)adapter.getItem(position);
+                InmuebleSimple inmuebleSimple = (InmuebleSimple) getAdapter().getItem(position);
 
                 Intent intent = new Intent(context, DetalleInmuebleActivity.class)
                         .putExtra("idInmueble", inmuebleSimple.getId());
@@ -65,4 +60,11 @@ public class InmueblesFragment extends Fragment{
         });
     }
 
+    public BaseAdapter getAdapter() {
+        return adapter;
+    }
+
+    public void setAdapter(BaseAdapter adapter) {
+        this.adapter = adapter;
+    }
 }

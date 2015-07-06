@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -71,7 +72,9 @@ public class InmuebleManager {
                 Toast.makeText(context,"Error: " + error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy( 1000000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueueManager
                 .getInstance(context)
                 .addToRequestQueue(jsonObjectRequest);

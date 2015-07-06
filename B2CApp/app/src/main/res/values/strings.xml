@@ -60,6 +60,7 @@
     <string name="tiempoInicial">0 años</string>
     <string name="cero">0</string>
     <string name="TipoInmueble">Tipo de inmueble</string>
+    <string name="menu_ordenar">Ordenar</string>
 
 
 </resources>
