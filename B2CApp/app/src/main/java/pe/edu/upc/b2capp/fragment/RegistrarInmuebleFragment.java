@@ -16,7 +16,6 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -38,36 +37,36 @@ public class RegistrarInmuebleFragment extends Fragment{
 
     private static int LOAD_IMAGE_RESULTS = 1;
     private int but = 0;
-    private ImageButton imageButton2;
     private ImageButton imageButton;
+    private ImageButton imageButton2;
     private ImageButton imageButton3;
     private ImageButton imageButton4;
     private ImageButton imageButton5;
     private ImageButton imageButton6;
     private ImageButton imageButton7;
     private Button btnRegistrar;
-    private Button btnCancelar;
     private String imagePath;
     private Activity activity;
     private List<String> listImagePath;
 
     private SeekBar seekPrecio;
-    private SeekBar seekArea;
+    private SeekBar seekAreaTotal;
+    private SeekBar seekAreaConstruida;
     private SeekBar seekAntiguedad;
     private SeekBar seekDormitorios;
     private SeekBar seekBanos;
-    private SeekBar seekEstacionamientos;
 
     private TextView textTitulo;
     private TextView textDireccion;
     private TextView textDistrito;
+    private TextView textDescripcion;
 
-    private TextView valueArea;
+    private TextView valueAreaTotal;
+    private TextView valueAreaConstruida;
     private TextView valuePrecio;
     private TextView valueAntiguedad;
     private TextView valueDormitorios;
     private TextView valueBanos;
-    private TextView valueEstacionamientos;
 
     private Spinner spinnerTipoTransaccion;
     private Spinner spinnerTipoInmueble;
@@ -94,7 +93,6 @@ public class RegistrarInmuebleFragment extends Fragment{
 
         //Seteo de Controles
         btnRegistrar            = (Button)activity.findViewById(R.id.btnRegistrar);
-        btnCancelar             = (Button)activity.findViewById(R.id.btnCancelar);
         imageButton2            = (ImageButton)activity.findViewById(R.id.imgButton2);
         imageButton             = (ImageButton)activity.findViewById(R.id.imgButton);
         imageButton3            = (ImageButton)activity.findViewById(R.id.imgButton3);
@@ -102,33 +100,40 @@ public class RegistrarInmuebleFragment extends Fragment{
         imageButton5            = (ImageButton)activity.findViewById(R.id.imgButton5);
         imageButton6            = (ImageButton)activity.findViewById(R.id.imgButton6);
         imageButton7            = (ImageButton)activity.findViewById(R.id.imgButton7);
+
         seekPrecio              = (SeekBar)activity.findViewById(R.id.seekPrecio);
-        seekArea                = (SeekBar)activity.findViewById(R.id.seekArea);
+        seekAreaTotal           = (SeekBar)activity.findViewById(R.id.seekAreaTotal);
+        seekAreaConstruida      = (SeekBar)activity.findViewById(R.id.seekAreaConstruida);
         seekAntiguedad          = (SeekBar)activity.findViewById(R.id.seekAntiguedad);
         seekDormitorios         = (SeekBar)activity.findViewById(R.id.seekDormitorios);
         seekBanos               = (SeekBar)activity.findViewById(R.id.seekBanos);
-        seekEstacionamientos    = (SeekBar)activity.findViewById(R.id.seekEstacionamientos);
-        spinnerTipoTransaccion = (Spinner)activity.findViewById(R.id.spinnerTipoTransaccion);
-        spinnerTipoInmueble = (Spinner)activity.findViewById(R.id.spinnerTipoInmueble);
-        textTitulo = (TextView)activity.findViewById(R.id.txtTitulo);
-        textDireccion = (TextView)activity.findViewById(R.id.txtDireccion);
-        textDistrito = (TextView)activity.findViewById(R.id.txtDistrito);
+        spinnerTipoTransaccion  = (Spinner)activity.findViewById(R.id.spinnerTipoTransaccion);
+        spinnerTipoInmueble     = (Spinner)activity.findViewById(R.id.spinnerTipoInmueble);
+
+        textTitulo              = (TextView)activity.findViewById(R.id.txtTitulo);
+        textDireccion           = (TextView)activity.findViewById(R.id.txtDireccion);
+        textDistrito            = (TextView)activity.findViewById(R.id.txtDistrito);
+        textDescripcion         = (TextView)activity.findViewById(R.id.txtDescripcion);
+
         valuePrecio             = (TextView)activity.findViewById(R.id.valuePrecio);
-        valueArea               = (TextView)activity.findViewById(R.id.valueArea);
+        valueAreaTotal          = (TextView)activity.findViewById(R.id.valueAreaTotal);
+        valueAreaConstruida     = (TextView)activity.findViewById(R.id.valueAreaConstruida);
         valueAntiguedad         = (TextView)activity.findViewById(R.id.valueAntiguedad);
         valueDormitorios        = (TextView)activity.findViewById(R.id.valueDormitorios);
         valueBanos              = (TextView)activity.findViewById(R.id.valueBanos);
-        valueEstacionamientos   = (TextView)activity.findViewById(R.id.valueEstacionamientos);
-
 
         //Seteando progreso e incremento de los seekBars
         seekPrecio.setProgress(0);
         seekPrecio.incrementProgressBy(10000);
         seekPrecio.setMax(2000000);
 
-        seekArea.setProgress(0);
-        seekArea.incrementProgressBy(10);
-        seekArea.setMax(1000);
+        seekAreaTotal.setProgress(0);
+        seekAreaTotal.incrementProgressBy(10);
+        seekAreaTotal.setMax(1000);
+
+        seekAreaConstruida.setProgress(0);
+        seekAreaConstruida.incrementProgressBy(10);
+        seekAreaConstruida.setMax(1000);
 
         seekAntiguedad.setProgress(0);
         seekAntiguedad.incrementProgressBy(1);
@@ -136,15 +141,11 @@ public class RegistrarInmuebleFragment extends Fragment{
 
         seekDormitorios.setProgress(0);
         seekDormitorios.incrementProgressBy(1);
-        seekDormitorios.setMax(20);
+        seekDormitorios.setMax(15);
 
         seekBanos.setProgress(0);
         seekBanos.incrementProgressBy(1);
-        seekBanos.setMax(20);
-
-        seekEstacionamientos.setProgress(0);
-        seekEstacionamientos.incrementProgressBy(1);
-        seekEstacionamientos.setMax(10);
+        seekBanos.setMax(10);
 
         //Listeners de los seekBars
         seekPrecio.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -152,7 +153,7 @@ public class RegistrarInmuebleFragment extends Fragment{
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 i = i/10000;
                 i = i*10000;
-                valuePrecio.setText("S/. " + String.valueOf(i));
+                valuePrecio.setText(String.valueOf(i));
             }
 
             @Override
@@ -166,12 +167,31 @@ public class RegistrarInmuebleFragment extends Fragment{
             }
         });
 
-        seekArea.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        seekAreaTotal.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                i = i/10;
-                i = i*10;
-                valueArea.setText(String.valueOf(i) + " m2");
+                i = i / 10;
+                i = i * 10;
+                valueAreaTotal.setText(String.valueOf(i));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        seekAreaConstruida.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                i = i / 10;
+                i = i * 10;
+                valueAreaConstruida.setText(String.valueOf(i));
             }
 
             @Override
@@ -190,7 +210,7 @@ public class RegistrarInmuebleFragment extends Fragment{
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 i = i/1;
                 i = i*1;
-                valueAntiguedad.setText(String.valueOf(i) + " años");
+                valueAntiguedad.setText(String.valueOf(i));
             }
 
             @Override
@@ -226,28 +246,9 @@ public class RegistrarInmuebleFragment extends Fragment{
         seekBanos.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                i = i/1;
-                i = i*1;
+                i = i / 1;
+                i = i * 1;
                 valueBanos.setText(String.valueOf(i));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-
-        seekEstacionamientos.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                i = i/1;
-                i = i*1;
-                valueEstacionamientos.setText(String.valueOf(i));
             }
 
             @Override
@@ -284,42 +285,7 @@ public class RegistrarInmuebleFragment extends Fragment{
                     textDistrito.requestFocus();
                     textDistrito.setError("EL CAMPO NO PUEDE ESTAR VACIO");
                 }
-
-            }
-        });
-
-        btnCancelar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //For test only
-                InmuebleOut i = new InmuebleOut();
-                i.setAntiguedad(seekAntiguedad.getProgress());
-                i.setArea(seekArea.getProgress());
-                i.setBanos(seekBanos.getProgress());
-                i.setCantFavoritos(0);
-                i.setDescripcion("Descripcion de prueba");
-                i.setDireccion(textDireccion.getText().toString());
-                i.setDistrito(textDistrito.getText().toString());
-                i.setDormitorios(seekDormitorios.getProgress());
-                i.setEstacionamientos(seekEstacionamientos.getProgress());
-                Integer idTipoTransaccion = spinnerTipoTransaccion.getSelectedItemPosition() + 1;
-                i.setIdtTipoTransaccion(idTipoTransaccion);
-                Integer idTipoInmueble = spinnerTipoInmueble.getSelectedItemPosition() + 1;
-                i.setIdTipoInmueble(idTipoInmueble);
-                i.setIdUsuario(LocalSession.getInstance(activity).getLoggedUser().getIdUsuario());
-                i.setLatitud(BigDecimal.valueOf(12.020393));
-                i.setLongitud(BigDecimal.valueOf(-8.339993));
-                i.setPrecio(Double.valueOf(seekPrecio.getProgress()));
-                i.setTitulo(textTitulo.getText().toString());
-                i.setImagenList(new ArrayList<ImagenOut>());
-                for(String imagePath: listImagePath) {
-                    String encodedImage = Base64Encoder.getStringEncodedImage(imagePath);
-                    ImagenOut img = new ImagenOut();
-                    img.setImgBlob(encodedImage);
-                    i.getImagenList().add(img);
-                }
-
-                InmuebleManager.getInstance(activity).insertarInmueble(i);
+                InmuebleManager.getInstance(activity).insertarInmueble(getInmuebleOut());
             }
         });
 
@@ -390,6 +356,34 @@ public class RegistrarInmuebleFragment extends Fragment{
 
     }
 
+    private InmuebleOut getInmuebleOut() {
+        InmuebleOut i = new InmuebleOut();
+        i.setAntiguedad(seekAntiguedad.getProgress());
+        i.setAreaTotal(new BigDecimal(valueAreaTotal.getText().toString()));
+        i.setAreaConstruida(new BigDecimal(valueAreaConstruida.getText().toString()));
+        i.setBanos(Integer.valueOf(valueBanos.getText().toString()));
+        i.setDescripcion(textDescripcion.getText().toString());
+        i.setDireccion(textDireccion.getText().toString());
+        i.setDistrito(textDistrito.getText().toString());
+        i.setDormitorios(Integer.valueOf(valueDormitorios.getText().toString()));
+        Integer idTipoTransaccion = spinnerTipoTransaccion.getSelectedItemPosition() + 1;
+        i.setIdTipoTransaccion(idTipoTransaccion);
+        Integer idTipoInmueble = spinnerTipoInmueble.getSelectedItemPosition() + 1;
+        i.setIdTipoInmueble(idTipoInmueble);
+        i.setIdUsuario(LocalSession.getInstance(activity).getLoggedUser().getIdUsuario());
+        i.setLatitud(BigDecimal.valueOf(12.020393));
+        i.setLongitud(BigDecimal.valueOf(-8.339993));
+        i.setPrecio(new BigDecimal(valuePrecio.getText().toString()));
+        i.setTitulo(textTitulo.getText().toString());
+        i.setImagenList(new ArrayList<ImagenOut>());
+        for(String imagePath: listImagePath) {
+            String encodedImage = Base64Encoder.getStringEncodedImage(imagePath);
+            ImagenOut img = new ImagenOut();
+            img.setImgBlob(encodedImage);
+            i.getImagenList().add(img);
+        }
+        return i;
+    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

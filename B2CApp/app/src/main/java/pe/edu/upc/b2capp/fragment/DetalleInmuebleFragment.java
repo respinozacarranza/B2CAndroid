@@ -22,7 +22,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -38,6 +37,8 @@ import pe.edu.upc.b2capp.connection.RequestQueueManager;
 import pe.edu.upc.b2capp.connection.UriConstant;
 import pe.edu.upc.b2capp.model.ImagenSimple;
 import pe.edu.upc.b2capp.model.InmuebleIn;
+import pe.edu.upc.b2capp.model.TipoInmueble;
+import pe.edu.upc.b2capp.model.TipoTransaccion;
 
 /**
  * Created by Renato on 6/12/2015.
@@ -104,9 +105,6 @@ public class DetalleInmuebleFragment extends Fragment{
 
     public void cargarInmueble(InmuebleIn inmueblein) {
 
-        //sliderShow = (SliderLayout) getView().findViewById(R.id.slider);
-        //sliderShow.setPresetTransformer(SliderLayout.Transformer.ZoomOut);
-        //sliderShow.setDuration(6000);
         for(ImagenSimple img: inmueblein.getImagenList()) {
             byte[] imageByteArray = img.getImagenBlob();
             byte[] decodedString = Base64.decode(imageByteArray, Base64.DEFAULT);
@@ -118,28 +116,33 @@ public class DetalleInmuebleFragment extends Fragment{
             imageView.setAdjustViewBounds(true);
             imageView.setMaxHeight(400);
             view.addView(imageView);
-            //DefaultSliderView sliderView = new DefaultSliderView(getActivity());
-            //sliderView.image("");
-            //sliderShow.addSlider(sliderView);
-            //ImageView img = (View)
-        }
-        TextView textView = (TextView)getActivity().findViewById(R.id.textViewTitulo);
-        TextView textView2 = (TextView)getActivity().findViewById(R.id.textViewPrecio);
-        TextView textView3 = (TextView)getActivity().findViewById(R.id.textViewArea);
-        TextView textView4 = (TextView)getActivity().findViewById(R.id.textViewAntiguedad);
-        TextView textView5 = (TextView)getActivity().findViewById(R.id.textViewDormitorios);
-        TextView textView6 = (TextView)getActivity().findViewById(R.id.textViewBanos);
-        TextView textView7 = (TextView)getActivity().findViewById(R.id.textViewEstacionamientos);
-        TextView textView8 = (TextView)getActivity().findViewById(R.id.textViewDescripcion);
+          }
 
-        textView.setText(inmueblein.getTitulo());
-        textView2.setText("Precio: " + String.valueOf(inmueblein.getPrecio()));
-        textView3.setText("Area: " + String.valueOf(inmueblein.getAreaTotal()));
-        textView4.setText("Antiguedad: " + String.valueOf(inmueblein.getAntiguedad()));
-        textView5.setText("Direccion: " + String.valueOf(inmueblein.getDireccion()));
-        textView6.setText("Baños: " + String.valueOf(inmueblein.getBanos()));
-        textView7.setText("Distrito: " + String.valueOf(inmueblein.getDistrito()));
-        textView8.setText("Descripcion: " + inmueblein.getDescripcion());
+        TextView textTitulo = (TextView)getActivity().findViewById(R.id.textViewTitulo);
+        TextView textPrecio = (TextView)getActivity().findViewById(R.id.textViewPrecio);
+        TextView textDireccion = (TextView)getActivity().findViewById(R.id.textViewDireccion);
+        TextView textDistrito = (TextView)getActivity().findViewById(R.id.textViewDistrito);
+        TextView textAreaTotal = (TextView)getActivity().findViewById(R.id.textViewAreaTotal);
+        TextView textAreaConstruida = (TextView)getActivity().findViewById(R.id.textViewAreaConstruida);
+        TextView textTipoInmueble = (TextView)getActivity().findViewById(R.id.textViewTipoInmueble);
+        TextView textTipoTransaccion = (TextView)getActivity().findViewById(R.id.textViewTipoTransaccion);
+        TextView textAntiguedad = (TextView)getActivity().findViewById(R.id.textViewAntiguedad);
+        TextView textDormitorios = (TextView)getActivity().findViewById(R.id.textViewDormitorios);
+        TextView textBanos = (TextView)getActivity().findViewById(R.id.textViewBanos);
+        TextView textDescripcion = (TextView)getActivity().findViewById(R.id.textViewDescripcion);
+
+        textTitulo.setText(inmueblein.getTitulo());
+        textPrecio.setText("Precio: S/. " + String.valueOf(inmueblein.getPrecio()));
+        textDireccion.setText("Direccion: " + inmueblein.getDireccion());
+        textDistrito.setText("Distrito: " + inmueblein.getDistrito());
+        textAreaTotal.setText("Area total: " + String.valueOf(inmueblein.getAreaTotal()) + " m2");
+        textAreaConstruida.setText("Area construida: " + String.valueOf(inmueblein.getAreaTotal()) + " m2");
+        textTipoInmueble.setText("Tipo de inmueble: " + inmueblein.getTipoInmueble().getDescripcion());
+        textTipoTransaccion.setText("Tipo de transaccion: " + inmueblein.getTipoTransaccion().getDescripcion());
+        textAntiguedad.setText("Antiguedad: " + String.valueOf(inmueblein.getAntiguedad()) + " años");
+        textDormitorios.setText("Dormitorios: " + String.valueOf(inmueblein.getDormitorios()));
+        textBanos.setText("Baños: " + String.valueOf(inmueblein.getBanos()));
+        textDescripcion.setText("Descripcion: " + inmueblein.getDescripcion());
 
     }
     @Override
@@ -192,6 +195,8 @@ public class DetalleInmuebleFragment extends Fragment{
         try {
             inmueble = new InmuebleIn();
             inmueble.setIdInmueble(jsonObject.getInt("idInmueble"));
+            inmueble.setTitulo(jsonObject.getString("titulo"));
+            inmueble.setDireccion(jsonObject.getString("direccion"));
             inmueble.setAntiguedad(jsonObject.getInt("antiguedad"));
             inmueble.setAreaConstruida(BigDecimal.valueOf(jsonObject.getDouble("areaConstruida")));
             inmueble.setAreaTotal(BigDecimal.valueOf(jsonObject.getDouble("areaTotal")));
@@ -200,13 +205,23 @@ public class DetalleInmuebleFragment extends Fragment{
             inmueble.setDescripcion(jsonObject.getString("descripcion"));
             inmueble.setDireccion(jsonObject.getString("direccion"));
             inmueble.setDistrito(jsonObject.getString("distrito"));
+            inmueble.setDormitorios(jsonObject.getInt("dormitorios"));
             inmueble.setLatitud(BigDecimal.valueOf(jsonObject.getDouble("latitud")));
             inmueble.setLongitud(BigDecimal.valueOf(jsonObject.getDouble("longitud")));
             inmueble.setPrecio(BigDecimal.valueOf(jsonObject.getDouble("precio")));
-            inmueble.setPrecioDolares(BigDecimal.valueOf(jsonObject.getDouble("precioDolares")));
-            inmueble.setPrecioSoles(BigDecimal.valueOf(jsonObject.getDouble("precioSoles")));
-            inmueble.setTitulo(jsonObject.getString("titulo"));
-            inmueble.setDireccion(jsonObject.getString("direccion"));
+
+            JSONObject jsonTipoInmueble = (jsonObject.getJSONObject("tipoInmueble"));
+            TipoInmueble ti = new TipoInmueble();
+            ti.setIdTipoInmueble(jsonTipoInmueble.getInt("idInmueble"));
+            ti.setDescripcion(jsonTipoInmueble.getString("descripcion"));
+            inmueble.setTipoInmueble(ti);
+
+            JSONObject jsonTipoTransaccion = (jsonObject.getJSONObject("tipoTransaccion"));
+            TipoTransaccion tt = new TipoTransaccion();
+            tt.setIdTipoTransaccion(jsonTipoTransaccion.getInt("idTipoTransaccion"));
+            tt.setDescripcion(jsonTipoTransaccion.getString("descripcion"));
+            inmueble.setTipoTransaccion(tt);
+
             //Inicio obtener imagenes
             JSONArray imgArray = jsonObject.getJSONArray("imagenList");
             List<ImagenSimple> lstImagen = new ArrayList<>();

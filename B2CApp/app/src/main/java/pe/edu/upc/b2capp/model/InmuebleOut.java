@@ -1,6 +1,8 @@
 package pe.edu.upc.b2capp.model;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -9,23 +11,52 @@ import java.util.List;
 public class InmuebleOut {
 
     private Integer idInmueble;
+
     private String titulo;
+
     private String direccion;
+
     private String distrito;
-    private Integer area;
-    private Integer dormitorios;
-    private Integer banos;
-    private Integer estacionamientos;
-    private Integer antiguedad;
+
     private BigDecimal latitud;
+
     private BigDecimal longitud;
+
     private String descripcion;
-    private Double precio;
-    private Integer cantFavoritos;
+
+    private BigDecimal precio;
+
     private Integer idUsuario;
+
     private Integer idTipoTransaccion;
+
     private Integer idTipoInmueble;
+
+    private BigDecimal areaTotal;
+
+    private BigDecimal areaConstruida;
+
+    private BigDecimal precioDolares;
+
+    private BigDecimal precioSoles;
+
+    private Integer dormitorios;
+
+    private Integer banos;
+
+    private Integer antiguedad;
+
     private List<ImagenOut> imagenList;
+
+
+
+    public List<ImagenOut> getImagenList() {
+        return imagenList;
+    }
+
+    public void setImagenList(List<ImagenOut> imagenList) {
+        this.imagenList = imagenList;
+    }
 
     public Integer getIdInmueble() {
         return idInmueble;
@@ -59,46 +90,6 @@ public class InmuebleOut {
         this.distrito = distrito;
     }
 
-    public Integer getArea() {
-        return area;
-    }
-
-    public void setArea(Integer area) {
-        this.area = area;
-    }
-
-    public Integer getDormitorios() {
-        return dormitorios;
-    }
-
-    public void setDormitorios(Integer dormitorios) {
-        this.dormitorios = dormitorios;
-    }
-
-    public Integer getBanos() {
-        return banos;
-    }
-
-    public void setBanos(Integer banos) {
-        this.banos = banos;
-    }
-
-    public Integer getEstacionamientos() {
-        return estacionamientos;
-    }
-
-    public void setEstacionamientos(Integer estacionamientos) {
-        this.estacionamientos = estacionamientos;
-    }
-
-    public Integer getAntiguedad() {
-        return antiguedad;
-    }
-
-    public void setAntiguedad(Integer antiguedad) {
-        this.antiguedad = antiguedad;
-    }
-
     public BigDecimal getLatitud() {
         return latitud;
     }
@@ -123,20 +114,12 @@ public class InmuebleOut {
         this.descripcion = descripcion;
     }
 
-    public Double getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Double precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
-    }
-
-    public Integer getCantFavoritos() {
-        return cantFavoritos;
-    }
-
-    public void setCantFavoritos(Integer cantFavoritos) {
-        this.cantFavoritos = cantFavoritos;
     }
 
     public Integer getIdUsuario() {
@@ -147,11 +130,11 @@ public class InmuebleOut {
         this.idUsuario = idUsuario;
     }
 
-    public Integer getIdtTipoTransaccion() {
+    public Integer getIdTipoTransaccion() {
         return idTipoTransaccion;
     }
 
-    public void setIdtTipoTransaccion(Integer idTipoTransaccion) {
+    public void setIdTipoTransaccion(Integer idTipoTransaccion) {
         this.idTipoTransaccion = idTipoTransaccion;
     }
 
@@ -163,11 +146,59 @@ public class InmuebleOut {
         this.idTipoInmueble = idTipoInmueble;
     }
 
-    public List<ImagenOut> getImagenList() {
-        return imagenList;
+    public BigDecimal getAreaTotal() {
+        return areaTotal;
     }
 
-    public void setImagenList(List<ImagenOut> imagenList) {
-        this.imagenList = imagenList;
+    public void setAreaTotal(BigDecimal areaTotal) {
+        this.areaTotal = areaTotal;
+    }
+
+    public BigDecimal getAreaConstruida() {
+        return areaConstruida;
+    }
+
+    public void setAreaConstruida(BigDecimal areaConstruida) {
+        this.areaConstruida = areaConstruida;
+    }
+
+    public BigDecimal getPrecioDolares() {
+        return precioDolares;
+    }
+
+    public void setPrecioDolares(BigDecimal precioDolares) {
+        this.precioDolares = precioDolares;
+    }
+
+    public BigDecimal getPrecioSoles() {
+        return precioSoles;
+    }
+
+    public void setPrecioSoles(BigDecimal precioSoles) {
+        this.precioSoles = precioSoles;
+    }
+
+    public Integer getDormitorios() {
+        return dormitorios;
+    }
+
+    public void setDormitorios(Integer dormitorios) {
+        this.dormitorios = dormitorios;
+    }
+
+    public Integer getBanos() {
+        return banos;
+    }
+
+    public void setBanos(Integer banos) {
+        this.banos = banos;
+    }
+
+    public Integer getAntiguedad() {
+        return antiguedad;
+    }
+
+    public void setAntiguedad(Integer antiguedad) {
+        this.antiguedad = antiguedad;
     }
 }
