@@ -38,16 +38,16 @@ public class InmuebleActivity extends NavDrawerActivity{
         int id = item.getItemId();
         switch (id) {
             case R.id.menu_ordenar_favoritos:
-                Toast.makeText(this, "Favoritos", Toast.LENGTH_SHORT).show();
                 ordenarListInmuebles("favoritos");
+                Toast.makeText(this, "Lista ordenada por cantidad de favoritos", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.menu_ordenar_fecha:
-                Toast.makeText(this, "Fecha", Toast.LENGTH_SHORT).show();
                 ordenarListInmuebles("fecha");
+                Toast.makeText(this, "Lista ordenada por fecha de publicación", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.menu_ordenar_precio:
-                Toast.makeText(this, "Precio", Toast.LENGTH_SHORT).show();
                 ordenarListInmuebles("precio");
+                Toast.makeText(this, "Lista ordenada por precio", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -76,10 +76,13 @@ public class InmuebleActivity extends NavDrawerActivity{
 
         switch (criterio.toLowerCase()) {
             case "fecha":
+                ic.setOrdenarPor(InmuebleSimpleComparator.Order.FECHA);
                 break;
             case "favoritos":
+                ic.setOrdenarPor(InmuebleSimpleComparator.Order.FAVORITOS);
                 break;
             case "precio":
+                ic.setOrdenarPor(InmuebleSimpleComparator.Order.PRECIO);
                 break;
         }
         Collections.sort(listaInmuebles, ic);
