@@ -1,5 +1,6 @@
 package pe.edu.upc.b2capp.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +24,9 @@ public class BaseActivity extends AppCompatActivity {
         switch (id) {
             case R.id.menu_configuracion:
                 //menu favoritos
+                Toast.makeText(this, "Configuracion", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent( this , ConfiguracionActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.menu_cerrar_sesion:
                 LocalSession ls = LocalSession.getInstance(this);

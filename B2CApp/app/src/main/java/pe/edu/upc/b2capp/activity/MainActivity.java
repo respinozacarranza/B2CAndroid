@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class MainActivity extends NavDrawerActivity{
             fragmentTransaction.add(R.id.content_fragment, mainFragment);
             fragmentTransaction.commit();
         }
+        PreferenceManager.setDefaultValues(this, R.xml.preference, false);
     }
 
     public void favoritos(View view){

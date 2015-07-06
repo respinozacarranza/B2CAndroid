@@ -61,5 +61,13 @@
     <string name="cero">0</string>
     <string name="TipoInmueble">Tipo de inmueble</string>
 
+    <!-- CONFIGURACION -->
+    <string name="titulo">titulo</string>
+    <string name="radioBusqueda"> Radio de Búsqueda </string>
+    <string name="valorRadio">50 Km</string>
+    <string name="y">titulo</string>
+    <string name="pref_titulo">Configuraciones B2C</string>
+    <string name="pref_summary">pref_summary</string>
+
 
 </resources>

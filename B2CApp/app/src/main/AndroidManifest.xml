@@ -91,6 +91,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity"/>
             </activity>
+        <activity android:name=".activity.ConfiguracionActivity"
+                  android:parentActivityName=".activity.BaseActivity">
+        </activity>
 
         <meta-data android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyCSgL37xvL20L82NhDLcnLpeLWcjbkDfxE" />
