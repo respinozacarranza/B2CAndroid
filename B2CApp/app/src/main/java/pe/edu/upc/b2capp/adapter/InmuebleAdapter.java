@@ -1,5 +1,6 @@
 package pe.edu.upc.b2capp.adapter;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -23,8 +24,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import pe.edu.upc.b2capp.R;
@@ -48,8 +51,14 @@ public class InmuebleAdapter extends BaseAdapter{
 
             @Override
             public void onResponse(JSONArray response) {
+                Activity activity = (Activity) context;
+                TextView infoTextView = (TextView) activity.findViewById(R.id.textInfo);
+                infoTextView.setText("");
                 setInmuebles(parseJson(response));
                 notifyDataSetChanged();
+                if(inmuebles.size() == 0) {
+                    infoTextView.setText("No se encontraron resultados");
+                }
                 progressDialog.cancel();
             }
         }, new Response.ErrorListener() {
@@ -123,7 +132,9 @@ public class InmuebleAdapter extends BaseAdapter{
     public List<InmuebleSimple> parseJson (JSONArray response) {
 
         List<InmuebleSimple> inmueblesAux = new ArrayList<>();
-
+        if (response.length() == 0) {
+            return inmueblesAux;
+        }
         for(int i = 0; i<response.length(); i++){
 
             InmuebleSimple inms = new InmuebleSimple();
@@ -136,9 +147,12 @@ public class InmuebleAdapter extends BaseAdapter{
                 inms.setDireccion(jsonObject.getString("direccion"));
                 inms.setPrecio(BigDecimal.valueOf(jsonObject.getDouble("precio")));
                 inms.setTipoTransaccion(jsonObject.getString("tipoTransaccion"));
+                Long fechaLong = jsonObject.getLong("fecha");
+                inms.setFecha(new Date(fechaLong));
+                Long favoritos = jsonObject.getLong("favoritos");
+                inms.setFavoritos(BigInteger.valueOf(favoritos));
                 inms.setImagen(jsonObject.getString("imagen").getBytes(Charset.forName("UTF-8")));
                 inmueblesAux.add(inms);
-                Log.i("dato", inms.getTitulo());
 
             } catch (JSONException e) {
 

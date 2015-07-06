@@ -4,12 +4,9 @@
     android:layout_height="match_parent">
 
 
-    <fragment
-        android:name="pe.edu.upc.b2capp.fragment.InmueblesFragment"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/frag_inmuebles"
-
-        />
+    <FrameLayout
+        android:id="@+id/content_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

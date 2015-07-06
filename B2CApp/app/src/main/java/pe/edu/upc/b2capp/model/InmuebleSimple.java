@@ -1,6 +1,8 @@
 package pe.edu.upc.b2capp.model;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Date;
 
 /**
  * Created by Jose on 15/06/2015.
@@ -12,6 +14,8 @@ public class InmuebleSimple {
     private BigDecimal precio;
     private byte[] imagen;
     private String tipoTransaccion;
+    private Date fecha;
+    private BigInteger favoritos;
 
     public Integer getId() {
         return id;
@@ -59,5 +63,21 @@ public class InmuebleSimple {
 
     public void setTipoTransaccion(String tipoTransaccion) {
         this.tipoTransaccion = tipoTransaccion;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public BigInteger getFavoritos() {
+        return favoritos;
+    }
+
+    public void setFavoritos(BigInteger favoritos) {
+        this.favoritos = favoritos;
     }
 }

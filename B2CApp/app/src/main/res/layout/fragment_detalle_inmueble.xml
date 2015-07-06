@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetalleInmuebleActivity$DetalleInmuebleFragment"
@@ -17,46 +18,58 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textViewTitulo"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:gravity="center"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_gravity="left|top" />
-
-            <HorizontalScrollView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <LinearLayout
-                    android:id="@+id/imagenesTelas"
+
+                <HorizontalScrollView
+                    android:id="@+id/scrollImagenes"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/imagenesTelas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <TextView
+                    android:id="@+id/textViewTitulo"
+                    android:textStyle="bold"
+                    android:textSize="30sp"
+                    android:textColor="@color/light_font"
+                    android:shadowColor="@color/text_shadow"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    android:layout_alignParentTop="true"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                </LinearLayout>
-            </HorizontalScrollView>
-            <!-- <com.daimajia.slider.library.SliderLayout
-                android:id="@+id/slider"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/slider_image_height" />
-                -->
+                    android:layout_margin="@dimen/activity_vertical_margin"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="20dp">
+                <at.markushi.ui.CircleButton
+                    android:id="@+id/btnFavorito"
+                    android:layout_width="@dimen/access_button_size"
+                    android:layout_height="@dimen/access_button_size"
+                    android:src="@drawable/ic_action_heart_light"
+                    android:layout_alignRight="@+id/scrollImagenes"
+                    android:layout_alignBottom="@+id/scrollImagenes"
+                    app:cb_color="#FFFFFF"
+                    app:cb_pressedRingWidth="8dip" />
 
-            </LinearLayout>
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@color/layout"
-                >
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_marginRight="@dimen/activity_vertical_margin"
+                android:padding="@dimen/activity_vertical_margin" >
 
                 <TextView
                     android:id="@+id/textViewPrecio"
@@ -65,31 +78,28 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:id="@+id/textViewArea"
+                    android:id="@+id/textViewDireccion"
                     android:textSize="20sp"
-
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_gravity="left|top" />
+                    android:layout_height="wrap_content" />
 
                 <TextView
-                    android:id="@+id/textViewAntiguedad"
+                    android:id="@+id/textViewDistrito"
                     android:textSize="20sp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_gravity="left|top" />
+                    android:layout_height="wrap_content" />
 
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/textViewAreaTotal"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="20dp">
+                <TextView
+                    android:id="@+id/textViewAreaConstruida"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -98,47 +108,52 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@color/layout"
-                >
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_marginRight="@dimen/activity_vertical_margin"
+                android:padding="@dimen/activity_vertical_margin">
 
                 <TextView
-                    android:id="@+id/textViewDormitorios"
+                    android:id="@+id/textViewTipoInmueble"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/textViewTipoTransaccion"
                     android:textSize="20sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:id="@+id/textViewBanos"
+                    android:id="@+id/textViewAntiguedad"
                     android:textSize="20sp"
-
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_gravity="left|top" />
+                    android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:id="@+id/textViewEstacionamientos"
+                    android:id="@+id/textViewDormitorios"
                     android:textSize="20sp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_gravity="left|top" />
+                    android:layout_height="wrap_content"/>
 
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/textViewBanos"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="20dp">
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@color/layout">
+                android:background="@color/layout"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_marginRight="@dimen/activity_vertical_margin"
+                android:padding="@dimen/activity_vertical_margin" >
 
                 <TextView
                     android:id="@+id/textViewDescripcion"
@@ -151,15 +166,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <Button
-                    android:id="@+id/btnPrueba"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="BUTON PRUEBA"
-                    />
-
-                </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -170,15 +177,13 @@
                     android:id="@+id/btnLlamar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="LLAMAR"
-                    />
+                    android:text="Llamar" />
 
                 <Button
                     android:id="@+id/btnEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="MENSAJE"
-                    />
+                    android:text="Mensaje" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

@@ -54,14 +54,12 @@ public class MapaInmueblesActivity extends NavDrawerActivity{
         bbb = locationManager.GPS_PROVIDER;
         location = locationManager.getLastKnownLocation(bbb);
 
-/*        lat = location.getLatitude();
-        lon = location.getLongitude();*/
+        lat = location.getLatitude();
+        lon = location.getLongitude();
 
         ll = new LatLng(lat,lon);
-       // ll = coordInmueble;
         createMapView();
-        //cu.newla
-        //googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ll,20));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ll,17));
 
         addMarker();
         options = new MarkerOptions().position(ll).draggable(true).title("Estas aqui!");

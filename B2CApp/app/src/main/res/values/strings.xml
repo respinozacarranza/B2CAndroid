@@ -15,6 +15,7 @@
     <string name="title_activity_login">Login</string>
     <string name="title_favoritos_activity">Favoritos</string>
     <string name="title_modificar_usuario_activity">Modificar Usuario</string>
+
     <!-- Menus -->
     <string name="menu_mis_inmuebles">Mis Inmuebles</string>
     <string name="menu_creados">Creados</string>
@@ -24,20 +25,24 @@
     <string name="menu_ajustes">Ajustes</string>
     <string name="title_activity_base">BaseActivity</string>
     <string name="menu_cerrar_sesion">Cerrar sesión</string>
+    <string name="menu_ordenar">Ordenar</string>
 
     <!-- REGISTRAR INMUEBLE -->
-    <string name="hint_Titulo">Ingrese el Título</string>
+    <string name="hint_Titulo">Ingrese el título</string>
     <string name="Precio">Precio: </string>
-    <string name="Area">Área: </string>
+    <string name="AreaTotal">Área total: </string>
+    <string name="AreaConstruida">Área construida</string>
     <string name="Dormitorios">Dormitorios: </string>
     <string name="Banos">Baños: </string>
     <string name="Estacionamientos">Estacionamientos: </string>
     <string name="Antiguedad">Antigüedad: </string>
-    <string name="TipoTransaccion">Tipo de Transacción: </string>
+    <string name="TipoTransaccion">Tipo de transacción: </string>
+    <string name="TipoInmueble">Tipo de inmueble</string>
     <string name="hint_telefono">Teléfono </string>
     <string name="hint_email">Email </string>
     <string name="hint_direccion">Dirección </string>
     <string name="hint_distrito">Distrito </string>
+    <string name="hint_Descripcion">Descripción</string>
     <string name="btnRegistrar">Registrar </string>
     <string name="btnCancelar">Cancelar </string>
 
@@ -59,6 +64,7 @@
     <string name="areaInicial">0 m2</string>
     <string name="tiempoInicial">0 años</string>
     <string name="cero">0</string>
+<<<<<<< HEAD
     <string name="TipoInmueble">Tipo de inmueble</string>
 
     <!-- CONFIGURACION -->
@@ -69,5 +75,7 @@
     <string name="pref_titulo">Configuraciones B2C</string>
     <string name="pref_summary">pref_summary</string>
 
+=======
+>>>>>>> 03b512141f9c8ec582da601ebffc080cf3f66a9b
 
 </resources>

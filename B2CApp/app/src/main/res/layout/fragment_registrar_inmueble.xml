@@ -15,9 +15,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            >
+            android:layout_height="wrap_content" >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -25,7 +23,7 @@
                 android:orientation="vertical"
                 android:background="@color/fondo"
                 android:focusableInTouchMode="false"
-                android:id="@+id/layoutodo">
+                android:id="@+id/layoutodo" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -47,7 +45,8 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/hint_Titulo"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp" />
+                            android:layout_marginRight="10dp"
+                            android:maxLines="1" />
 
                     </LinearLayout>
 
@@ -62,7 +61,7 @@
                             android:hint="@string/hint_direccion"
                             android:layout_marginRight="10dp"
                             android:layout_marginLeft="10dp"
-                            />
+                            android:maxLines="1" />
 
                     </LinearLayout>
 
@@ -78,7 +77,23 @@
                             android:hint="@string/hint_distrito"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            />
+                            android:maxLines="1" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/layout">
+
+                        <EditText
+                            android:id="@+id/txtDescripcion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/hint_Descripcion"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:maxLines="1" />
 
                     </LinearLayout>
 
@@ -139,17 +154,12 @@
                             android:layout_weight="1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/Area"
+                            android:text="@string/AreaTotal"
                             android:textSize="20dp"
                             android:layout_gravity="center_vertical" />
 
-                        <!--<ProgressBar
-                            android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"/>-->
                         <SeekBar
-                            android:id="@+id/seekArea"
+                            android:id="@+id/seekAreaTotal"
                             android:layout_weight="1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -158,7 +168,42 @@
                         <TextView
                             android:layout_weight="1"
                             android:textSize="20sp"
-                            android:id="@+id/valueArea"
+                            android:id="@+id/valueAreaTotal"
+                            android:text="@string/areaInicial"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="22dp"></LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/AreaConstruida"
+                            android:textSize="20dp"
+                            android:layout_gravity="center_vertical" />
+
+                        <SeekBar
+                            android:id="@+id/seekAreaConstruida"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical" />
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:textSize="20sp"
+                            android:id="@+id/valueAreaConstruida"
                             android:text="@string/areaInicial"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -274,37 +319,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="22dp"></LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/Estacionamientos"
-                            android:textSize="20dp"
-                            android:layout_gravity="center_vertical" />
-
-                        <SeekBar
-                            android:id="@+id/seekEstacionamientos"
-                            android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical" />
-
-                        <TextView
-                            android:layout_weight="1"
-                            android:textSize="20sp"
-                            android:id="@+id/valueEstacionamientos"
-                            android:text="@string/cero"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="right" />
-
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -449,13 +463,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/btnRegistrar"/>
-
-                    <Button
-                        android:id="@+id/btnCancelar"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/btnCancelar"/>
 
                 </LinearLayout>
 
