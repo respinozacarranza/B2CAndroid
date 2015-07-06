@@ -146,6 +146,8 @@ public class InmuebleAdapter extends BaseAdapter{
                 inms.setTitulo(jsonObject.getString("titulo"));
                 inms.setDireccion(jsonObject.getString("direccion"));
                 inms.setPrecio(BigDecimal.valueOf(jsonObject.getDouble("precio")));
+                inms.setLatitud(BigDecimal.valueOf(jsonObject.getDouble("latitud")));
+                inms.setLongitud(BigDecimal.valueOf(jsonObject.getDouble("longitud")));
                 inms.setTipoTransaccion(jsonObject.getString("tipoTransaccion"));
                 Long fechaLong = jsonObject.getLong("fecha");
                 inms.setFecha(new Date(fechaLong));

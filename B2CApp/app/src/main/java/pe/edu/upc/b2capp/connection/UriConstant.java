@@ -19,9 +19,11 @@ public class UriConstant {
     public static final String GET_ALL_INMUEBLE = "/inmuebles";
     public static final String BUSCAR_INMUEBLES = "/inmuebles/buscar?";
     public static final String INMUEBLES_PROPIOS = "/inmuebles/propios/";
-
+    public static final String INMUEBLE_RADIO = "/inmueble/radio";
+    
     // Usuario
     public static final String LOGIN = "/user/login";
     public static final String CREATE_USER = "/user/create";
     public static final String UPDATE_USER = "/user/update";
+
 }
